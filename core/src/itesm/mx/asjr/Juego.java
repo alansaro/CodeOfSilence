@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 
 /**
  * ADMINISTRADOR DE PANTALLAS
- * Created by AlanJoseph, Diego y Gabriel on 06/09/2016.
+ * Created by AlanJoseph, Diego, Kevin y Gabriel on 06/09/2016.
  */
 public class Juego extends Game
 {
