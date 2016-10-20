@@ -44,8 +44,8 @@ public class Personaje
         // La divide en 4 frames de 32x64 (ver marioSprite.png)
         TextureRegion[][] texturaPersonaje = texturaCompleta.split(32,64);
         // Crea la animación con tiempo de 0.25 segundos entre frames.
-        animacion = new Animation(0.25f,texturaPersonaje[0][3],
-                texturaPersonaje[0][2], texturaPersonaje[0][1] );
+        animacion = new Animation(0.25f,texturaPersonaje[0][2],
+                texturaPersonaje[0][1], texturaPersonaje[0][0] );
         // Animación infinita
         animacion.setPlayMode(Animation.PlayMode.LOOP);
         // Inicia el timer que contará tiempo para saber qué frame se dibuja
@@ -112,14 +112,15 @@ public class Personaje
                 actualizarSalto(mapa);
                 break;
         }
+         **/
 
 
         recolectarMonedas(mapa);
-         **/
+
     }
 
 
-    /***
+
     private void recolectarMonedas(TiledMap mapa) {
         // Revisar si está sobre una moneda (pies)
         TiledMapTileLayer capa = (TiledMapTileLayer)mapa.getLayers().get(0);
@@ -130,11 +131,11 @@ public class Personaje
             Object tipo = (String)celda.getTile().getProperties().get("tipo");
             if ( "moneda".equals(tipo) ) {
                 capa.setCell(x,y,capa.getCell(0,3));    // Cuadro azul en lugar de la moneda
-                sonidoMoneda.play();
+                //sonidoMoneda.play();
             }
         }
     }
-     ***/
+
 
     private void moverVertical(TiledMap mapa){
         // Obtiene la primer capa del mapa (en este caso es la única)
