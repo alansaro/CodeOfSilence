@@ -84,8 +84,6 @@ public class PantallaJuego implements Screen
 
 
 
-
-
     }
 
     @Override
