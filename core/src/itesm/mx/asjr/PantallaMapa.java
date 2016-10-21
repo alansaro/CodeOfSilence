@@ -32,8 +32,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  */
 public class PantallaMapa implements Screen
 {
+    //CANI ES MARICA
     public static final int ANCHO_MAPA = 6784;
-
     public static final int ANCHO_CAMARA = 1280;
     public static final int ALTO_CAMARA = 480;
     // Cámara
@@ -59,7 +59,6 @@ public class PantallaMapa implements Screen
     // Mario animado
     private Texture texturaMario;
     private Personaje mario;
-    private Enemigo bowser;
 
     // Pad
     private Touchpad pad;
@@ -120,53 +119,17 @@ public class PantallaMapa implements Screen
 
                     if (p.getKnobPercentX() > 0 && p.getKnobPercentY()<.25 && p.getKnobPercentY()>-.25) {    //Derecha
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.MOV_DERECHA);
-                    }
-                    else if (p.getKnobPercentX() < 0 && p.getKnobPercentY()<.25 && p.getKnobPercentY()>-.25) { // Izquierda
+                    } else if (p.getKnobPercentX() < 0 && p.getKnobPercentY()<.25 && p.getKnobPercentY()>-.25) { // Izquierda
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.MOV_IZQUIERDA);
-                    }
-                    else if (p.getKnobPercentY() > .25 ) { //Arriba
+                    } else if (p.getKnobPercentY() > .25 ) { //Arriba
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.MOV_ARRIBA);
-                    }
-                    else if (p.getKnobPercentY() < -.1) { //Abajo
+                    }else if (p.getKnobPercentY() < -.1) { //Abajo
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.MOV_ABAJO);
-                    }
-                    else if (p.getKnobPercentX() == 0){    // Nada
+                    } else if (p.getKnobPercentX() == 0){    // Nada
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.QUIETO);
                     }
                 }
-
-                /**
-                * Este IF cambia las coordenadas del enemigo dependiendo de las del personaje
-                **/
-                Touchpad p = (Touchpad) actor;
-                if (mario.getX() > bowser.getX()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_DERECHA);
-                }
-                else if (mario.getX() < bowser.getX()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_IZQUIERDA);
-                }
-                else if (mario.getY() < bowser.getY()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ABAJO);
-                }
-                else if (mario.getY() > bowser.getY()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ARRIBA);
-                }
-                else if (mario.getX() == bowser.getX() && mario.getY() < bowser.getY()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ABAJO);
-                }
-                else if (mario.getX() == bowser.getX() && mario.getY() > bowser.getY()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ARRIBA);
-                }
-                else if (mario.getX() > bowser.getX() && mario.getY() == bowser.getY()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_DERECHA);
-                }
-                else if (mario.getX() < bowser.getX() && mario.getY() == bowser.getY()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_IZQUIERDA);
-                }
-
             }
-
-
         });
 
         escena.addActor(pad);
@@ -214,7 +177,6 @@ public class PantallaMapa implements Screen
 
         // Mario
         mario = new Personaje(texturaMario);
-        bowser = new Enemigo(texturaMario);
     }
 
     private void inicializarCamara() {
@@ -231,14 +193,13 @@ public class PantallaMapa implements Screen
     }
 
     @Override
-    //El método render va a dibujar en pantalla lo que le digamos. Recibe un tiempo delta.
     public void render(float delta) {
+        //El método render va a dibujar en pantalla lo que le digamos. Recibe un tiempo delta.
 
         // actualizar cámara (para recorrer el mundo completo)
         actualizarCamara();
         // Actualización del personaje en el mapa
         mario.actualizar(mapa);
-        bowser.actualizar(mapa);
         // Borra el frame actual
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // escala la pantalla de acuerdo a la cámara y vista
@@ -247,7 +208,6 @@ public class PantallaMapa implements Screen
         rendererMapa.render();  // Dibuja el mapa
         batch.begin();
         mario.render(batch);    // Dibuja el personaje
-        bowser.render(batch);
         batch.end();
 
         // Dibuja el HUD
