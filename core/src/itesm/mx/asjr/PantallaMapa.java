@@ -142,7 +142,7 @@ public class PantallaMapa implements Screen
         manager.load("MonitoSprite.png", Texture.class);
 
         // Carga música
-        manager.load("burialatsea.mp3", Music.class);
+        manager.load("Jailhouse.mp3", Music.class);
         //manager.load("audio/muereMario.mp3", Sound.class);
         //manager.load("audio/moneda.mp3", Sound.class);
 
@@ -156,7 +156,7 @@ public class PantallaMapa implements Screen
 
         // Audio
 
-        musicaFondo = manager.get("burialatsea.mp3");
+        musicaFondo = manager.get("Jailhouse.mp3");
         //sonidoMuere = manager.get("audio/muereMario.mp3");
         //sonidoMoneda = manager.get("audio/moneda.mp3");
 

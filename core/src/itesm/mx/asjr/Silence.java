@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.audio.Music;
 
 public class Silence implements Screen
 {
@@ -31,7 +32,8 @@ public class Silence implements Screen
 	private Texture texturaBtnOpciones;
 	private Texture texturaBtnAcercaDe;
 
-
+	// Musica
+	private Music musicaFondo;
 
 	//Administra la carga de assets:
 	private final AssetManager assetManager = new AssetManager();
@@ -144,6 +146,12 @@ public class Silence implements Screen
 		texturaBtnAcercaDe = assetManager.get("acerca_de2.png");
 		texturaTitulo = assetManager.get("titulo2.png");
 
+		// Carga música
+		assetManager.load("burialatsea.mp3", Music.class);
+		// Audio
+		musicaFondo = assetManager.get("burialatsea.mp3");
+		musicaFondo.setLooping(true);
+		musicaFondo.play();
 
 	}
 
@@ -200,6 +208,7 @@ public class Silence implements Screen
 		texturaBtnOpciones.dispose();
 		texturaBtnJugar.dispose();
 		escena.dispose();
+		musicaFondo.dispose();
 
 	}
 
