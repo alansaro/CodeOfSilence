@@ -24,6 +24,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -33,7 +34,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 public class PantallaMapa implements Screen
 {
     public static final int ANCHO_MAPA = 6784;
-    public static final int ANCHO_CAMARA = 480;
+    public static final int ANCHO_CAMARA = 798;
     public static final int ALTO_CAMARA = 480;
 
     // Cámara
@@ -42,7 +43,7 @@ public class PantallaMapa implements Screen
 
     // HUD. Los componentes en la pantalla que no se mueven
     private OrthographicCamera camaraHUD; // Cámara fija
-    private StretchViewport vistaHUD;
+    private FitViewport vistaHUD;
 
     // Escena para HUD
     private Stage escena;
@@ -189,7 +190,7 @@ public class PantallaMapa implements Screen
         camaraHUD = new OrthographicCamera(ANCHO_CAMARA, PantallaMapa.ALTO_CAMARA);
         camaraHUD.position.set(ANCHO_CAMARA/2, PantallaMapa.ALTO_CAMARA /2, 0);
         camaraHUD.update();
-        vistaHUD = new StretchViewport(ANCHO_CAMARA, PantallaMapa.ALTO_CAMARA,camaraHUD);
+        vistaHUD = new FitViewport(ANCHO_CAMARA, PantallaMapa.ALTO_CAMARA,camaraHUD);
     }
 
     @Override
