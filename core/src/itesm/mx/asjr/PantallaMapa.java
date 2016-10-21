@@ -33,6 +33,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  */
 public class PantallaMapa implements Screen
 {
+    //CANI ES MARICA
     public static final int ANCHO_MAPA = 6784;
     public static final int ANCHO_CAMARA = 798;
     public static final int ALTO_CAMARA = 480;
