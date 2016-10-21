@@ -9,6 +9,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -34,6 +35,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 public class PantallaMapa implements Screen
 {
     //CANI ES MARICA
+    //ALAN LA TIENE DE ESTE TAMAÑO .l.
     public static final int ANCHO_MAPA = 6784;
     public static final int ANCHO_CAMARA = 798;
     public static final int ALTO_CAMARA = 480;
@@ -72,6 +74,9 @@ public class PantallaMapa implements Screen
     ///private boolean haMuertoMario=false;
     ///private Sound sonidoMoneda;
 
+    // Para una barra de vida
+    private Texture textureHealthBar, textureHealthBarBox;
+
     // Screen lifecycle:
     // 1.- Show()
     // 2.- Resume()
@@ -94,8 +99,28 @@ public class PantallaMapa implements Screen
         crearEscena();
         cargarMapa();   // Nuevo
         crearPad();
+        initHealthBarObjects(); // Para la barra de vida
 
         Gdx.gl.glClearColor(1,1,1,1);
+    }
+
+    private void initHealthBarObjects() {
+
+        int width = 1;
+        int height = 1;
+        Pixmap healthBar = createHealthBarPixmap(width, height, 0, 1, 0);
+        Pixmap healthBarBox = createHealthBarPixmap(width, height, 1, 0, 0);
+
+        textureHealthBar = new Texture(healthBar);
+        textureHealthBarBox = new Texture(healthBarBox);
+    }
+
+    private Pixmap createHealthBarPixmap (int width, int height, int r, int g, int b) {
+
+        Pixmap pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888);
+        pixmap.setColor(r, g, b, 1);
+        pixmap.fill();
+        return pixmap;
     }
 
     private void crearPad() {
@@ -155,7 +180,7 @@ public class PantallaMapa implements Screen
         manager.load("MonitoSprite.png", Texture.class);
 
         // Carga música
-        manager.load("burialatsea.mp3", Music.class);
+        manager.load("Jailhouse.mp3", Music.class);
         //manager.load("audio/muereMario.mp3", Sound.class);
         //manager.load("audio/moneda.mp3", Sound.class);
 
@@ -169,7 +194,7 @@ public class PantallaMapa implements Screen
 
         // Audio
 
-        musicaFondo = manager.get("burialatsea.mp3");
+        musicaFondo = manager.get("Jailhouse.mp3");
         //sonidoMuere = manager.get("audio/muereMario.mp3");
         //sonidoMoneda = manager.get("audio/moneda.mp3");
 
@@ -208,9 +233,20 @@ public class PantallaMapa implements Screen
         batch.setProjectionMatrix(camara.combined);
         rendererMapa.setView(camara);
         rendererMapa.render();  // Dibuja el mapa
+
+
         batch.begin();
-        mario.render(batch);    // Dibuja el personaje
+
+        //Dibuja el personaje
+        mario.render(batch);
+        //Dibuja la barra de vidas
+        batch.draw(textureHealthBarBox,100,100,300,20);
+        batch.draw(textureHealthBar,100,100,1,200);
+
+
         batch.end();
+
+
 
         // Dibuja el HUD
         batch.setProjectionMatrix(camaraHUD.combined);
