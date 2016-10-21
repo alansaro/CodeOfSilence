@@ -69,6 +69,15 @@ public class PantallaMapa implements Screen
     ///private boolean haMuertoMario=false;
     ///private Sound sonidoMoneda;
 
+    // Screen lifecycle:
+    // 1.- Show()
+    // 2.- Resume()
+    // 3.- Resize()
+    // 4.- Render()
+    // 5.- Pause()
+    // 6.- Hide()
+    // 7.- Dispose()
+
 
 
     public PantallaMapa(Juego juego) {  // Constructor
@@ -77,6 +86,7 @@ public class PantallaMapa implements Screen
 
     @Override
     public void show() {
+        // Aquí es donde se obtienen las propiedades iniciales de nuestra pantalla.
         inicializarCamara();
         crearEscena();
         cargarMapa();   // Nuevo
@@ -183,6 +193,8 @@ public class PantallaMapa implements Screen
 
     @Override
     public void render(float delta) {
+        //El método render va a dibujar en pantalla lo que le digamos. Recibe un tiempo delta.
+
         // actualizar cámara (para recorrer el mundo completo)
         actualizarCamara();
         // Actualización del personaje en el mapa
@@ -230,17 +242,22 @@ public class PantallaMapa implements Screen
 
     @Override
     public void resize(int width, int height) {
+        // A éste método se llama cuando se tiene que hacer más grande o más chica la pantalla.
         vista.update(width, height);
         vistaHUD.update(width, height);
     }
 
     @Override
     public void pause() {
+        // Salir de la aplicación o de la pantalla va a ocacionar que el juego se pause.
+        // Un botón de pausa también ocacionaría lo mismo.
 
     }
 
     @Override
     public void resume() {
+        // Regresar a la aplicación ocacionará que la aplicación se resuma.
+        // Un botón de resumir desde el menú de pausa ocacionaría lo mismo.
 
     }
 
