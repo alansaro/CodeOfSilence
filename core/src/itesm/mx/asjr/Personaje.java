@@ -24,9 +24,11 @@ public class Personaje
 
     private Sprite sprite;  // Sprite cuando no se mueve (QUIETO)
     //private Sound sonidoMoneda;     // Efecto cuando colecta una moneda
+
     // Animación
     private Animation caminando;    // Caminando
     private Animation caminandoArriba;
+    private Animation caminandoAbajo;
     private float timerAnimacion;   // tiempo para calcular el frame
 
     private EstadoMovimiento estadoMovimiento=EstadoMovimiento.INICIANDO;
@@ -39,36 +41,53 @@ public class Personaje
     //Constructor del personaje, recibe una imagen con varios frames, (ver imagen marioSprite.png 128x64, cada tile 32x64)
 
     public Personaje(Texture textura) {
+
         //Gdx.app.log("Personaje", "Creando el personaje :)");
+
         //this.sonidoMoneda = sonidoMoneda;
-        // Lee la textura como región
+
+        // Lee la textura como región ______________________________________________________________
         TextureRegion texturaCompleta = new TextureRegion(textura);
         // La divide en 4 frames de 32x64 (ver MonitoSprite.png)
         TextureRegion[][] texturaPersonaje = texturaCompleta.split(32,32);
+
+        // Animaciones______________________________________________________________________________
+        // Una animacion es un conjunto de TextureRegions que representan una animación.
+        // A cada elemento de la animación se le llama un keyFrame, muchos KeyFrames forman una
+        // animación.
         // Crea la animación con tiempo de 0.25 segundos entre frames.
         caminando = new Animation(0.25f, texturaPersonaje[2][2],
                 texturaPersonaje[2][1], texturaPersonaje[2][0]);
         // Crear una animación para que camine hacia arriba
         caminandoArriba = new Animation(0.25f, texturaPersonaje[3][2],
                 texturaPersonaje[3][1], texturaPersonaje[3][0]);
-        // Animación infinita
+        // Crear una animación para que camine hacia abajo
+        caminandoAbajo = new Animation(0.25f, texturaPersonaje[0][2],
+                texturaPersonaje[0][1], texturaPersonaje[0][0]);
+
+        // Animación infinita_______________________________________________________________________
         caminando.setPlayMode(Animation.PlayMode.LOOP);
         caminandoArriba.setPlayMode(Animation.PlayMode.LOOP);
         // Inicia el timer que contará tiempo para saber qué frame se dibuja
         timerAnimacion = 0;
+
+
         // Crea el sprite con el personaje quieto (idle)
         sprite = new Sprite(texturaPersonaje[0][0]);    // QUIETO
         sprite.setPosition(300, 800);    // Posición inicial
     }
 
-    // Dibuja el personaje
+    // Dibuja el personaje__________________________________________________________________________
     public void render(SpriteBatch batch) {
-        // Dibuja el personaje dependiendo del estadoMovimiento
+        //El método render hace que se genere la imagen del personaje,
+        //en éste caso el método lo dibuja dependiendo del estadoMovimiento en el que se encuentra.
+        //DeltaTime es el tiempo en segundos desde el último render.
+
         switch (estadoMovimiento) {
             case MOV_DERECHA:
-            case MOV_IZQUIERDA:
-                timerAnimacion += Gdx.graphics.getDeltaTime();
-                TextureRegion region = caminando.getKeyFrame(timerAnimacion);
+            case MOV_IZQUIERDA: // Si se mueve a la izquierda..
+                timerAnimacion += Gdx.graphics.getDeltaTime(); // Toma el tiempo en el que se ha estado moviendo
+                TextureRegion region = caminando.getKeyFrame(timerAnimacion); // Con ese tiempo obtiene el siguiente KeyFrame.
                 if (estadoMovimiento==EstadoMovimiento.MOV_IZQUIERDA) {
                     if (!region.isFlipX()) {
                         region.flip(true,false);
@@ -81,15 +100,13 @@ public class Personaje
                 batch.draw(region,sprite.getX(),sprite.getY());
                 break;
             case MOV_ARRIBA:
-                System.out.println("Case mov_Arriba");
                 timerAnimacion+= Gdx.graphics.getDeltaTime();
                 TextureRegion region2 = caminandoArriba.getKeyFrame(timerAnimacion);
                 batch.draw(region2,sprite.getX(),sprite.getY());
                 break;
             case MOV_ABAJO:
-                System.out.println("Case mov_Arriba");
                 timerAnimacion+= Gdx.graphics.getDeltaTime();
-                TextureRegion region3 = caminandoArriba.getKeyFrame(timerAnimacion);
+                TextureRegion region3 = caminandoAbajo.getKeyFrame(timerAnimacion);
                 batch.draw(region3,sprite.getX(),sprite.getY());
                 break;
             case QUIETO:
