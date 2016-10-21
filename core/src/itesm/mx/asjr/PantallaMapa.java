@@ -56,9 +56,10 @@ public class PantallaMapa implements Screen
     private OrthogonalTiledMapRenderer rendererMapa;    // Dibuja el mapa
     //***
 
-    // Mario animado
+    // Personajes animado
     private Texture texturaMario;
     private Personaje mario;
+    private Enemigo bowser;
 
     // Pad
     private Touchpad pad;
@@ -129,12 +130,39 @@ public class PantallaMapa implements Screen
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.QUIETO);
                     }
                 }
+
+                if (mario.getX() < bowser.getX()){
+                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_IZQUIERDA);
+                }
+                else if (mario.getX() > bowser.getX()){
+                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_DERECHA);
+                }
+                /*
+                else if (mario.getY() > bowser.getY()){
+                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ARRIBA);
+                }
+                else if (mario.getY() < bowser.getY()){
+                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ABAJO);
+                }
+                */
+                else if (mario.getY() < bowser.getY() && mario.getX() == bowser.getX()){
+                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ABAJO);
+                }
+                else if (mario.getY() > bowser.getY() && mario.getX() == bowser.getX()){
+                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ARRIBA);
+                }
+
             }
         });
 
         escena.addActor(pad);
         pad.setColor(1,1,1,0.4f);
         Gdx.input.setInputProcessor(escena);
+
+
+
+
+
     }
 
     private void crearEscena() {
@@ -175,8 +203,9 @@ public class PantallaMapa implements Screen
         musicaFondo.play();
 
 
-        // Mario
+        // Personaje y Enemigo
         mario = new Personaje(texturaMario);
+        bowser = new Enemigo(texturaMario);
     }
 
     private void inicializarCamara() {
@@ -200,6 +229,7 @@ public class PantallaMapa implements Screen
         actualizarCamara();
         // Actualización del personaje en el mapa
         mario.actualizar(mapa);
+        bowser.actualizar(mapa);
         // Borra el frame actual
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // escala la pantalla de acuerdo a la cámara y vista
@@ -208,6 +238,7 @@ public class PantallaMapa implements Screen
         rendererMapa.render();  // Dibuja el mapa
         batch.begin();
         mario.render(batch);    // Dibuja el personaje
+        bowser.render(batch);
         batch.end();
 
         // Dibuja el HUD
