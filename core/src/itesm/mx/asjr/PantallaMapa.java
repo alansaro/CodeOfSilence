@@ -131,26 +131,8 @@ public class PantallaMapa implements Screen
                     }
                 }
 
-                if (mario.getX() < bowser.getX()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_IZQUIERDA);
-                }
-                else if (mario.getX() > bowser.getX()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_DERECHA);
-                }
-                /*
-                else if (mario.getY() > bowser.getY()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ARRIBA);
-                }
-                else if (mario.getY() < bowser.getY()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ABAJO);
-                }
-                */
-                else if (mario.getY() < bowser.getY() && mario.getX() == bowser.getX()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ABAJO);
-                }
-                else if (mario.getY() > bowser.getY() && mario.getX() == bowser.getX()){
-                    bowser.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ARRIBA);
-                }
+                moverEnemigo(bowser,mario);
+
 
             }
         });
@@ -172,6 +154,25 @@ public class PantallaMapa implements Screen
         escena.setViewport(vistaHUD);
         crearPad();
     }
+
+    public void moverEnemigo(Enemigo enemy, Personaje character){
+
+        if (character.getX() < enemy.getX() && character.getY() == enemy.getY()){
+            enemy.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_IZQUIERDA);
+        }
+        else if (character.getX() > enemy.getX() && character.getY() == enemy.getY()){
+            enemy.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_DERECHA);
+        }
+
+        else if (character.getY() < enemy.getY() && character.getX() == enemy.getX()){
+            enemy.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ABAJO);
+        }
+        else if (character.getY() > enemy.getY() && character.getX() == enemy.getX()){
+            enemy.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ARRIBA);
+        }
+
+    }
+
 
     private void cargarMapa() {
         AssetManager manager = new AssetManager();
