@@ -83,6 +83,7 @@ public class PantallaMapa implements Screen
 
     // Para una barra de vida
     private Texture healthBar, healthContainer;
+    int vida = 32;
 
 
     public PantallaMapa(Juego juego) {  // Constructor
@@ -106,13 +107,14 @@ public class PantallaMapa implements Screen
 
         int ancho = 1;
         int alto = 1;
-        // Se dibuja un pixmap para la vida de color rojo.
-        Pixmap healththBarPM = drawPixmap(ancho, alto, 0,1,0);
-        // Se dibuja otro pixmap para el contendor de un color gris.
-        Pixmap hBarContainerPM = drawPixmap(ancho,alto, 1,0,0);
+        // Se dibuja un pixmap para el contenedor de la barra de vida.
+        Pixmap pixmap1 = drawPixmap(ancho, alto, 0,1,0);
+        // Se dibuja otro pixmap para la barra de vida
+        Pixmap pixmap2 = drawPixmap(ancho,alto, 1,0,0);
         // Se inicializan las texturas.
-        healthBar = new Texture(healththBarPM);
-        healthContainer = new Texture (hBarContainerPM);
+        healthContainer = new Texture(pixmap1);
+        healthBar = new Texture (pixmap2);
+
     }
 
     private Pixmap drawPixmap(int ancho, int alto, int r, int g, int b) {
@@ -166,10 +168,6 @@ public class PantallaMapa implements Screen
         escena.addActor(pad);
         pad.setColor(1,1,1,0.4f);
         Gdx.input.setInputProcessor(escena);
-
-
-
-
 
     }
 
@@ -241,11 +239,13 @@ public class PantallaMapa implements Screen
         camara.update();
         vista = new StretchViewport(ANCHO_CAMARA, PantallaMapa.ALTO_CAMARA,camara);
 
-        // Cámara para HUD
+        //Cámara para HUD
+
         camaraHUD = new OrthographicCamera(ANCHO_CAMARA, PantallaMapa.ALTO_CAMARA);
         camaraHUD.position.set(ANCHO_CAMARA/2, PantallaMapa.ALTO_CAMARA /2, 0);
         camaraHUD.update();
         vistaHUD = new StretchViewport(ANCHO_CAMARA, PantallaMapa.ALTO_CAMARA,camaraHUD);
+
     }
 
     @Override
@@ -266,12 +266,10 @@ public class PantallaMapa implements Screen
 
         // Batch
         batch.begin();
-
         mario.render(batch);    // Dibuja el personaje
-        // bowser.render(batch);
-        batch.draw(healthContainer, 100, 100 ,300,20);
+        bowser.render(batch);
+        batch.draw(healthContainer, mario.getX(), mario.getY()+34 ,vida,4); //Dibuja la barra de vida.
         batch.draw(healthBar, 100, 100, 1, 20);
-
         batch.end();
 
         // Dibuja el HUD
@@ -286,12 +284,22 @@ public class PantallaMapa implements Screen
             sonidoMuere.play();
         }
          ***/
+
+        // Prueba si el enemigo está atacando a mario
+        if (mario.getX() == bowser.getX()){
+            vida--;
+        }
+
+        if(vida == 0){
+            Gdx.app.log("PantallaMapa", "Has perdido maldito bastardo");
+        }
     }
 
     // Actualiza la posición de la cámara para que el personaje esté en el centro,
-    // excepto cuando está en la primera y última parte del mundo
+    // excepto cuando está en la primera y última parte del mundo.
     private void actualizarCamara() {
         float posX = mario.getX();
+
         // Si está en la parte 'media'
         if (posX>=ANCHO_CAMARA/2 && posX<=ANCHO_MAPA-ANCHO_CAMARA/2) {
             // El personaje define el centro de la cámara
@@ -304,6 +312,7 @@ public class PantallaMapa implements Screen
         }
         camara.update();
     }
+
 
     @Override
     public void resize(int width, int height) {

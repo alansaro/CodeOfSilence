@@ -149,7 +149,6 @@ public class Personaje
     }
 
 
-
     private void recolectarMonedas(TiledMap mapa) {
         // Revisar si está sobre una moneda (pies)
         TiledMapTileLayer capa = (TiledMapTileLayer)mapa.getLayers().get(0);
