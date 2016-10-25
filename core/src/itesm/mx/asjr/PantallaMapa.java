@@ -346,13 +346,15 @@ public class PantallaMapa implements Screen
             vida--;
         }
 
+        // Aquí es donde el personaje pierde
         if(vida == 0){
             Gdx.app.log("PantallaMapa", "Has perdido maldito bastardo");
         }
 
+        // Dependiendo de donde esté disparando el jugador, la bala se mueve en esa dirección
         if(actionButton.getClickListener().isPressed()){
             Gdx.app.log("render" , "se está apunto de dibujar la clase Bullet.");
-            // Si el personaje se est moviendo a la derecha.
+            // Si el personaje se est moviendo a la derecha
             if(mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_DERECHA){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 0));
             }
@@ -360,11 +362,11 @@ public class PantallaMapa implements Screen
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_IZQUIERDA) {
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (float)Math.PI));
             }
-            // Si el personaje se está moviendo hacia arriba.
+            // Si el personaje se está moviendo hacia arriba
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ARRIBA) {
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 90 * (float) Math.PI / 180));
             }
-            // Si el personaje se está moviendo hacia abajo.
+            // Si el personaje se está moviendo hacia abajo
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ABAJO){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), -(90 * (float) Math.PI / 180)));
             }
