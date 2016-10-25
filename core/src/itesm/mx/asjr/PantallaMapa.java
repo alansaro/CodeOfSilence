@@ -40,10 +40,11 @@ import java.util.ArrayList;
  */
 public class PantallaMapa implements Screen
 {
-    //ALAN TIENE EL ANO DESTROZADO.
+    // ALAN TIENE EL ANO DESTROZADO.
     public static final int ANCHO_MAPA = 6784;
     public static final int ANCHO_CAMARA = 1280;
     public static final int ALTO_CAMARA = 480;
+
     // Cámara
     private OrthographicCamera camara;
     private Viewport vista;
@@ -94,6 +95,8 @@ public class PantallaMapa implements Screen
     // 5.- Pause()
     // 6.- Hide()
     // 7.- Dispose()
+
+    ///_________LOOOL_____
 
     // Para una barra de vida
     private Texture healthBar, healthContainer;
