@@ -19,9 +19,10 @@ public class Bullet {
 
     public Bullet(int x, int y, float angle){
         time = 2;
-        speed = 50;
+        speed = 2000;
         hitbox = new Rectangle(x,y,10,10);
         texturaBala = new Texture("bala.png");
+        a = angle;
     }
 
     public Rectangle getHit(){
@@ -29,8 +30,8 @@ public class Bullet {
     }
 
     public void update(float delta) {
-        hitbox.x = speed * (float) Math.cos(a) * delta;
-        hitbox.y = speed * (float) Math.sin(a) * delta;
+        hitbox.x += speed * (float)Math.cos(a)* delta;
+        hitbox.y += speed * (float)Math.sin(a)* delta;
         time -= delta;
     }
 

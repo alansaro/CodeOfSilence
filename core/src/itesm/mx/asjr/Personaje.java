@@ -117,20 +117,6 @@ public class Personaje
                 break;
         }
 
-        /**
-        switch(estadoAccion){
-            case QUIETO:
-                break;
-            case DISPARANDO:
-                // Sí el jugador hace click sobre el botón disparar, el personaje dispara.
-                if(PantallaMapa.actionButton.getClickListener().isPressed()){
-                    texturaBala = new Texture ("bala.png");
-                }
-                batch.draw(texturaBala, this.getX(),this.getY());
-                Gdx.app.log("estadoAccion", "se dibujo la bala :)");
-                break;
-        }
-         **/
     }
 
     // Actualiza el sprite, de acuerdo al estadoMovimiento y estadoSalto
@@ -150,17 +136,6 @@ public class Personaje
                 moverVertical(mapa);
                 break;
         }
-
-        /**
-        switch(estadoAccion){
-            case QUIETO:
-                break;
-            case DISPARANDO:
-                Gdx.app.log("actualizar", "actualize el estado a disparar.");
-                disparar();
-                break;
-        }**/
-
 
         recolectarMonedas(mapa);
 
@@ -347,20 +322,6 @@ public class Personaje
 
     }
 
-
-
-    /**
-    // Inicia el salto
-    public void saltar() {
-        if (estadoSalto==EstadoSalto.EN_PISO) {
-            tiempoSalto = 0;
-            yInicial = sprite.getY();
-            estadoSalto = EstadoSalto.SUBIENDO;
-            tiempoVuelo = 2 * V0 / G;
-        }
-    }
-     **/
-
     public enum EstadoMovimiento {
         INICIANDO,
         QUIETO,
@@ -370,11 +331,5 @@ public class Personaje
         MOV_ABAJO,
     }
 
-    /***
-    public enum EstadoAccion {
-        QUIETO,
-        DISPARANDO
-    }
-     ***/
 
 }

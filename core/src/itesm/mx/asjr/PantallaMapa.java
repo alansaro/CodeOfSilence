@@ -80,6 +80,7 @@ public class PantallaMapa implements Screen
 
     // Para las balas
     ArrayList<Bullet> bulletList = new ArrayList<Bullet>();
+    ArrayList<Bullet> bulletUseless = new ArrayList<Bullet>();
 
     // Musica
     private Music musicaFondo;
@@ -324,8 +325,16 @@ public class PantallaMapa implements Screen
         }
         batch.end();
 
+        // Avanza la bala durante un tiempo determinado.
         for(Bullet bill: bulletList){
             bill.update(Gdx.graphics.getDeltaTime());
+            if (bill.isDead()) this.bulletUseless.add(bill);
+        }
+
+        // Limpia los dos ArrayList
+        while(bulletUseless.size()!=0){
+            bulletList.remove(bulletUseless.get(0));
+            bulletUseless.remove(0);
         }
 
         // Dibuja el HUD
@@ -343,7 +352,22 @@ public class PantallaMapa implements Screen
 
         if(actionButton.getClickListener().isPressed()){
             Gdx.app.log("render" , "se está apunto de dibujar la clase Bullet.");
-            bulletList.add(new Bullet ((int)mario.getX(), (int)mario.getY(),0) );
+            // Si el personaje se est moviendo a la derecha.
+            if(mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_DERECHA){
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 0));
+            }
+            //Si el personaje se está moviendo hacia la izquierda
+            else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_IZQUIERDA) {
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), -0));
+            }
+            // Si el personaje se está moviendo hacia arriba.
+            else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ARRIBA) {
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 90 * (float) Math.PI / 180));
+            }
+            // Si el personaje se está moviendo hacia abajo.
+            else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ABAJO){
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), -(90 * (float) Math.PI / 180)));
+            }
         }
 
 
