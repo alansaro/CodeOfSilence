@@ -32,6 +32,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.util.ArrayList;
+
 
 /**
  * Created by dc on 10/13/16.
@@ -72,8 +74,11 @@ public class PantallaMapa implements Screen
 
     // Action Button
     private TextButton.TextButtonStyle textButtonStyle;
-    private TextButton actionButton;
+    public static TextButton actionButton;
     private BitmapFont font;
+
+    // Para las balas
+    ArrayList<Bullet> bulletList = new ArrayList<Bullet>();
 
     // Musica
     private Music musicaFondo;
@@ -155,6 +160,13 @@ public class PantallaMapa implements Screen
 
         // Agrega el objeto a la pantalla.
         escena.addActor(actionButton);
+
+        actionButton.addListener( new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.log("ActionButton", "Click sobre el botón de acción");
+            }
+        });
 
     }
 
@@ -304,7 +316,14 @@ public class PantallaMapa implements Screen
         bowser.render(batch);
         batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
         batch.draw(healthBar, mario.getX(), mario.getY()+34 ,vida,4);
+        for(Bullet bill : bulletList){
+            bill.draw(batch);
+        }
         batch.end();
+
+        for(Bullet bill: bulletList){
+            bill.update(Gdx.graphics.getDeltaTime());
+        }
 
         // Dibuja el HUD
         batch.setProjectionMatrix(camaraHUD.combined);
@@ -318,6 +337,13 @@ public class PantallaMapa implements Screen
         if(vida == 0){
             Gdx.app.log("PantallaMapa", "Has perdido maldito bastardo");
         }
+
+        if(actionButton.getClickListener().isPressed()){
+            Gdx.app.log("render" , "se está apunto de dibujar la clase Bullet.");
+            bulletList.add(new Bullet ((int)mario.getX(), (int)mario.getY(),0) );
+        }
+
+
     }
 
     // Actualiza la posición de la cámara para que el personaje esté en el centro,

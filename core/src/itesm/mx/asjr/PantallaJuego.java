@@ -78,7 +78,7 @@ public class PantallaJuego implements Screen
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 //Regresar al menu pricipal
-                juego.setScreen( new Silence(juego) );
+                juego.setScreen( new PantallaPrincipal(juego) );
             }
         });
 

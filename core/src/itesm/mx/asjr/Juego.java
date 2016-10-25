@@ -13,7 +13,7 @@ public class Juego extends Game
     public void create()
     {
 
-        setScreen(new Silence(this));
+        setScreen(new PantallaPrincipal(this));
 
 
     }

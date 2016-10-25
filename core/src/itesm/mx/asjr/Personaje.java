@@ -2,6 +2,7 @@ package itesm.mx.asjr;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -18,7 +19,7 @@ public class Personaje
 {
     public static final float VELOCIDAD_X = 4;      // Velocidad horizontal
     public static final float VELOCIDAD_Y = -4;
-    private static final float V0 = 60.0f;          // Velocidad inicial al saltar
+    //private static final float V0 = 60.0f;          // Velocidad inicial al saltar
     //private static final float G = 9.81f;           // Gravedad
     //private static final float G_2 = G/2f;          // Mitad de la gravedad
 
@@ -32,17 +33,18 @@ public class Personaje
     private float timerAnimacion;   // tiempo para calcular el frame
 
     private EstadoMovimiento estadoMovimiento=EstadoMovimiento.INICIANDO;
+    //private EstadoAccion estadoAccion = EstadoAccion.QUIETO;
     //private EstadoSalto estadoSalto=EstadoSalto.CAIDA_LIBRE;
     private float tiempoSalto;  // Tiempo total en el aire
     private float yInicial; // Donde inicia el salto
     private float tiempoVuelo;  // Tiempo que lleva en el aire
 
 
+    // Para disparar
+    Texture texturaBala;
+
     //Constructor del personaje, recibe una imagen con varios frames, (ver imagen marioSprite.png 128x64, cada tile 32x64)
-
     public Personaje(Texture textura) {
-
-        //Gdx.app.log("Personaje", "Creando el personaje :)");
 
         //this.sonidoMoneda = sonidoMoneda;
 
@@ -114,6 +116,21 @@ public class Personaje
                 sprite.draw(batch); // Dibuja el sprite
                 break;
         }
+
+        /**
+        switch(estadoAccion){
+            case QUIETO:
+                break;
+            case DISPARANDO:
+                // Sí el jugador hace click sobre el botón disparar, el personaje dispara.
+                if(PantallaMapa.actionButton.getClickListener().isPressed()){
+                    texturaBala = new Texture ("bala.png");
+                }
+                batch.draw(texturaBala, this.getX(),this.getY());
+                Gdx.app.log("estadoAccion", "se dibujo la bala :)");
+                break;
+        }
+         **/
     }
 
     // Actualiza el sprite, de acuerdo al estadoMovimiento y estadoSalto
@@ -135,13 +152,14 @@ public class Personaje
         }
 
         /**
-        switch (estadoSalto) {
-            case SUBIENDO:
-            case BAJANDO:
-                actualizarSalto(mapa);
+        switch(estadoAccion){
+            case QUIETO:
                 break;
-        }
-         **/
+            case DISPARANDO:
+                Gdx.app.log("actualizar", "actualize el estado a disparar.");
+                disparar();
+                break;
+        }**/
 
 
         recolectarMonedas(mapa);
@@ -261,14 +279,6 @@ public class Personaje
             }
         }
     }
-/**
-    private void probarCaida(TiledMap mapa) {
-        boolean hayCeldaAbajo = leerCeldaAbajo(mapa);
-        if (!hayCeldaAbajo) {
-            estadoSalto = EstadoSalto.BAJANDO;
-        }
-    }
- **/
 
     // Avanza en su caída
     public void caer(TiledMap mapa, float desplazamiento) {
@@ -307,29 +317,7 @@ public class Personaje
         return celdaAbajo!=null || celdaAbajoDerecha!=null;
     }
 
-    /***
-    // Ejecutar movimiento vertical, actualiza la posición en 'y'
-    public void actualizarSalto(TiledMap mapa) {
-        tiempoSalto += 10 * Gdx.graphics.getDeltaTime();  // Actualiza tiempo
-        // Si quieren movimiento parabólico, usen esta fórmula
-        //float y = V0 * tiempoSalto - G_2 * tiempoSalto * tiempoSalto;  // Desplazamiento desde que inició el salto
-        if (estadoSalto==EstadoSalto.SUBIENDO && tiempoSalto>tiempoVuelo/2) { // Llegó a la altura máxima?
-            // Inicia caída
-            estadoSalto = EstadoSalto.BAJANDO;
-        }
-        if ( estadoSalto==EstadoSalto.SUBIENDO) {
-            sprite.setY(sprite.getY()-VELOCIDAD_Y);   // sube
-        } else if (estadoSalto==EstadoSalto.BAJANDO) { // Va hacia abajo, probar que caiga sobre un bloque
-            boolean hayCeldaAbajo = leerCeldaAbajo(mapa);
-            if (hayCeldaAbajo) {
-                // Tocó el piso
-                estadoSalto = EstadoSalto.EN_PISO;
-            } else {
-                sprite.setY(sprite.getY()+VELOCIDAD_Y);   // Avanza
-            }
-        }
-    }
-     **/
+
 
     // Accesores para la posición
     public float getX() {
@@ -345,10 +333,21 @@ public class Personaje
         return estadoMovimiento;
     }
 
+    // Accesor de estadoAccion
+    //public EstadoAccion getEstadoAccion(){return estadoAccion;}
+
     // Modificador de estadoMovimiento
     public void setEstadoMovimiento(EstadoMovimiento estadoMovimiento) {
         this.estadoMovimiento = estadoMovimiento;
     }
+
+    public void disparar() {
+
+        Gdx.app.log("Disparar()" , "Estoy en el metodo disparar.");
+
+    }
+
+
 
     /**
     // Inicia el salto
@@ -368,15 +367,14 @@ public class Personaje
         MOV_IZQUIERDA,
         MOV_DERECHA,
         MOV_ARRIBA,
-        MOV_ABAJO
+        MOV_ABAJO,
     }
 
-/**
-    public enum EstadoSalto {
-        EN_PISO,
-        SUBIENDO,
-        BAJANDO,
-        CAIDA_LIBRE // Cayó de una orilla
+    /***
+    public enum EstadoAccion {
+        QUIETO,
+        DISPARANDO
     }
- **/
+     ***/
+
 }

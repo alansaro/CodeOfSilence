@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.audio.Music;
 
-public class Silence implements Screen
+public class PantallaPrincipal implements Screen
 {
 
 	private final Juego juego;
@@ -38,7 +38,7 @@ public class Silence implements Screen
 	//Administra la carga de assets:
 	private final AssetManager assetManager = new AssetManager();
 
-	public Silence(Juego juego) {
+	public PantallaPrincipal(Juego juego) {
 		this.juego = juego;
 	}
 
