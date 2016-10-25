@@ -108,12 +108,12 @@ public class PantallaMapa implements Screen
         int ancho = 1;
         int alto = 1;
         // Se dibuja un pixmap para el contenedor de la barra de vida.
-        Pixmap pixmap1 = drawPixmap(ancho, alto, 0,1,0);
+        Pixmap pixmap1 = drawPixmap(ancho, alto, 1,0,0);
         // Se dibuja otro pixmap para la barra de vida
-        Pixmap pixmap2 = drawPixmap(ancho,alto, 1,0,0);
+        Pixmap pixmap2 = drawPixmap(ancho,alto, 0,0,0);
         // Se inicializan las texturas.
-        healthContainer = new Texture(pixmap1);
-        healthBar = new Texture (pixmap2);
+        healthBar = new Texture(pixmap1);
+        healthContainer = new Texture (pixmap2);
 
     }
 
@@ -268,8 +268,8 @@ public class PantallaMapa implements Screen
         batch.begin();
         mario.render(batch);    // Dibuja el personaje
         bowser.render(batch);
-        batch.draw(healthContainer, mario.getX(), mario.getY()+34 ,vida,4); //Dibuja la barra de vida.
-        batch.draw(healthBar, 100, 100, 1, 20);
+        batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
+        batch.draw(healthBar, mario.getX(), mario.getY()+34 ,vida,4);
         batch.end();
 
         // Dibuja el HUD
