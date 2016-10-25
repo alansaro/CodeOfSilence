@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.TextureData;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -20,14 +21,17 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
 
 /**
  * Created by dc on 10/13/16.
@@ -65,6 +69,11 @@ public class PantallaMapa implements Screen
 
     // Pad
     private Touchpad pad;
+
+    // Action Button
+    private TextButton.TextButtonStyle textButtonStyle;
+    private TextButton actionButton;
+    private BitmapFont font;
 
     // Musica
     private Music musicaFondo;
@@ -125,6 +134,30 @@ public class PantallaMapa implements Screen
         return pixmap;
     }
 
+    private void createActionButtion(){
+
+        // Crea las texturas.
+        Skin skin = new Skin();
+        skin.add("actionUp", new Texture ("actionUp.png"));
+        skin.add("actionDown", new Texture ("actionDown.png"));
+
+        font = new BitmapFont();
+
+        // Características del botón.
+        textButtonStyle = new TextButton.TextButtonStyle();
+        textButtonStyle.up = skin.getDrawable("actionUp");
+        textButtonStyle.down = skin.getDrawable("actionDown");
+        textButtonStyle.font = font;
+
+        // Crea un botón de acción con las texturas y las características creadas.
+        actionButton = new TextButton("Disparar", textButtonStyle);
+        actionButton.setBounds(1130, 50, 150 ,150);
+
+        // Agrega el objeto a la pantalla.
+        escena.addActor(actionButton);
+
+    }
+
     private void crearPad() {
 
         // Para cargar las texturas y convertirlas en Drawable
@@ -177,6 +210,7 @@ public class PantallaMapa implements Screen
         escena = new Stage();
         escena.setViewport(vistaHUD);
         crearPad();
+        createActionButtion();
     }
 
     public void moverEnemigo(Enemigo enemy, Personaje character){
@@ -275,15 +309,6 @@ public class PantallaMapa implements Screen
         // Dibuja el HUD
         batch.setProjectionMatrix(camaraHUD.combined);
         escena.draw();
-
-        /***
-        // PRUEBA si mario se cae al vacío
-        if (mario.getY()<0 && !haMuertoMario) {
-            haMuertoMario = true;
-            musicaFondo.stop();
-            sonidoMuere.play();
-        }
-         ***/
 
         // Prueba si el enemigo está atacando a mario
         if (mario.getX() == bowser.getX()){
