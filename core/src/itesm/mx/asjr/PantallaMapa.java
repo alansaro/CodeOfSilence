@@ -9,7 +9,9 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -32,7 +34,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  */
 public class PantallaMapa implements Screen
 {
-    //CANI ES MARICA
+    //ALAN TIENE EL ANO DESTROZADO.
     public static final int ANCHO_MAPA = 6784;
     public static final int ANCHO_CAMARA = 1280;
     public static final int ALTO_CAMARA = 480;
@@ -65,7 +67,6 @@ public class PantallaMapa implements Screen
     private Touchpad pad;
 
     // Musica
-
     private Music musicaFondo;
     ///private Sound sonidoMuere;
     ///private boolean haMuertoMario=false;
@@ -80,6 +81,8 @@ public class PantallaMapa implements Screen
     // 6.- Hide()
     // 7.- Dispose()
 
+    // Para una barra de vida
+    private Texture healthBar, healthContainer;
 
 
     public PantallaMapa(Juego juego) {  // Constructor
@@ -93,8 +96,31 @@ public class PantallaMapa implements Screen
         crearEscena();
         cargarMapa();   // Nuevo
         crearPad();
+        inicializarVida();
+
 
         Gdx.gl.glClearColor(1,1,1,1);
+    }
+
+    private void inicializarVida() {
+
+        int ancho = 1;
+        int alto = 1;
+        // Se dibuja un pixmap para la vida de color rojo.
+        Pixmap healththBarPM = drawPixmap(ancho, alto, 0,1,0);
+        // Se dibuja otro pixmap para el contendor de un color gris.
+        Pixmap hBarContainerPM = drawPixmap(ancho,alto, 1,0,0);
+        // Se inicializan las texturas.
+        healthBar = new Texture(healththBarPM);
+        healthContainer = new Texture (hBarContainerPM);
+    }
+
+    private Pixmap drawPixmap(int ancho, int alto, int r, int g, int b) {
+        // Éste método dibuja el mapa de pixeles.
+        Pixmap pixmap = new Pixmap (ancho, alto, Pixmap.Format.RGBA8888);
+        pixmap.setColor(r,g,b,1);
+        pixmap.fill();
+        return pixmap;
     }
 
     private void crearPad() {
@@ -237,9 +263,15 @@ public class PantallaMapa implements Screen
         batch.setProjectionMatrix(camara.combined);
         rendererMapa.setView(camara);
         rendererMapa.render();  // Dibuja el mapa
+
+        // Batch
         batch.begin();
+
         mario.render(batch);    // Dibuja el personaje
-        bowser.render(batch);
+        // bowser.render(batch);
+        batch.draw(healthContainer, 100, 100 ,300,20);
+        batch.draw(healthBar, 100, 100, 1, 20);
+
         batch.end();
 
         // Dibuja el HUD
