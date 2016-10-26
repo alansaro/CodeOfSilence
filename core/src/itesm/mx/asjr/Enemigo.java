@@ -44,14 +44,14 @@ public class Enemigo
 
         // animación.
         // Crea la animación con tiempo de 0.25 segundos entre frames.
-        caminando = new Animation(0.25f, texturaEnemigo[2][5],
-                texturaEnemigo[2][4], texturaEnemigo[2][3]);
+        caminando = new Animation(0.25f, texturaEnemigo[0][2],
+                texturaEnemigo[0][1], texturaEnemigo[0][0]);
         // Crear una animación para que camine hacia arriba
-        caminandoArriba = new Animation(0.25f, texturaEnemigo[3][5],
-                texturaEnemigo[3][4], texturaEnemigo[3][3]);
+        caminandoArriba = new Animation(0.25f, texturaEnemigo[1][2],
+                texturaEnemigo[1][1], texturaEnemigo[1][0]);
         // Crear una animación para que camine hacia abajo
-        caminandoAbajo = new Animation(0.25f, texturaEnemigo[0][5],
-                texturaEnemigo[0][4], texturaEnemigo[0][3]);
+        caminandoAbajo = new Animation(0.25f, texturaEnemigo[2][2],
+                texturaEnemigo[2][1], texturaEnemigo[2][0]);
 
         // Animación infinita
         caminando.setPlayMode(Animation.PlayMode.LOOP);

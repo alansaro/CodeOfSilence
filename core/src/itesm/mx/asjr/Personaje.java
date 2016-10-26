@@ -58,14 +58,14 @@ public class Personaje
         // A cada elemento de la animación se le llama un keyFrame, muchos KeyFrames forman una
         // animación.
         // Crea la animación con tiempo de 0.25 segundos entre frames.
-        caminando = new Animation(0.25f, texturaPersonaje[2][2],
-                texturaPersonaje[2][1], texturaPersonaje[2][0]);
-        // Crear una animación para que camine hacia arriba
-        caminandoArriba = new Animation(0.25f, texturaPersonaje[3][2],
-                texturaPersonaje[3][1], texturaPersonaje[3][0]);
-        // Crear una animación para que camine hacia abajo
-        caminandoAbajo = new Animation(0.25f, texturaPersonaje[0][2],
+        caminando = new Animation(0.25f, texturaPersonaje[0][2],
                 texturaPersonaje[0][1], texturaPersonaje[0][0]);
+        // Crear una animación para que camine hacia arriba
+        caminandoArriba = new Animation(0.25f, texturaPersonaje[1][2],
+                texturaPersonaje[1][1], texturaPersonaje[1][0]);
+        // Crear una animación para que camine hacia abajo
+        caminandoAbajo = new Animation(0.25f, texturaPersonaje[2][2],
+                texturaPersonaje[2][1], texturaPersonaje[2][0]);
 
         // Animación infinita_______________________________________________________________________
         caminando.setPlayMode(Animation.PlayMode.LOOP);

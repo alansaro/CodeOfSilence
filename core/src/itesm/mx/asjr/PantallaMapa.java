@@ -78,6 +78,8 @@ public class PantallaMapa implements Screen
     private Enemigo bowser7;
     private Enemigo bowser8;
     private Enemigo bowser9;
+    private Texture texturaPersonaje;
+    private Texture texturaEnemigo;
 
 
     // Pad
@@ -267,12 +269,16 @@ public class PantallaMapa implements Screen
     }
 
 
+
+
     private void cargarMapa() {
         AssetManager manager = new AssetManager();
         manager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
         //manager.load("MarioCompleto.tmx", TiledMap.class);
         manager.load("MarioCompleto.tmx", TiledMap.class);
+        manager.load("sprite_completo.png", Texture.class);
         manager.load("MonitoSprite.png", Texture.class);
+        manager.load("sprite_completo_enemigo.png", Texture.class);
 
         // Carga música
         manager.load("Jailhouse.mp3", Music.class);
@@ -282,6 +288,9 @@ public class PantallaMapa implements Screen
         manager.finishLoading();
         mapa = manager.get("MarioCompleto.tmx");
         texturaMario = manager.get("MonitoSprite.png");
+        texturaPersonaje = manager.get("sprite_completo.png");
+        texturaEnemigo = manager.get("sprite_completo_enemigo.png");
+
 
         // Crea el objeto que dibujará el mapa
         rendererMapa = new OrthogonalTiledMapRenderer(mapa,batch);
@@ -290,34 +299,32 @@ public class PantallaMapa implements Screen
         // Audio
 
         musicaFondo = manager.get("Jailhouse.mp3");
-        //sonidoMuere = manager.get("audio/muereMario.mp3");
-        //sonidoMoneda = manager.get("audio/moneda.mp3");
 
         musicaFondo.setLooping(true);
         musicaFondo.play();
 
 
         // Personaje y Enemigo
-        mario = new Personaje(texturaMario);
-        bowser = new Enemigo(texturaMario);
+        mario = new Personaje(texturaPersonaje);
+        bowser = new Enemigo(texturaEnemigo);
         bowser.setPosition(600,800);
-        bowser1 = new Enemigo(texturaMario);
+        bowser1 = new Enemigo(texturaEnemigo);
         bowser1.setPosition(800,800);
-        bowser2 = new Enemigo(texturaMario);
+        bowser2 = new Enemigo(texturaEnemigo);
         bowser2.setPosition(1000,800);
-        bowser3 = new Enemigo(texturaMario);
+        bowser3 = new Enemigo(texturaEnemigo);
         bowser3.setPosition(1200,800);
-        bowser4 = new Enemigo(texturaMario);
+        bowser4 = new Enemigo(texturaEnemigo);
         bowser4.setPosition(1400,800);
-        bowser5 = new Enemigo(texturaMario);
+        bowser5 = new Enemigo(texturaEnemigo);
         bowser5.setPosition(1600,800);
-        bowser6 = new Enemigo(texturaMario);
+        bowser6 = new Enemigo(texturaEnemigo);
         bowser6.setPosition(1800,800);
-        bowser7 = new Enemigo(texturaMario);
+        bowser7 = new Enemigo(texturaEnemigo);
         bowser7.setPosition(2000,800);
-        bowser8 = new Enemigo(texturaMario);
+        bowser8 = new Enemigo(texturaEnemigo);
         bowser8.setPosition(2200,800);
-        bowser9 = new Enemigo(texturaMario);
+        bowser9 = new Enemigo(texturaEnemigo);
         bowser9.setPosition(2400,800);
     }
 
@@ -488,6 +495,8 @@ public class PantallaMapa implements Screen
         healthContainer.dispose();
         healthBar.dispose();
         texturaMario.dispose();
+        texturaEnemigo.dispose();
+        texturaPersonaje.dispose();
 
     }
 
