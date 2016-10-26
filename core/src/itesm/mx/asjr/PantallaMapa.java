@@ -40,6 +40,7 @@ import java.util.ArrayList;
  */
 public class PantallaMapa implements Screen
 {
+
     // QUE BUENOS SENOS.
     public static final int ANCHO_MAPA = 6784;
     public static final int ANCHO_CAMARA = 1280;
@@ -60,15 +61,24 @@ public class PantallaMapa implements Screen
     private SpriteBatch batch;
     private final Juego juego;  // Para regresar al menú
 
-    //*** Para el mapa
+    // Para el mapa
     private TiledMap mapa;  // Información del mapa en memoria
     private OrthogonalTiledMapRenderer rendererMapa;    // Dibuja el mapa
-    //***
 
     // Personajes animado
     private Texture texturaMario;
     private Personaje mario;
     private Enemigo bowser;
+    private Enemigo bowser1;
+    private Enemigo bowser2;
+    private Enemigo bowser3;
+    private Enemigo bowser4;
+    private Enemigo bowser5;
+    private Enemigo bowser6;
+    private Enemigo bowser7;
+    private Enemigo bowser8;
+    private Enemigo bowser9;
+
 
     // Pad
     private Touchpad pad;
@@ -209,6 +219,15 @@ public class PantallaMapa implements Screen
                 }
 
                 moverEnemigo(bowser,mario);
+                moverEnemigo(bowser1,mario);
+                moverEnemigo(bowser2,mario);
+                moverEnemigo(bowser3,mario);
+                moverEnemigo(bowser4,mario);
+                moverEnemigo(bowser5,mario);
+                moverEnemigo(bowser6,mario);
+                moverEnemigo(bowser7,mario);
+                moverEnemigo(bowser8,mario);
+                moverEnemigo(bowser9,mario);
 
 
             }
@@ -281,6 +300,25 @@ public class PantallaMapa implements Screen
         // Personaje y Enemigo
         mario = new Personaje(texturaMario);
         bowser = new Enemigo(texturaMario);
+        bowser.setPosition(600,800);
+        bowser1 = new Enemigo(texturaMario);
+        bowser1.setPosition(800,800);
+        bowser2 = new Enemigo(texturaMario);
+        bowser2.setPosition(1000,800);
+        bowser3 = new Enemigo(texturaMario);
+        bowser3.setPosition(1200,800);
+        bowser4 = new Enemigo(texturaMario);
+        bowser4.setPosition(1400,800);
+        bowser5 = new Enemigo(texturaMario);
+        bowser5.setPosition(1600,800);
+        bowser6 = new Enemigo(texturaMario);
+        bowser6.setPosition(1800,800);
+        bowser7 = new Enemigo(texturaMario);
+        bowser7.setPosition(2000,800);
+        bowser8 = new Enemigo(texturaMario);
+        bowser8.setPosition(2200,800);
+        bowser9 = new Enemigo(texturaMario);
+        bowser9.setPosition(2400,800);
     }
 
     private void inicializarCamara() {
@@ -307,6 +345,15 @@ public class PantallaMapa implements Screen
         // Actualización del personaje en el mapa
         mario.actualizar(mapa);
         bowser.actualizar(mapa);
+        bowser1.actualizar(mapa);
+        bowser2.actualizar(mapa);
+        bowser3.actualizar(mapa);
+        bowser4.actualizar(mapa);
+        bowser5.actualizar(mapa);
+        bowser6.actualizar(mapa);
+        bowser7.actualizar(mapa);
+        bowser8.actualizar(mapa);
+        bowser9.actualizar(mapa);
         // Borra el frame actual
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // escala la pantalla de acuerdo a la cámara y vista
@@ -318,6 +365,16 @@ public class PantallaMapa implements Screen
         batch.begin();
         mario.render(batch);    // Dibuja el personaje
         bowser.render(batch);
+        bowser1.render(batch);
+        bowser2.render(batch);
+        bowser3.render(batch);
+        bowser4.render(batch);
+        bowser5.render(batch);
+        bowser6.render(batch);
+        bowser7.render(batch);
+        bowser8.render(batch);
+        bowser9.render(batch);
+
         batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
         batch.draw(healthBar, mario.getX(), mario.getY()+34 ,vida,4);
         for(Bullet bill : bulletList){

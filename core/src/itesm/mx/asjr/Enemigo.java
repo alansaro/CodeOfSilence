@@ -61,8 +61,12 @@ public class Enemigo
 
         // Crea el sprite con el enemigo quieto (idle)
         sprite = new Sprite(texturaEnemigo[0][3]);    // QUIETO
-        sprite.setPosition(500, 1000);    // Posición inicial
+            // Posición inicial
          }
+
+        public void setPosition(int x, int y){
+            sprite.setPosition(x, y);
+        }
 
         // Dibuja el enemigo_____________________________________________________________________________________________________________
 
