@@ -41,7 +41,7 @@ import java.util.ArrayList;
 public class PantallaMapa implements Screen
 {
 
-    // QUE BUENOS SENOS.
+    // QUE BUENOS DULCES PAPU
     public static final int ANCHO_MAPA = 6784;
     public static final int ANCHO_CAMARA = 1280;
     public static final int ALTO_CAMARA = 480;
