@@ -40,7 +40,7 @@ import java.util.ArrayList;
  */
 public class PantallaMapa implements Screen
 {
-    // ALAN TIENE EL ANO DESTROZADO.
+    // QUE BUENOS SENOS.
     public static final int ANCHO_MAPA = 6784;
     public static final int ANCHO_CAMARA = 1280;
     public static final int ALTO_CAMARA = 480;
