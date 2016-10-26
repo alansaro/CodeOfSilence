@@ -405,7 +405,9 @@ public class PantallaMapa implements Screen
 
         // Aquí es donde el personaje pierde
         if(vida == 0){
-            Gdx.app.log("PantallaMapa", "Has perdido maldito bastardo");
+            // Gdx.app.log("PantallaMapa", "Has perdido maldito bastardo");
+            juego.setScreen(new PantallaPerder(juego));
+
         }
 
         // Dependiendo de donde esté disparando el jugador, la bala se mueve en esa dirección
@@ -481,6 +483,12 @@ public class PantallaMapa implements Screen
     public void dispose() {
         texturaMario.dispose();
         mapa.dispose();
+        escena.dispose();
+        musicaFondo.dispose();
+        healthContainer.dispose();
+        healthBar.dispose();
+        texturaMario.dispose();
+
     }
 
 }
