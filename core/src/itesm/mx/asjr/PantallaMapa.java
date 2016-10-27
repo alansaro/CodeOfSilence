@@ -393,19 +393,25 @@ public class PantallaMapa implements Screen
         for(Bullet bill: bulletList){
             bill.update(Gdx.graphics.getDeltaTime());
             if (bill.isDead()) this.bulletUseless.add(bill);
-            if (bill.getHitbox().getX() == bowser.getX() && bill.getHitbox().getY() == bowser.getY()){
+            if ((bill.getHitbox().getX() >= bowser.getX()-32|| bill.getHitbox().getX() <= bowser.getX()+32)
+                    && (bill.getHitbox().getX() >= bowser.getY()-32 || bill.getHitbox().getY()<=bowser.getY()+32)){
+                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser.getX());
                 bulletUseless.add(bowser);
             }
-            if (bill.getHitbox().getX() == bowser1.getX() && bill.getHitbox().getY() == bowser1.getY()){
+            if ((bill.getHitbox().getX() >= bowser1.getX()-32 || bill.getHitbox().getX() <= bowser1.getX()+32)
+                    && (bill.getHitbox().getY() >= bowser1.getY()-32 || bill.getHitbox().getY()<=bowser1.getY()+32)){
                 bulletUseless.add(bowser1);
             }
-            if (bill.getHitbox().getX() == bowser2.getX() && bill.getHitbox().getY() == bowser2.getY()){
+            if ((bill.getHitbox().getX() >= bowser2.getX()-32 || bill.getHitbox().getX() <= bowser2.getX()+32)
+                    && (bill.getHitbox().getY() >= bowser2.getY()-32 || bill.getHitbox().getY()<=bowser2.getY()+32)){
                 bulletUseless.add(bowser2);
             }
-            if (bill.getHitbox().getX() == bowser3.getX() && bill.getHitbox().getY() == bowser3.getY()){
+            if ((bill.getHitbox().getX() >= bowser3.getX()-32 || bill.getHitbox().getX() <= bowser3.getX()+32)
+                    && (bill.getHitbox().getY() >= bowser3.getY()-32 || bill.getHitbox().getY()<=bowser3.getY()+32)){
                 bulletUseless.add(bowser3);
             }
-            if (bill.getHitbox().getX() == bowser4.getX() && bill.getHitbox().getY() == bowser4.getY()){
+            if ((bill.getHitbox().getX() >= bowser4.getX()-32 || bill.getHitbox().getX() <= bowser4.getX()+32)
+                    && (bill.getHitbox().getY() >= bowser4.getY()-32 || bill.getHitbox().getY()<=bowser4.getY()+32)){
                 bulletUseless.add(bowser4);
             }
             if (bill.getHitbox().getX() == bowser5.getX() && bill.getHitbox().getY() == bowser5.getY()){
