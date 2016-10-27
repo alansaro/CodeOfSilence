@@ -41,7 +41,7 @@ public class Bullet {
     }
 
     public void draw(SpriteBatch batch){
-        batch.draw(texturaBala,hitbox.x, hitbox.y,10,10);
+        batch.draw(texturaBala,hitbox.x, hitbox.y,32,32);
 
     }
 }
