@@ -280,6 +280,8 @@ public class PantallaMapa implements Screen
         manager.load("MonitoSprite.png", Texture.class);
         manager.load("sprite_completo_enemigo.png", Texture.class);
 
+
+
         // Carga música
         manager.load("Jailhouse.mp3", Music.class);
         //manager.load("audio/muereMario.mp3", Sound.class);
@@ -290,6 +292,7 @@ public class PantallaMapa implements Screen
         texturaMario = manager.get("MonitoSprite.png");
         texturaPersonaje = manager.get("sprite_completo.png");
         texturaEnemigo = manager.get("sprite_completo_enemigo.png");
+
 
 
         // Crea el objeto que dibujará el mapa
@@ -306,6 +309,7 @@ public class PantallaMapa implements Screen
 
         // Personaje y Enemigo
         mario = new Personaje(texturaPersonaje);
+
         bowser = new Enemigo(texturaEnemigo);
         bowser.setPosition(600,800);
         bowser1 = new Enemigo(texturaEnemigo);
@@ -326,6 +330,8 @@ public class PantallaMapa implements Screen
         bowser8.setPosition(2200,800);
         bowser9 = new Enemigo(texturaEnemigo);
         bowser9.setPosition(2400,800);
+
+
     }
 
     private void inicializarCamara() {
@@ -382,6 +388,7 @@ public class PantallaMapa implements Screen
         bowser8.render(batch);
         bowser9.render(batch);
 
+
         batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
         batch.draw(healthBar, mario.getX(), mario.getY()+34 ,vida,4);
         for(Bullet bill : bulletList){
@@ -397,36 +404,61 @@ public class PantallaMapa implements Screen
                     && (bill.getHitbox().getX() >= bowser.getY()-32 || bill.getHitbox().getY()<=bowser.getY()+32)){
                 Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser.getX());
                 bulletUseless.add(bowser);
+
+
             }
             if ((bill.getHitbox().getX() >= bowser1.getX()-32 || bill.getHitbox().getX() <= bowser1.getX()+32)
                     && (bill.getHitbox().getY() >= bowser1.getY()-32 || bill.getHitbox().getY()<=bowser1.getY()+32)){
                 bulletUseless.add(bowser1);
+                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser1.getX());
+                bulletUseless.add(bowser1);
             }
             if ((bill.getHitbox().getX() >= bowser2.getX()-32 || bill.getHitbox().getX() <= bowser2.getX()+32)
-                    && (bill.getHitbox().getY() >= bowser2.getY()-32 || bill.getHitbox().getY()<=bowser2.getY()+32)){
+                    && (bill.getHitbox().getY() >= bowser1.getY()-32 || bill.getHitbox().getY()<=bowser2.getY()+32)){
+                bulletUseless.add(bowser2);
+                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser2.getX());
                 bulletUseless.add(bowser2);
             }
             if ((bill.getHitbox().getX() >= bowser3.getX()-32 || bill.getHitbox().getX() <= bowser3.getX()+32)
                     && (bill.getHitbox().getY() >= bowser3.getY()-32 || bill.getHitbox().getY()<=bowser3.getY()+32)){
                 bulletUseless.add(bowser3);
+                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser3.getX());
+                bulletUseless.add(bowser3);;
             }
-            if ((bill.getHitbox().getX() >= bowser4.getX()-32 || bill.getHitbox().getX() <= bowser4.getX()+32)
+            if ((bill.getHitbox().getX() >= bowser4.getX()-32 || bill.getHitbox().getX() <= bowser1.getX()+32)
                     && (bill.getHitbox().getY() >= bowser4.getY()-32 || bill.getHitbox().getY()<=bowser4.getY()+32)){
                 bulletUseless.add(bowser4);
+                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser4.getX());
+                bulletUseless.add(bowser4);
             }
-            if (bill.getHitbox().getX() == bowser5.getX() && bill.getHitbox().getY() == bowser5.getY()){
+            if ((bill.getHitbox().getX() >= bowser5.getX()-32 || bill.getHitbox().getX() <= bowser5.getX()+32)
+                    && (bill.getHitbox().getY() >= bowser5.getY()-32 || bill.getHitbox().getY()<=bowser5.getY()+32)){
+                bulletUseless.add(bowser5);
+                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser5.getX());
                 bulletUseless.add(bowser5);
             }
-            if (bill.getHitbox().getX() == bowser6.getX() && bill.getHitbox().getY() == bowser6.getY()){
+            if ((bill.getHitbox().getX() >= bowser6.getX()-32 || bill.getHitbox().getX() <= bowser6.getX()+32)
+                    && (bill.getHitbox().getY() >= bowser6.getY()-32 || bill.getHitbox().getY()<=bowser6.getY()+32)){
+                bulletUseless.add(bowser6);
+                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser6.getX());
                 bulletUseless.add(bowser6);
             }
-            if (bill.getHitbox().getX() == bowser7.getX() && bill.getHitbox().getY() == bowser7.getY()){
+            if ((bill.getHitbox().getX() >= bowser7.getX()-32 || bill.getHitbox().getX() <= bowser7.getX()+32)
+                    && (bill.getHitbox().getY() >= bowser7.getY()-32 || bill.getHitbox().getY()<=bowser7.getY()+32)){
+                bulletUseless.add(bowser7);
+                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser7.getX());
                 bulletUseless.add(bowser7);
             }
-            if (bill.getHitbox().getX() == bowser8.getX() && bill.getHitbox().getY() == bowser8.getY()){
+            if ((bill.getHitbox().getX() >= bowser8.getX()-32 || bill.getHitbox().getX() <= bowser8.getX()+32)
+                    && (bill.getHitbox().getY() >= bowser8.getY()-32 || bill.getHitbox().getY()<=bowser8.getY()+32)){
+                bulletUseless.add(bowser8);
+                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser8.getX());
                 bulletUseless.add(bowser8);
             }
-            if (bill.getHitbox().getX() == bowser9.getX() && bill.getHitbox().getY() == bowser9.getY()){
+            if ((bill.getHitbox().getX() >= bowser9.getX()-32 || bill.getHitbox().getX() <= bowser9.getX()+32)
+                    && (bill.getHitbox().getY() >= bowser9.getY()-32 || bill.getHitbox().getY()<=bowser9.getY()+32)){
+                bulletUseless.add(bowser9);
+                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser9.getX());
                 bulletUseless.add(bowser9);
             }
         }
@@ -453,12 +485,25 @@ public class PantallaMapa implements Screen
 
         }
 
+
+
+        //Aqui es donde el personaje gana
+
+        //if(){
+          // juego.setScreen(new PantallaGanar(juego));
+
+        //}
+
+
+
         // Dependiendo de donde esté disparando el jugador, la bala se mueve en esa dirección
         if(actionButton.getClickListener().isPressed()){
             Gdx.app.log("render" , "se está apunto de dibujar la clase Bullet.");
+
             // Si el personaje se est moviendo a la derecha
             if(mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_DERECHA){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 0));
+                Gdx.app.log("render" , "Derecha");
             }
             //Si el personaje se está moviendo hacia la izquierda
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_IZQUIERDA) {
@@ -533,6 +578,7 @@ public class PantallaMapa implements Screen
         texturaMario.dispose();
         texturaEnemigo.dispose();
         texturaPersonaje.dispose();
+
 
     }
 

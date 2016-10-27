@@ -1,10 +1,13 @@
 package itesm.mx.asjr;
 
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -14,10 +17,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /**
- * Created by AlanJoseph on 06/09/2016.
+ * Created by apple on 26/10/16.
  */
-public class PantallaAcercaDe implements Screen
-{
+
+public class PantallaGanar implements Screen {
 
 
     private final Juego juego;
@@ -28,24 +31,25 @@ public class PantallaAcercaDe implements Screen
 
     private Texture texturaFondoA;
     private Texture texturaBtnBack;
+    private Texture texturaHazGanado;
 
 
 
-    public PantallaAcercaDe(Juego juego) {
-        this.juego = juego;
-    }
+    public PantallaGanar(Juego juego) {this.juego = juego;}
 
     private void cargarTexturas(){
 
-        assetManager.load("fondoAcercade.png", Texture.class);
-        assetManager.load("back.png", Texture.class);
+        assetManager.load("FondoHazGanado.png", Texture.class);
+        assetManager.load("MenuPrincipal.png", Texture.class);
+        assetManager.load("HazGanadoLetrero.png", Texture.class);
 
 
         assetManager.finishLoading();
 
 
-        texturaFondoA = assetManager.get("fondoAcercade.png");
-        texturaBtnBack = assetManager.get("back.png");
+        texturaFondoA = assetManager.get("FondoHazGanado.png");
+        texturaBtnBack = assetManager.get("MenuPrincipal.png");
+        texturaHazGanado = assetManager.get("HazGanadoLetrero.png");
 
     }
 
@@ -70,9 +74,16 @@ public class PantallaAcercaDe implements Screen
         escena.addActor(imgFondoA);
 
 
+
         TextureRegionDrawable trdBtnBack = new TextureRegionDrawable( new TextureRegion(texturaBtnBack));
         ImageButton btnBack = new ImageButton(trdBtnBack);
+        btnBack.setPosition(ancho/2 - btnBack.getWidth()/2, 0.2f*alto);
         escena.addActor(btnBack);
+
+
+        Image botonMenuPrincipal = new Image(texturaHazGanado);
+        botonMenuPrincipal.setPosition(ancho/2-botonMenuPrincipal.getWidth()/2, 0.4f*alto);
+        escena.addActor(botonMenuPrincipal);
 
 
         btnBack.addListener( new ClickListener(){
@@ -100,8 +111,6 @@ public class PantallaAcercaDe implements Screen
 
     @Override
     public void resize(int width, int height) {
-
-
 
     }
 

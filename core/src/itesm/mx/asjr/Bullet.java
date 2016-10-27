@@ -2,6 +2,7 @@ package itesm.mx.asjr;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 /**
@@ -44,4 +45,15 @@ public class Bullet {
         batch.draw(texturaBala,hitbox.x, hitbox.y,32,32);
 
     }
+
+
+
+    //public Bullet (Texture textura) {
+
+    //}
+
+    //public static Rectangle getBounds(){
+
+      //  return new Rectangle(Bullet.getBounds());
+    //}
 }
