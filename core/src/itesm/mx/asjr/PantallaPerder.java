@@ -134,6 +134,6 @@ public class PantallaPerder implements Screen
         texturaFondoA.dispose();
         escena.dispose();
         texturaBtnBack.dispose();
-
+        texturaHazPerdido.dispose();
     }
 }

@@ -92,7 +92,7 @@ public class PantallaMapa implements Screen
 
     // Para las balas
     ArrayList<Bullet> bulletList = new ArrayList<Bullet>();
-    ArrayList<Bullet> bulletUseless = new ArrayList<Bullet>();
+    ArrayList<Object> bulletUseless = new ArrayList<Object>();
 
     // Musica
     private Music musicaFondo;
@@ -393,6 +393,36 @@ public class PantallaMapa implements Screen
         for(Bullet bill: bulletList){
             bill.update(Gdx.graphics.getDeltaTime());
             if (bill.isDead()) this.bulletUseless.add(bill);
+            if (bill.getHitbox().getX() == bowser.getX() && bill.getHitbox().getY() == bowser.getY()){
+                bulletUseless.add(bowser);
+            }
+            if (bill.getHitbox().getX() == bowser1.getX() && bill.getHitbox().getY() == bowser1.getY()){
+                bulletUseless.add(bowser1);
+            }
+            if (bill.getHitbox().getX() == bowser2.getX() && bill.getHitbox().getY() == bowser2.getY()){
+                bulletUseless.add(bowser2);
+            }
+            if (bill.getHitbox().getX() == bowser3.getX() && bill.getHitbox().getY() == bowser3.getY()){
+                bulletUseless.add(bowser3);
+            }
+            if (bill.getHitbox().getX() == bowser4.getX() && bill.getHitbox().getY() == bowser4.getY()){
+                bulletUseless.add(bowser4);
+            }
+            if (bill.getHitbox().getX() == bowser5.getX() && bill.getHitbox().getY() == bowser5.getY()){
+                bulletUseless.add(bowser5);
+            }
+            if (bill.getHitbox().getX() == bowser6.getX() && bill.getHitbox().getY() == bowser6.getY()){
+                bulletUseless.add(bowser6);
+            }
+            if (bill.getHitbox().getX() == bowser7.getX() && bill.getHitbox().getY() == bowser7.getY()){
+                bulletUseless.add(bowser7);
+            }
+            if (bill.getHitbox().getX() == bowser8.getX() && bill.getHitbox().getY() == bowser8.getY()){
+                bulletUseless.add(bowser8);
+            }
+            if (bill.getHitbox().getX() == bowser9.getX() && bill.getHitbox().getY() == bowser9.getY()){
+                bulletUseless.add(bowser9);
+            }
         }
 
         // Limpia los dos ArrayList

@@ -25,7 +25,7 @@ public class Bullet {
         a = angle;
     }
 
-    public Rectangle getHit(){
+    public Rectangle getHitbox(){
         return hitbox;
     }
 
