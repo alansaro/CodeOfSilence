@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="66" height="38" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="props" tilewidth="32" tileheight="32" tilecount="100" columns="10">
+  <image source="../props.png" width="320" height="320"/>
+  <tile id="0">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="42">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="47">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="48">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="49">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="50">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="51">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="52">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="56">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="59">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="63">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="64">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="65">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="69">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="70">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="71">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="72">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="73">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="74">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="75">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="76">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="77">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="78">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="79">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="80">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="81">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="82">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="83">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="85">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="86">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="88">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="89">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="90">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="91">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="92">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="93">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="94">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="95">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="96">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="97">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="98">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="99">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="101" name="props" tilewidth="32" tileheight="32" tilecount="100" columns="10">
+  <image source="../props.png" width="320" height="320"/>
+  <tile id="0">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="42">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="47">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="48">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="49">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="50">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="51">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="52">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="56">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="59">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="63">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="64">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="65">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="69">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="70">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="71">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="72">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="73">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="74">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="75">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="76">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="77">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="78">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="79">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="80">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="81">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="82">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="83">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="85">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="86">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="88">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="89">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="90">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="91">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="92">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="93">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="94">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="95">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="96">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="97">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="98">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+  <tile id="99">
+   <properties>
+    <property name="tipo" value="ladrillo"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="piso2" width="66" height="38">
+  <data encoding="csv">
+60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,0,0,0,0,0,0,0,0,0,60,60,60,60,60,60,60,60,60,0,0,0,0,0,0,0,0,0,0,0,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,0,0,0,0,0,0,0,0,0,0,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,0,170,170,170,170,170,170,170,170,170,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,0,0,0,0,0,0,0,60,0,0,0,0,0,0,0,60,60,0,170,170,170,170,170,170,170,170,170,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,0,108,108,108,108,108,0,60,0,108,108,108,108,108,0,60,60,0,170,170,170,170,170,170,170,170,170,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,0,118,118,118,118,118,118,118,118,118,118,0,60,60,0,108,108,108,108,108,0,60,0,108,108,108,108,108,0,60,60,0,170,170,170,170,170,170,170,170,170,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,0,0,0,0,0,0,0,0,0,0,0,118,118,118,118,118,118,118,118,118,118,0,60,60,0,108,108,108,108,108,0,60,0,108,108,108,108,108,0,60,60,0,170,170,0,0,0,0,0,0,0,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,0,108,108,108,108,108,0,60,0,108,108,108,108,108,0,60,60,0,109,109,109,109,109,109,109,109,109,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,0,108,108,108,108,108,0,60,0,108,108,108,108,108,0,60,60,0,109,109,109,109,109,109,109,109,109,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,0,108,108,108,108,108,0,60,0,108,108,108,108,108,0,60,60,0,109,109,109,109,109,109,109,109,109,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,0,0,0,0,0,0,108,0,0,0,0,0,0,0,108,0,0,0,0,0,109,109,109,109,109,109,109,109,109,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,109,109,109,109,109,109,109,109,109,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,170,109,109,109,109,109,109,109,109,109,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,109,109,109,109,109,109,109,109,109,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,0,109,109,109,109,109,109,109,109,109,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,0,0,0,0,0,0,0,0,0,0,0,60,60,
+60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,0,0,0,0,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,0,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,119,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60,60
+</data>
+ </layer>
+ <layer name="paredes2" width="66" height="38">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,120,140,140,140,140,140,140,140,140,130,0,0,0,0,0,0,0,0,0,30,40,40,40,40,40,40,40,40,40,40,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,150,101,101,0,0,0,0,173,174,150,0,0,0,0,0,0,0,0,0,150,101,0,0,0,0,0,0,0,0,101,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,150,101,0,0,0,0,0,28,29,150,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,150,0,0,0,0,0,0,38,39,150,0,0,0,0,0,0,0,0,0,150,0,153,154,155,0,0,153,154,155,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,150,0,0,0,0,0,0,183,184,150,0,0,0,0,0,0,0,0,0,150,0,163,164,165,0,0,163,164,165,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,150,0,0,0,0,0,0,173,174,150,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,150,0,0,0,0,0,0,28,29,150,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,150,0,0,0,0,0,0,38,39,150,0,0,0,0,0,0,0,0,0,150,0,153,154,155,0,0,153,154,155,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,150,168,79,0,0,0,0,183,184,150,0,0,0,0,0,0,0,0,0,150,0,163,164,165,0,0,163,164,165,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,150,0,0,0,0,0,0,173,174,150,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,150,168,79,0,0,0,0,148,149,150,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,130,140,140,140,140,140,140,140,140,140,130,0,0,
+0,0,0,150,0,0,0,0,0,0,158,159,150,0,0,0,0,0,0,0,0,0,150,0,153,154,155,0,0,153,154,155,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,150,132,122,132,122,132,122,132,122,123,150,0,0,
+0,0,0,150,0,0,0,0,0,0,183,184,150,0,0,0,0,0,0,0,0,0,150,0,163,164,165,0,0,163,164,165,0,150,0,0,130,40,40,40,40,40,130,0,130,140,140,140,140,140,130,0,0,150,0,0,0,0,0,0,0,131,132,150,0,0,
+0,0,0,150,168,79,0,0,0,0,101,101,150,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,150,0,0,150,156,0,0,0,157,150,0,150,156,0,0,0,0,150,0,0,150,0,0,141,142,142,132,142,142,143,150,0,0,
+0,0,0,150,0,0,0,0,0,0,0,101,150,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,150,0,0,150,156,0,0,0,157,150,0,150,156,0,0,0,157,150,0,0,150,0,0,0,0,0,0,0,0,131,150,0,0,
+0,0,0,150,168,79,0,0,0,0,0,0,120,140,140,140,140,140,140,140,140,140,130,101,0,0,0,0,0,0,0,0,101,150,0,0,150,156,0,0,0,157,150,0,150,156,0,0,0,157,150,0,0,150,0,0,140,140,140,140,140,140,140,130,0,0,
+0,0,0,150,0,0,0,0,0,0,0,0,104,144,145,145,145,145,145,145,146,147,0,0,0,0,0,0,0,0,0,173,174,150,0,0,150,156,0,0,0,157,150,0,150,166,0,0,0,157,150,0,0,150,0,0,0,0,0,21,22,23,106,150,0,0,
+0,0,0,150,0,0,0,0,0,0,0,0,114,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,128,129,150,0,0,150,156,0,0,0,167,150,0,150,166,0,0,0,167,150,0,0,150,0,0,0,0,0,0,0,0,116,150,0,0,
+0,0,0,150,168,79,0,0,0,0,0,0,124,0,0,0,0,0,0,0,126,127,0,0,0,0,0,0,0,0,0,138,139,150,0,0,150,156,0,0,0,167,150,0,150,0,0,0,0,167,150,0,0,150,0,0,111,112,0,111,112,0,115,150,0,0,
+0,0,0,150,0,0,0,0,0,0,0,0,134,135,135,135,135,135,135,135,136,137,0,0,0,0,0,0,0,0,0,183,184,130,140,140,120,140,140,140,0,140,130,140,140,140,140,140,0,140,130,140,140,130,0,0,0,0,0,0,0,0,105,150,0,0,
+0,0,0,150,168,79,0,0,0,0,0,0,169,0,169,0,169,0,169,0,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,112,0,111,112,0,115,150,0,0,
+0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,106,150,0,0,
+0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,101,130,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,130,0,0,111,112,0,111,112,0,116,150,0,0,
+0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,148,149,79,0,28,29,0,0,28,29,79,0,148,149,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,150,0,0,
+0,0,0,150,101,0,0,0,0,0,0,0,0,0,0,178,158,159,0,0,38,39,79,0,38,39,0,0,158,159,179,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,130,140,140,140,140,140,140,140,140,140,130,0,0,
+0,0,0,150,101,101,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,130,140,140,140,130,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,120,0,0,0,0,0,171,28,29,172,171,28,29,172,171,148,149,172,171,28,29,172,171,148,149,172,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,101,181,38,39,182,181,38,39,182,181,158,159,182,181,38,39,182,181,158,159,182,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,101,161,183,183,162,161,183,183,162,161,183,183,162,161,183,183,162,161,183,183,162,50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,30,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,130,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

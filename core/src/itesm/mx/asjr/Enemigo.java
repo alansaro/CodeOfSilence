@@ -139,6 +139,7 @@ public class Enemigo
     {
         // Obtiene la primer capa del mapa (en este caso es la única)
         TiledMapTileLayer capa = (TiledMapTileLayer) mapa.getLayers().get(0);
+        TiledMapTileLayer capa1 = (TiledMapTileLayer) mapa.getLayers().get(1);
         //Ejecutar el movimiento vertical
         float nuevaY = sprite.getY();
         // ¿Quiere ir hacia arriba?
@@ -146,7 +147,7 @@ public class Enemigo
             //Obtener el bloque de arriba. Asigna null si puede pasar.
             int y = (int) ((sprite.getY() +32) / 32);
             int x = (int) (sprite.getX()/ 32);
-            TiledMapTileLayer.Cell celdaArriba = capa.getCell(x,y);
+            TiledMapTileLayer.Cell celdaArriba = capa1.getCell(x,y);
             if (celdaArriba != null) {
                 Object tipo = (String) celdaArriba.getTile().getProperties().get("tipo");
                 if (!"ladrillo".equals(tipo)) {
@@ -164,15 +165,14 @@ public class Enemigo
             //Obtener el bloque de ABAJO. Asigna null si puede pasar.
             int x = (int) ((sprite.getX() -32)/ 32);
             int y = (int) ((sprite.getY() -32) / 32);
-            TiledMapTileLayer.Cell celdaAbajo = capa.getCell(x,y);
-            boolean abajo = leerCeldaAbajo(mapa);
-            if (abajo == true) {
+            TiledMapTileLayer.Cell celdaAbajo = capa1.getCell(x,y);
+            if (celdaAbajo!=null) {
                 Object tipo = (String) celdaAbajo.getTile().getProperties().get("tipo");
                 if (!"ladrillo".equals(tipo)) {
                     celdaAbajo = null;  // Puede pasar
                 }
             }
-            if (abajo == false){
+            if (celdaAbajo == null){
                 //Ejecutar movimiento horizontal
                 nuevaY-=4;
                 sprite.setY(nuevaY);
@@ -187,6 +187,7 @@ public class Enemigo
     private void moverHorizontal(TiledMap mapa) {
         // Obtiene la primer capa del mapa (en este caso es la única)
         TiledMapTileLayer capa = (TiledMapTileLayer) mapa.getLayers().get(0);
+        TiledMapTileLayer capa1 = (TiledMapTileLayer) mapa.getLayers().get(1);
         // Ejecutar movimiento horizontal
         float nuevaX = sprite.getX();
         // ¿Quiere ir a la Derecha?
@@ -194,7 +195,7 @@ public class Enemigo
             // Obtiene el bloque del lado derecho. Asigna null si puede pasar.
             int x = (int) ((sprite.getX() + 32) / 32);   // Convierte coordenadas del mundo en coordenadas del mapa
             int y = (int) (sprite.getY() / 32);
-            TiledMapTileLayer.Cell celdaDerecha = capa.getCell(x, y);
+            TiledMapTileLayer.Cell celdaDerecha = capa1.getCell(x, y);
             if (celdaDerecha != null) {
                 Object tipo = (String) celdaDerecha.getTile().getProperties().get("tipo");
                 if (!"ladrillo".equals(tipo)) {
@@ -216,7 +217,7 @@ public class Enemigo
             int xIzq = (int) ((sprite.getX()) / 32);
             int y = (int) (sprite.getY() / 32);
             // Obtiene el bloque del lado izquierdo. Asigna null si puede pasar.
-            TiledMapTileLayer.Cell celdaIzquierda = capa.getCell(xIzq, y);
+            TiledMapTileLayer.Cell celdaIzquierda = capa1.getCell(xIzq, y);
             if (celdaIzquierda != null) {
                 Object tipo = (String) celdaIzquierda.getTile().getProperties().get("tipo");
                 if (!"ladrillo".equals(tipo)) {
@@ -238,16 +239,17 @@ public class Enemigo
     private boolean leerCeldaAbajo(TiledMap mapa) {
         // Revisar si no hay algo que lo detenga
         TiledMapTileLayer capa = (TiledMapTileLayer)mapa.getLayers().get(0);
+        TiledMapTileLayer capa1 = (TiledMapTileLayer)mapa.getLayers().get(1);
         int x = (int)((sprite.getX())/32);
         int y = (int)(sprite.getY()+VELOCIDAD_Y)/32;
-        TiledMapTileLayer.Cell celdaAbajo = capa.getCell(x,y);
+        TiledMapTileLayer.Cell celdaAbajo = capa1.getCell(x,y);
         if (celdaAbajo!=null ) {
             Object tipo = (String)celdaAbajo.getTile().getProperties().get("tipo");
             if ( !"ladrillo".equals(tipo) ) {
                 celdaAbajo = null;
             }
         }
-        TiledMapTileLayer.Cell celdaAbajoDerecha = capa.getCell(x+1,y);
+        TiledMapTileLayer.Cell celdaAbajoDerecha = capa1.getCell(x+1,y);
         if (celdaAbajoDerecha!=null ) {
             Object tipo = (String)celdaAbajoDerecha.getTile().getProperties().get("tipo");
             if ( !"ladrillo".equals(tipo) ) {
@@ -306,6 +308,7 @@ public class Enemigo
     public void setEstadoMovimiento(EstadoMovimiento estadoMovimiento) {
         this.estadoMovimiento = estadoMovimiento;
     }
+
 
 
     public enum EstadoMovimiento {

@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /**
- * Created by AlanJoseph on 06/09/2016.
+ * Created by AlanJoseph, dc on 06/09/2016.
  */
 public class PantallaPerder implements Screen
 {
@@ -91,10 +91,6 @@ public class PantallaPerder implements Screen
                 juego.setScreen( new PantallaPrincipal(juego) );
             }
         });
-
-
-
-
 
     }
 

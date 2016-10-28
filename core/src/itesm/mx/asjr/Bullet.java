@@ -45,15 +45,4 @@ public class Bullet {
         batch.draw(texturaBala,hitbox.x, hitbox.y,32,32);
 
     }
-
-
-
-    //public Bullet (Texture textura) {
-
-    //}
-
-    //public static Rectangle getBounds(){
-
-      //  return new Rectangle(Bullet.getBounds());
-    //}
 }

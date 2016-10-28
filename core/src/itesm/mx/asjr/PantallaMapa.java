@@ -41,8 +41,8 @@ import java.util.ArrayList;
 public class PantallaMapa implements Screen
 {
 
-    // QUE BUENOS DULCES PAPU
-    public static final int ANCHO_MAPA = 6784;
+    // Para el espacio en donde ocurre el juego
+    public static final int ANCHO_MAPA = 2560 ;
     public static final int ANCHO_CAMARA = 1280;
     public static final int ALTO_CAMARA = 480;
 
@@ -59,14 +59,14 @@ public class PantallaMapa implements Screen
 
     // SpriteBatch sirve para administrar los trazos
     private SpriteBatch batch;
-    private final Juego juego;  // Para regresar al menú
+    private final Juego juego;
 
     // Para el mapa
     private TiledMap mapa;  // Información del mapa en memoria
     private OrthogonalTiledMapRenderer rendererMapa;    // Dibuja el mapa
 
     // Personajes animado
-    private Texture texturaMario;
+    //private Texture texturaMario;
     private Personaje mario;
     private Enemigo bowser;
     private Enemigo bowser1;
@@ -96,33 +96,20 @@ public class PantallaMapa implements Screen
 
     // Musica
     private Music musicaFondo;
-    ///private Sound sonidoMuere;
-    ///private boolean haMuertoMario=false;
-    ///private Sound sonidoMoneda;
-
-    // Screen lifecycle:
-    // 1.- Show()
-    // 2.- Resume()
-    // 3.- Resize()
-    // 4.- Render()
-    // 5.- Pause()
-    // 6.- Hide()
-    // 7.- Dispose()
-
-    ///_________LOOOL_____
 
     // Para una barra de vida
     private Texture healthBar, healthContainer;
     int vida = 32;
 
 
+    // Construtor por default.
     public PantallaMapa(Juego juego) {  // Constructor
         this.juego = juego;
     }
 
     @Override
+    // Aquí es donde se obtienen las propiedades iniciales de nuestra pantalla.
     public void show() {
-        // Aquí es donde se obtienen las propiedades iniciales de nuestra pantalla.
         inicializarCamara();
         crearEscena();
         cargarMapa();   // Nuevo
@@ -133,8 +120,8 @@ public class PantallaMapa implements Screen
         Gdx.gl.glClearColor(1,1,1,1);
     }
 
+    // Método para dibujar la barra de vida, inicializarla con vida de 32.
     private void inicializarVida() {
-
         int ancho = 1;
         int alto = 1;
         // Se dibuja un pixmap para el contenedor de la barra de vida.
@@ -144,24 +131,24 @@ public class PantallaMapa implements Screen
         // Se inicializan las texturas.
         healthBar = new Texture(pixmap1);
         healthContainer = new Texture (pixmap2);
-
     }
 
     private Pixmap drawPixmap(int ancho, int alto, int r, int g, int b) {
-        // Éste método dibuja el mapa de pixeles.
+        // Éste método dibuja el mapa de pixeles que representa la barra de vida.
         Pixmap pixmap = new Pixmap (ancho, alto, Pixmap.Format.RGBA8888);
         pixmap.setColor(r,g,b,1);
         pixmap.fill();
         return pixmap;
     }
 
+
+    // Este botón dibuja en pantalla un botón para que el jugador pueda disparar.
     private void createActionButtion(){
 
         // Crea las texturas.
         Skin skin = new Skin();
-        skin.add("actionUp", new Texture ("actionUp.png"));
-        skin.add("actionDown", new Texture ("actionDown.png"));
-
+        skin.add("actionUp", new Texture ("boton_disparo.png"));
+        skin.add("actionDown", new Texture ("boton_disparo_inactivo.png"));
         font = new BitmapFont();
 
         // Características del botón.
@@ -272,24 +259,23 @@ public class PantallaMapa implements Screen
 
 
     private void cargarMapa() {
+
         AssetManager manager = new AssetManager();
         manager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
         //manager.load("MarioCompleto.tmx", TiledMap.class);
-        manager.load("MarioCompleto.tmx", TiledMap.class);
+        manager.load("bar_codeofsilence5.tmx", TiledMap.class);
         manager.load("sprite_completo.png", Texture.class);
-        manager.load("MonitoSprite.png", Texture.class);
+        //manager.load("MonitoSprite.png", Texture.class);
         manager.load("sprite_completo_enemigo.png", Texture.class);
 
 
 
         // Carga música
         manager.load("Jailhouse.mp3", Music.class);
-        //manager.load("audio/muereMario.mp3", Sound.class);
-        //manager.load("audio/moneda.mp3", Sound.class);
 
         manager.finishLoading();
-        mapa = manager.get("MarioCompleto.tmx");
-        texturaMario = manager.get("MonitoSprite.png");
+        mapa = manager.get("bar_codeofsilence5.tmx");
+        //texturaMario = manager.get("MonitoSprite.png");
         texturaPersonaje = manager.get("sprite_completo.png");
         texturaEnemigo = manager.get("sprite_completo_enemigo.png");
 
@@ -302,7 +288,6 @@ public class PantallaMapa implements Screen
         // Audio
 
         musicaFondo = manager.get("Jailhouse.mp3");
-
         musicaFondo.setLooping(true);
         musicaFondo.play();
 
@@ -311,7 +296,7 @@ public class PantallaMapa implements Screen
         mario = new Personaje(texturaPersonaje);
 
         bowser = new Enemigo(texturaEnemigo);
-        bowser.setPosition(600,800);
+        bowser.setPosition(400,800);
         bowser1 = new Enemigo(texturaEnemigo);
         bowser1.setPosition(800,800);
         bowser2 = new Enemigo(texturaEnemigo);
@@ -367,8 +352,10 @@ public class PantallaMapa implements Screen
         bowser7.actualizar(mapa);
         bowser8.actualizar(mapa);
         bowser9.actualizar(mapa);
+
         // Borra el frame actual
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
         // escala la pantalla de acuerdo a la cámara y vista
         batch.setProjectionMatrix(camara.combined);
         rendererMapa.setView(camara);
@@ -397,74 +384,169 @@ public class PantallaMapa implements Screen
         batch.end();
 
         // Avanza la bala durante un tiempo determinado.
+        // Checa si hay colisión con algún enemigo.
         for(Bullet bill: bulletList){
             bill.update(Gdx.graphics.getDeltaTime());
             if (bill.isDead()) this.bulletUseless.add(bill);
-            if ((bill.getHitbox().getX() >= bowser.getX()-32|| bill.getHitbox().getX() <= bowser.getX()+32)
-                    && (bill.getHitbox().getX() >= bowser.getY()-32 || bill.getHitbox().getY()<=bowser.getY()+32)){
-                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser.getX());
-                bulletUseless.add(bowser);
 
 
+            // Bowser :
+            if(( (bill.getHitbox().getX() - bowser.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser.getX()) <= 32 )){
+                Gdx.app.log("bowser","gets hit");
+                if(bowser.getY()<bill.getHitbox().getY()){
+                    if( (bill.getHitbox().getY() - bowser.getX() <= 32)){
+                        bulletUseless.add(bowser);
+                    }
+                }
+                else if (bowser.getY()>bill.getHitbox().getY()){
+                    if( (bowser.getY() - bill.getHitbox().getY()) <= 32 ){
+                        bulletUseless.add(bowser);
+                    }
+                }
             }
-            if ((bill.getHitbox().getX() >= bowser1.getX()-32 || bill.getHitbox().getX() <= bowser1.getX()+32)
-                    && (bill.getHitbox().getY() >= bowser1.getY()-32 || bill.getHitbox().getY()<=bowser1.getY()+32)){
-                bulletUseless.add(bowser1);
-                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser1.getX());
-                bulletUseless.add(bowser1);
+
+            // Bowser 1:
+            if(( (bill.getHitbox().getX() - bowser1.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser1.getX()) <= 32 )){
+                Gdx.app.log("bowser","gets hit");
+                if(bowser1.getY()<bill.getHitbox().getY()){
+                    if( (bill.getHitbox().getY() - bowser1.getX() <= 32)){
+                        bulletUseless.add(bowser1);
+                    }
+                }
+                else if (bowser1.getY()>bill.getHitbox().getY()){
+                    if( (bowser1.getY() - bill.getHitbox().getY()) <= 32 ){
+                        bulletUseless.add(bowser1);
+                    }
+                }
             }
-            if ((bill.getHitbox().getX() >= bowser2.getX()-32 || bill.getHitbox().getX() <= bowser2.getX()+32)
-                    && (bill.getHitbox().getY() >= bowser1.getY()-32 || bill.getHitbox().getY()<=bowser2.getY()+32)){
-                bulletUseless.add(bowser2);
-                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser2.getX());
-                bulletUseless.add(bowser2);
+
+            // Bowser 2:
+            if(( (bill.getHitbox().getX() - bowser2.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser2.getX()) <= 32 )){
+                Gdx.app.log("bowser","gets hit");
+                if(bowser2.getY()<bill.getHitbox().getY()){
+                    if( (bill.getHitbox().getY() - bowser2.getX() <= 32)){
+                        bulletUseless.add(bowser2);
+                    }
+                }
+                else if (bowser2.getY()>bill.getHitbox().getY()){
+                    if( (bowser2.getY() - bill.getHitbox().getY()) <= 32 ){
+                        bulletUseless.add(bowser2);
+                    }
+                }
             }
-            if ((bill.getHitbox().getX() >= bowser3.getX()-32 || bill.getHitbox().getX() <= bowser3.getX()+32)
-                    && (bill.getHitbox().getY() >= bowser3.getY()-32 || bill.getHitbox().getY()<=bowser3.getY()+32)){
-                bulletUseless.add(bowser3);
-                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser3.getX());
-                bulletUseless.add(bowser3);;
+
+            // Bowser 3:
+            if(( (bill.getHitbox().getX() - bowser3.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser3.getX()) <= 32 )){
+                Gdx.app.log("bowser","gets hit");
+                if(bowser3.getY()<bill.getHitbox().getY()){
+                    if( (bill.getHitbox().getY() - bowser3.getX() <= 32)){
+                        bulletUseless.add(bowser3);
+                    }
+                }
+                else if (bowser3.getY()>bill.getHitbox().getY()){
+                    if( (bowser3.getY() - bill.getHitbox().getY()) <= 32 ){
+                        bulletUseless.add(bowser3);
+                    }
+                }
             }
-            if ((bill.getHitbox().getX() >= bowser4.getX()-32 || bill.getHitbox().getX() <= bowser1.getX()+32)
-                    && (bill.getHitbox().getY() >= bowser4.getY()-32 || bill.getHitbox().getY()<=bowser4.getY()+32)){
-                bulletUseless.add(bowser4);
-                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser4.getX());
-                bulletUseless.add(bowser4);
+
+            // Bowser 4:
+            if(( (bill.getHitbox().getX() - bowser4.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser4.getX()) <= 32 )){
+                Gdx.app.log("bowser","gets hit");
+                if(bowser4.getY()<bill.getHitbox().getY()){
+                    if( (bill.getHitbox().getY() - bowser4.getX() <= 32)){
+                        bulletUseless.add(bowser4);
+                    }
+                }
+                else if (bowser4.getY()>bill.getHitbox().getY()){
+                    if( (bowser4.getY() - bill.getHitbox().getY()) <= 32 ){
+                        bulletUseless.add(bowser4);
+                    }
+                }
             }
-            if ((bill.getHitbox().getX() >= bowser5.getX()-32 || bill.getHitbox().getX() <= bowser5.getX()+32)
-                    && (bill.getHitbox().getY() >= bowser5.getY()-32 || bill.getHitbox().getY()<=bowser5.getY()+32)){
-                bulletUseless.add(bowser5);
-                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser5.getX());
-                bulletUseless.add(bowser5);
+
+            // Bowser 5:
+            if(( (bill.getHitbox().getX() - bowser5.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser5.getX()) <= 32 )){
+                Gdx.app.log("bowser","gets hit");
+                if(bowser5.getY()<bill.getHitbox().getY()){
+                    if( (bill.getHitbox().getY() - bowser5.getX() <= 32)){
+                        bulletUseless.add(bowser5);
+                    }
+                }
+                else if (bowser5.getY()>bill.getHitbox().getY()){
+                    if( (bowser5.getY() - bill.getHitbox().getY()) <= 32 ){
+                        bulletUseless.add(bowser5);
+                    }
+                }
             }
-            if ((bill.getHitbox().getX() >= bowser6.getX()-32 || bill.getHitbox().getX() <= bowser6.getX()+32)
-                    && (bill.getHitbox().getY() >= bowser6.getY()-32 || bill.getHitbox().getY()<=bowser6.getY()+32)){
-                bulletUseless.add(bowser6);
-                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser6.getX());
-                bulletUseless.add(bowser6);
+
+            // Bowser 6:
+            if(( (bill.getHitbox().getX() - bowser6.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser6.getX()) <= 32 )){
+                Gdx.app.log("bowser","gets hit");
+                if(bowser6.getY()<bill.getHitbox().getY()){
+                    if( (bill.getHitbox().getY() - bowser6.getX() <= 32)){
+                        bulletUseless.add(bowser6);
+                    }
+                }
+                else if (bowser6.getY()>bill.getHitbox().getY()){
+                    if( (bowser6.getY() - bill.getHitbox().getY()) <= 32 ){
+                        bulletUseless.add(bowser6);
+                    }
+                }
             }
-            if ((bill.getHitbox().getX() >= bowser7.getX()-32 || bill.getHitbox().getX() <= bowser7.getX()+32)
-                    && (bill.getHitbox().getY() >= bowser7.getY()-32 || bill.getHitbox().getY()<=bowser7.getY()+32)){
-                bulletUseless.add(bowser7);
-                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser7.getX());
-                bulletUseless.add(bowser7);
+
+            // Bowser 7:
+            if(( (bill.getHitbox().getX() - bowser7.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser7.getX()) <= 32 )){
+                Gdx.app.log("bowser","gets hit");
+                if(bowser7.getY()<bill.getHitbox().getY()){
+                    if( (bill.getHitbox().getY() - bowser7.getX() <= 32)){
+                        bulletUseless.add(bowser7);
+                    }
+                }
+                else if (bowser7.getY()>bill.getHitbox().getY()){
+                    if( (bowser7.getY() - bill.getHitbox().getY()) <= 32 ){
+                        bulletUseless.add(bowser7);
+                    }
+                }
             }
-            if ((bill.getHitbox().getX() >= bowser8.getX()-32 || bill.getHitbox().getX() <= bowser8.getX()+32)
-                    && (bill.getHitbox().getY() >= bowser8.getY()-32 || bill.getHitbox().getY()<=bowser8.getY()+32)){
-                bulletUseless.add(bowser8);
-                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser8.getX());
-                bulletUseless.add(bowser8);
+
+            // Bowser 8:
+            if(( (bill.getHitbox().getX() - bowser8.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser8.getX()) <= 32 )){
+                Gdx.app.log("bowser","gets hit");
+                if(bowser8.getY()<bill.getHitbox().getY()){
+                    if( (bill.getHitbox().getY() - bowser8.getX() <= 32)){
+                        bulletUseless.add(bowser8);
+                    }
+                }
+                else if (bowser8.getY()>bill.getHitbox().getY()){
+                    if( (bowser8.getY() - bill.getHitbox().getY()) <= 32 ){
+                        bulletUseless.add(bowser8);
+                    }
+                }
             }
-            if ((bill.getHitbox().getX() >= bowser9.getX()-32 || bill.getHitbox().getX() <= bowser9.getX()+32)
-                    && (bill.getHitbox().getY() >= bowser9.getY()-32 || bill.getHitbox().getY()<=bowser9.getY()+32)){
-                bulletUseless.add(bowser9);
-                Gdx.app.log("Pantalla mapa","bill x:" +bill.getHitbox().getX()+" bill y: "+bill.getHitbox().getY()+" bowser x:" +bowser9.getX());
-                bulletUseless.add(bowser9);
+
+            // Bowser 9:
+            if(( (bill.getHitbox().getX() - bowser9.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser9.getX()) <= 32 )){
+                Gdx.app.log("bowser","gets hit");
+                if(bowser9.getY()<bill.getHitbox().getY()){
+                    if( (bill.getHitbox().getY() - bowser9.getX() <= 32)){
+                        bulletUseless.add(bowser9);
+                    }
+                }
+                else if (bowser9.getY()>bill.getHitbox().getY()){
+                    if( (bowser9.getY() - bill.getHitbox().getY()) <= 32 ){
+                        bulletUseless.add(bowser9);
+                    }
+                }
             }
+
+
+
         }
 
         // Limpia los dos ArrayList
         while(bulletUseless.size()!=0){
+            //if(bulletUseless.get(0) == bowser){Gdx.app.log("arrayList","Aqui está bowser");}
             bulletList.remove(bulletUseless.get(0));
             bulletUseless.remove(0);
         }
@@ -498,7 +580,6 @@ public class PantallaMapa implements Screen
 
         // Dependiendo de donde esté disparando el jugador, la bala se mueve en esa dirección
         if(actionButton.getClickListener().isPressed()){
-            Gdx.app.log("render" , "se está apunto de dibujar la clase Bullet.");
 
             // Si el personaje se est moviendo a la derecha
             if(mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_DERECHA){
@@ -526,6 +607,7 @@ public class PantallaMapa implements Screen
     // excepto cuando está en la primera y última parte del mundo.
     private void actualizarCamara() {
         float posX = mario.getX();
+        float posY = mario.getY();
 
         // Si está en la parte 'media'
         if (posX>=ANCHO_CAMARA/2 && posX<=ANCHO_MAPA-ANCHO_CAMARA/2) {
@@ -538,6 +620,20 @@ public class PantallaMapa implements Screen
             camara.position.set(ANCHO_CAMARA/2, PantallaMapa.ALTO_CAMARA /2,0);
         }
         camara.update();
+
+        // Si está en la parte 'media'
+        if (posY>=ANCHO_CAMARA/2 && posY<=ANCHO_MAPA-ANCHO_CAMARA/2) {
+            // El personaje define el centro de la cámara
+            camara.position.set((int)posY, camara.position.y, 0);
+        } else if (posY>ANCHO_MAPA-ANCHO_CAMARA/2) {    // Si está en la última mitad
+            // La cámara se queda a media pantalla antes del fin del mundo  :)
+            camara.position.set(ANCHO_MAPA-ANCHO_CAMARA/2, camara.position.y, 0);
+        } else if ( posY<ANCHO_CAMARA/2 ) { // La primera mitad
+            camara.position.set(ANCHO_CAMARA/2, PantallaMapa.ALTO_CAMARA /2,0);
+        }
+        camara.update();
+
+
     }
 
 
@@ -569,13 +665,13 @@ public class PantallaMapa implements Screen
 
     @Override
     public void dispose() {
-        texturaMario.dispose();
+        // texturaMario.dispose();
         mapa.dispose();
         escena.dispose();
         musicaFondo.dispose();
         healthContainer.dispose();
         healthBar.dispose();
-        texturaMario.dispose();
+        // texturaMario.dispose();
         texturaEnemigo.dispose();
         texturaPersonaje.dispose();
 
