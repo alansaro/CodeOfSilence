@@ -42,9 +42,10 @@ public class PantallaMapa implements Screen
 {
 
     // Para el espacio en donde ocurre el juego
-    public static final int ANCHO_MAPA = 2560 ;
-    public static final int ANCHO_CAMARA = 1280;
-    public static final int ALTO_CAMARA = 480;
+    public static final int ANCHO_MAPA = 2112 ;
+    public static final int ALTO_MAPA = 1216;
+    public static final int ANCHO_CAMARA = 528;
+    public static final int ALTO_CAMARA = 304;
 
     // Cámara
     private OrthographicCamera camara;
@@ -604,11 +605,10 @@ public class PantallaMapa implements Screen
     }
 
     // Actualiza la posición de la cámara para que el personaje esté en el centro,
-    // excepto cuando está en la primera y última parte del mundo.
+    // excepto cuando está en la primera y última parte del mundo
     private void actualizarCamara() {
         float posX = mario.getX();
-        float posY = mario.getY();
-
+        //Gdx.app.log("Actualizar Camara", " posX" +posX);
         // Si está en la parte 'media'
         if (posX>=ANCHO_CAMARA/2 && posX<=ANCHO_MAPA-ANCHO_CAMARA/2) {
             // El personaje define el centro de la cámara
@@ -621,6 +621,8 @@ public class PantallaMapa implements Screen
         }
         camara.update();
 
+
+        /**
         // Si está en la parte 'media'
         if (posY>=ANCHO_CAMARA/2 && posY<=ANCHO_MAPA-ANCHO_CAMARA/2) {
             // El personaje define el centro de la cámara
@@ -632,6 +634,7 @@ public class PantallaMapa implements Screen
             camara.position.set(ANCHO_CAMARA/2, PantallaMapa.ALTO_CAMARA /2,0);
         }
         camara.update();
+         **/
 
 
     }
