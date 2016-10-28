@@ -296,7 +296,7 @@ public class PantallaMapa implements Screen
         mario = new Personaje(texturaPersonaje);
 
         bowser = new Enemigo(texturaEnemigo);
-        bowser.setPosition(400,800);
+        bowser.setPosition(800,700);
         bowser1 = new Enemigo(texturaEnemigo);
         bowser1.setPosition(800,800);
         bowser2 = new Enemigo(texturaEnemigo);
