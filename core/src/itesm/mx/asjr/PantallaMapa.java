@@ -619,8 +619,19 @@ public class PantallaMapa implements Screen
         } else if ( posX<ANCHO_CAMARA/2 ) { // La primera mitad
             camara.position.set(ANCHO_CAMARA/2, PantallaMapa.ALTO_CAMARA /2,0);
         }
-        camara.update();
 
+        float posY = mario.getY();
+        // Si está en la parte 'media'
+        /***if(posY>=ALTO_MAPA/2 && posY<=ALTO_MAPA-ALTO_CAMARA/2){
+            // El personaje está en el centro de la cámara.
+            camara.position.set(camara.position.x, (int)posY, 0);
+        } else if (posY >ALTO_CAMARA-ANCHO_CAMARA/2) {
+            // La cámara se queda quieta antes del fin por arriba
+            camara.position.set(camara.position.x ,ALTO_MAPA-ANCHO_CAMARA/2, 0);
+        } else***/
+        camara.position.set(camara.position.x, (int)posY, 0);
+
+        camara.update();
 
         /**
         // Si está en la parte 'media'
