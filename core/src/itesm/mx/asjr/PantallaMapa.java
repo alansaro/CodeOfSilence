@@ -160,7 +160,7 @@ public class PantallaMapa implements Screen
 
         // Crea un botón de acción con las texturas y las características creadas.
         actionButton = new TextButton("Disparar", textButtonStyle);
-        actionButton.setBounds(1130, 50, 150 ,150);
+        actionButton.setBounds(400, 0, 100 ,100); // Posición y tamaño
 
         // Agrega el objeto a la pantalla.
         escena.addActor(actionButton);
@@ -188,7 +188,7 @@ public class PantallaMapa implements Screen
 
         // Crea el pad, revisa la clase Touchpad para entender los parámetros
         pad = new Touchpad(20,tpEstilo);
-        pad.setBounds(0,0,200,200); // Posición y tamaño
+        pad.setBounds(0,0,100,100); // Posición y tamaño
         pad.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -570,12 +570,12 @@ public class PantallaMapa implements Screen
 
 
 
+        /****
         //Aqui es donde el personaje gana
-
         //if(){
           // juego.setScreen(new PantallaGanar(juego));
-
         //}
+         ****/
 
 
 
@@ -608,8 +608,10 @@ public class PantallaMapa implements Screen
     // excepto cuando está en la primera y última parte del mundo
     private void actualizarCamara() {
         float posX = mario.getX();
-        //Gdx.app.log("Actualizar Camara", " posX" +posX);
-        // Si está en la parte 'media'
+        float posY = mario.getY();
+
+
+        // Actualiza la posición en X
         if (posX>=ANCHO_CAMARA/2 && posX<=ANCHO_MAPA-ANCHO_CAMARA/2) {
             // El personaje define el centro de la cámara
             camara.position.set((int)posX, camara.position.y, 0);
@@ -620,33 +622,20 @@ public class PantallaMapa implements Screen
             camara.position.set(ANCHO_CAMARA/2, PantallaMapa.ALTO_CAMARA /2,0);
         }
 
-        float posY = mario.getY();
-        // Si está en la parte 'media'
-        /***if(posY>=ALTO_MAPA/2 && posY<=ALTO_MAPA-ALTO_CAMARA/2){
+        // Actualiza la posición en Y
+        if(posY>=ALTO_CAMARA/2 && posY<=ALTO_MAPA-ALTO_CAMARA/2){
             // El personaje está en el centro de la cámara.
             camara.position.set(camara.position.x, (int)posY, 0);
-        } else if (posY >ALTO_CAMARA-ANCHO_CAMARA/2) {
+        } else if (posY >ALTO_MAPA-ALTO_CAMARA/2) {
             // La cámara se queda quieta antes del fin por arriba
-            camara.position.set(camara.position.x ,ALTO_MAPA-ANCHO_CAMARA/2, 0);
-        } else***/
-        camara.position.set(camara.position.x, (int)posY, 0);
-
-        camara.update();
-
-        /**
-        // Si está en la parte 'media'
-        if (posY>=ANCHO_CAMARA/2 && posY<=ANCHO_MAPA-ANCHO_CAMARA/2) {
-            // El personaje define el centro de la cámara
-            camara.position.set((int)posY, camara.position.y, 0);
-        } else if (posY>ANCHO_MAPA-ANCHO_CAMARA/2) {    // Si está en la última mitad
-            // La cámara se queda a media pantalla antes del fin del mundo  :)
-            camara.position.set(ANCHO_MAPA-ANCHO_CAMARA/2, camara.position.y, 0);
-        } else if ( posY<ANCHO_CAMARA/2 ) { // La primera mitad
-            camara.position.set(ANCHO_CAMARA/2, PantallaMapa.ALTO_CAMARA /2,0);
+            camara.position.set(camara.position.x ,ALTO_MAPA-ALTO_CAMARA/2, 0);
+        } else if (posY <ALTO_MAPA-ALTO_CAMARA/2) {
+            // La cámara se detiene cuando llega a la parte baja del mapa.
+            camara.position.set(ANCHO_CAMARA/2+32, PantallaMapa.ALTO_CAMARA/2,0);
+            // DUDDA DEL GLITCH. EN PARTE BAJA DEL MAPA.
         }
-        camara.update();
-         **/
 
+        camara.update();
 
     }
 
