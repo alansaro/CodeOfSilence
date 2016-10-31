@@ -59,14 +59,19 @@ public class Personaje
         // A cada elemento de la animación se le llama un keyFrame, muchos KeyFrames forman una
         // animación.
         // Crea la animación con tiempo de 0.25 segundos entre frames.
-        caminando = new Animation(0.25f, texturaPersonaje[0][2],
-                texturaPersonaje[0][1], texturaPersonaje[0][0]);
+        caminando = new Animation(0.1f,
+                texturaPersonaje[0][0], texturaPersonaje[0][1], texturaPersonaje[0][2],texturaPersonaje[0][3],
+                texturaPersonaje[0][4],texturaPersonaje[0][5],texturaPersonaje[0][6],texturaPersonaje[0][5],texturaPersonaje[0][4],texturaPersonaje[0][3]);
         // Crear una animación para que camine hacia arriba
-        caminandoArriba = new Animation(0.25f, texturaPersonaje[1][2],
-                texturaPersonaje[1][1], texturaPersonaje[1][0]);
+        caminandoArriba = new Animation(0.1f,
+                texturaPersonaje[1][0], texturaPersonaje[1][1], texturaPersonaje[1][2],texturaPersonaje[1][3],
+                texturaPersonaje[1][4],texturaPersonaje[1][5],texturaPersonaje[1][6],texturaPersonaje[1][5],texturaPersonaje[1][4],
+                texturaPersonaje[1][3]);
         // Crear una animación para que camine hacia abajo
-        caminandoAbajo = new Animation(0.25f, texturaPersonaje[2][2],
-                texturaPersonaje[2][1], texturaPersonaje[2][0]);
+        caminandoAbajo = new Animation(0.1f,
+                texturaPersonaje[2][0], texturaPersonaje[2][1], texturaPersonaje[2][2],texturaPersonaje[2][3],
+                texturaPersonaje[2][4],texturaPersonaje[2][5],texturaPersonaje[2][6],texturaPersonaje[2][5],texturaPersonaje[2][4],
+                texturaPersonaje[2][3]);
 
         // Animación infinita_______________________________________________________________________
         caminando.setPlayMode(Animation.PlayMode.LOOP);
@@ -76,7 +81,7 @@ public class Personaje
 
 
         // Crea el sprite con el personaje quieto (idle)
-        sprite = new Sprite(texturaPersonaje[0][0]);    // QUIETO
+        sprite = new Sprite(texturaPersonaje[2][3]);    // QUIETO
         sprite.setPosition(300, 800);    // Posición inicial
     }
 
