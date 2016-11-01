@@ -557,7 +557,8 @@ public class PantallaMapa implements Screen
         escena.draw();
 
         // Prueba si el enemigo está atacando a mario
-        if (mario.getX() == bowser.getX()){
+        if (mario.getX() >= bowser.getX()-32 && mario.getX()<= bowser.getX()+32
+                && mario.getY()>=bowser.getY()+32 && mario.getY() <= bowser.getY()-32){
             vida--;
         }
 
@@ -565,7 +566,6 @@ public class PantallaMapa implements Screen
         if(vida == 0){
             // Gdx.app.log("PantallaMapa", "Has perdido maldito bastardo");
             juego.setScreen(new PantallaPerder(juego));
-
         }
 
 

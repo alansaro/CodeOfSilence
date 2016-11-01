@@ -325,11 +325,6 @@ public class Personaje
         this.estadoMovimiento = estadoMovimiento;
     }
 
-    public void disparar() {
-
-        Gdx.app.log("Disparar()" , "Estoy en el metodo disparar.");
-
-    }
 
     public enum EstadoMovimiento {
         INICIANDO,
