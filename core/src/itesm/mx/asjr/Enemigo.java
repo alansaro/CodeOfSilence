@@ -35,7 +35,14 @@ public class Enemigo
     private float yInicial; // Donde inicia el salto
     private float tiempoVuelo;  // Tiempo que lleva en el aire
 
+
+    // Para la vida del enemigo
+    private boolean vida = true;
+
     public Enemigo (Texture textura) {
+
+        // Para la vida
+        this.vida = true;
 
         // Lee la textura como región
         TextureRegion texturaCompleta = new TextureRegion(textura);
@@ -64,11 +71,14 @@ public class Enemigo
             // Posición inicial
          }
 
+
         public void setPosition(int x, int y){
             sprite.setPosition(x, y);
         }
 
+
         // Dibuja el enemigo_____________________________________________________________________________________________________________
+
 
     public void render(SpriteBatch batch) {
 
@@ -308,6 +318,10 @@ public class Enemigo
     public void setEstadoMovimiento(EstadoMovimiento estadoMovimiento) {
         this.estadoMovimiento = estadoMovimiento;
     }
+
+    // Getter para la vida
+    public boolean getVida(){ return this.vida; }
+    public void setVida(boolean vida){ this.vida = vida; }
 
 
 

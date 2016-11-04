@@ -94,6 +94,7 @@ public class PantallaMapa implements Screen
     // Para las balas
     ArrayList<Bullet> bulletList = new ArrayList<Bullet>();
     ArrayList<Object> bulletUseless = new ArrayList<Object>();
+    ArrayList<Enemigo> enemigosList = new ArrayList<Enemigo>();
 
     // Musica
     private Music musicaFondo;
@@ -208,18 +209,6 @@ public class PantallaMapa implements Screen
                     }
                 }
 
-                moverEnemigo(bowser,mario);
-                moverEnemigo(bowser1,mario);
-                moverEnemigo(bowser2,mario);
-                moverEnemigo(bowser3,mario);
-                moverEnemigo(bowser4,mario);
-                moverEnemigo(bowser5,mario);
-                moverEnemigo(bowser6,mario);
-                moverEnemigo(bowser7,mario);
-                moverEnemigo(bowser8,mario);
-                moverEnemigo(bowser9,mario);
-
-
             }
         });
 
@@ -238,10 +227,15 @@ public class PantallaMapa implements Screen
         createActionButtion();
     }
 
+
     public void moverEnemigo(Enemigo enemy, Personaje character){
 
         if (character.getX() < enemy.getX() && character.getY() == enemy.getY()){
             enemy.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_IZQUIERDA);
+            if (character.getX() == enemy.getX() - 64 && character.getY() == enemy.getY() ){
+                enemy.setEstadoMovimiento(Enemigo.EstadoMovimiento.QUIETO);
+            }
+
         }
         else if (character.getX() > enemy.getX() && character.getY() == enemy.getY()){
             enemy.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_DERECHA);
@@ -254,7 +248,8 @@ public class PantallaMapa implements Screen
             enemy.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ARRIBA);
         }
 
-    }
+     }
+
 
 
 
@@ -297,7 +292,7 @@ public class PantallaMapa implements Screen
         mario = new Personaje(texturaPersonaje);
 
         bowser = new Enemigo(texturaEnemigo);
-        bowser.setPosition(800,700);
+        bowser.setPosition((int)mario.getX()+128,(int)mario.getY());
         bowser1 = new Enemigo(texturaEnemigo);
         bowser1.setPosition(800,800);
         bowser2 = new Enemigo(texturaEnemigo);
@@ -316,6 +311,18 @@ public class PantallaMapa implements Screen
         bowser8.setPosition(2200,800);
         bowser9 = new Enemigo(texturaEnemigo);
         bowser9.setPosition(2400,800);
+
+        enemigosList.add(bowser);
+        enemigosList.add(bowser1);
+        enemigosList.add(bowser2);
+        enemigosList.add(bowser3);
+        enemigosList.add(bowser4);
+        enemigosList.add(bowser5);
+        enemigosList.add(bowser6);
+        enemigosList.add(bowser7);
+        enemigosList.add(bowser8);
+        enemigosList.add(bowser9);
+
 
 
     }
@@ -343,16 +350,10 @@ public class PantallaMapa implements Screen
         actualizarCamara();
         // Actualización del personaje en el mapa
         mario.actualizar(mapa);
-        bowser.actualizar(mapa);
-        bowser1.actualizar(mapa);
-        bowser2.actualizar(mapa);
-        bowser3.actualizar(mapa);
-        bowser4.actualizar(mapa);
-        bowser5.actualizar(mapa);
-        bowser6.actualizar(mapa);
-        bowser7.actualizar(mapa);
-        bowser8.actualizar(mapa);
-        bowser9.actualizar(mapa);
+
+        for(Enemigo bowser: enemigosList){
+            bowser.actualizar(mapa);
+        }
 
         // Borra el frame actual
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -365,16 +366,11 @@ public class PantallaMapa implements Screen
         // Batch
         batch.begin();
         mario.render(batch);    // Dibuja el personaje
-        bowser.render(batch);
-        bowser1.render(batch);
-        bowser2.render(batch);
-        bowser3.render(batch);
-        bowser4.render(batch);
-        bowser5.render(batch);
-        bowser6.render(batch);
-        bowser7.render(batch);
-        bowser8.render(batch);
-        bowser9.render(batch);
+
+        for(Enemigo bowser: enemigosList){
+            if(bowser.getVida()==true)
+                bowser.render(batch);
+        }
 
 
         batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
@@ -389,161 +385,25 @@ public class PantallaMapa implements Screen
         for(Bullet bill: bulletList){
             bill.update(Gdx.graphics.getDeltaTime());
             if (bill.isDead()) this.bulletUseless.add(bill);
-
-
-            // Bowser :
-            if(( (bill.getHitbox().getX() - bowser.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser.getX()) <= 32 )){
-                Gdx.app.log("bowser","gets hit");
-                if(bowser.getY()<bill.getHitbox().getY()){
-                    if( (bill.getHitbox().getY() - bowser.getX() <= 32)){
-                        bulletUseless.add(bowser);
-                    }
-                }
-                else if (bowser.getY()>bill.getHitbox().getY()){
-                    if( (bowser.getY() - bill.getHitbox().getY()) <= 32 ){
-                        bulletUseless.add(bowser);
-                    }
+            for(Enemigo bowser: enemigosList){
+                if(( (bill.getHitbox().getX() - bowser.getX()) >= 32 ) && ( (bill.getHitbox().getY() - bowser.getY()) <= 32 )) {
+                    Gdx.app.log("bowser", "gets hit");
+                    bowser.setVida(false);
                 }
             }
-
-            // Bowser 1:
-            if(( (bill.getHitbox().getX() - bowser1.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser1.getX()) <= 32 )){
-                Gdx.app.log("bowser","gets hit");
-                if(bowser1.getY()<bill.getHitbox().getY()){
-                    if( (bill.getHitbox().getY() - bowser1.getX() <= 32)){
-                        bulletUseless.add(bowser1);
-                    }
-                }
-                else if (bowser1.getY()>bill.getHitbox().getY()){
-                    if( (bowser1.getY() - bill.getHitbox().getY()) <= 32 ){
-                        bulletUseless.add(bowser1);
-                    }
-                }
-            }
-
-            // Bowser 2:
-            if(( (bill.getHitbox().getX() - bowser2.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser2.getX()) <= 32 )){
-                Gdx.app.log("bowser","gets hit");
-                if(bowser2.getY()<bill.getHitbox().getY()){
-                    if( (bill.getHitbox().getY() - bowser2.getX() <= 32)){
-                        bulletUseless.add(bowser2);
-                    }
-                }
-                else if (bowser2.getY()>bill.getHitbox().getY()){
-                    if( (bowser2.getY() - bill.getHitbox().getY()) <= 32 ){
-                        bulletUseless.add(bowser2);
-                    }
-                }
-            }
-
-            // Bowser 3:
-            if(( (bill.getHitbox().getX() - bowser3.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser3.getX()) <= 32 )){
-                Gdx.app.log("bowser","gets hit");
-                if(bowser3.getY()<bill.getHitbox().getY()){
-                    if( (bill.getHitbox().getY() - bowser3.getX() <= 32)){
-                        bulletUseless.add(bowser3);
-                    }
-                }
-                else if (bowser3.getY()>bill.getHitbox().getY()){
-                    if( (bowser3.getY() - bill.getHitbox().getY()) <= 32 ){
-                        bulletUseless.add(bowser3);
-                    }
-                }
-            }
-
-            // Bowser 4:
-            if(( (bill.getHitbox().getX() - bowser4.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser4.getX()) <= 32 )){
-                Gdx.app.log("bowser","gets hit");
-                if(bowser4.getY()<bill.getHitbox().getY()){
-                    if( (bill.getHitbox().getY() - bowser4.getX() <= 32)){
-                        bulletUseless.add(bowser4);
-                    }
-                }
-                else if (bowser4.getY()>bill.getHitbox().getY()){
-                    if( (bowser4.getY() - bill.getHitbox().getY()) <= 32 ){
-                        bulletUseless.add(bowser4);
-                    }
-                }
-            }
-
-            // Bowser 5:
-            if(( (bill.getHitbox().getX() - bowser5.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser5.getX()) <= 32 )){
-                Gdx.app.log("bowser","gets hit");
-                if(bowser5.getY()<bill.getHitbox().getY()){
-                    if( (bill.getHitbox().getY() - bowser5.getX() <= 32)){
-                        bulletUseless.add(bowser5);
-                    }
-                }
-                else if (bowser5.getY()>bill.getHitbox().getY()){
-                    if( (bowser5.getY() - bill.getHitbox().getY()) <= 32 ){
-                        bulletUseless.add(bowser5);
-                    }
-                }
-            }
-
-            // Bowser 6:
-            if(( (bill.getHitbox().getX() - bowser6.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser6.getX()) <= 32 )){
-                Gdx.app.log("bowser","gets hit");
-                if(bowser6.getY()<bill.getHitbox().getY()){
-                    if( (bill.getHitbox().getY() - bowser6.getX() <= 32)){
-                        bulletUseless.add(bowser6);
-                    }
-                }
-                else if (bowser6.getY()>bill.getHitbox().getY()){
-                    if( (bowser6.getY() - bill.getHitbox().getY()) <= 32 ){
-                        bulletUseless.add(bowser6);
-                    }
-                }
-            }
-
-            // Bowser 7:
-            if(( (bill.getHitbox().getX() - bowser7.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser7.getX()) <= 32 )){
-                Gdx.app.log("bowser","gets hit");
-                if(bowser7.getY()<bill.getHitbox().getY()){
-                    if( (bill.getHitbox().getY() - bowser7.getX() <= 32)){
-                        bulletUseless.add(bowser7);
-                    }
-                }
-                else if (bowser7.getY()>bill.getHitbox().getY()){
-                    if( (bowser7.getY() - bill.getHitbox().getY()) <= 32 ){
-                        bulletUseless.add(bowser7);
-                    }
-                }
-            }
-
-            // Bowser 8:
-            if(( (bill.getHitbox().getX() - bowser8.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser8.getX()) <= 32 )){
-                Gdx.app.log("bowser","gets hit");
-                if(bowser8.getY()<bill.getHitbox().getY()){
-                    if( (bill.getHitbox().getY() - bowser8.getX() <= 32)){
-                        bulletUseless.add(bowser8);
-                    }
-                }
-                else if (bowser8.getY()>bill.getHitbox().getY()){
-                    if( (bowser8.getY() - bill.getHitbox().getY()) <= 32 ){
-                        bulletUseless.add(bowser8);
-                    }
-                }
-            }
-
-            // Bowser 9:
-            if(( (bill.getHitbox().getX() - bowser9.getX()) >= 32 ) && ( (bill.getHitbox().getX() - bowser9.getX()) <= 32 )){
-                Gdx.app.log("bowser","gets hit");
-                if(bowser9.getY()<bill.getHitbox().getY()){
-                    if( (bill.getHitbox().getY() - bowser9.getX() <= 32)){
-                        bulletUseless.add(bowser9);
-                    }
-                }
-                else if (bowser9.getY()>bill.getHitbox().getY()){
-                    if( (bowser9.getY() - bill.getHitbox().getY()) <= 32 ){
-                        bulletUseless.add(bowser9);
-                    }
-                }
-            }
-
-
-
         }
+
+        // MUEVE AL ENEMIGO
+        moverEnemigo(bowser,mario);
+        moverEnemigo(bowser1,mario);
+        moverEnemigo(bowser2,mario);
+        moverEnemigo(bowser3,mario);
+        moverEnemigo(bowser4,mario);
+        moverEnemigo(bowser5,mario);
+        moverEnemigo(bowser6,mario);
+        moverEnemigo(bowser7,mario);
+        moverEnemigo(bowser8,mario);
+        moverEnemigo(bowser9,mario);
 
         // Limpia los dos ArrayList
         while(bulletUseless.size()!=0){
@@ -557,10 +417,12 @@ public class PantallaMapa implements Screen
         escena.draw();
 
         // Prueba si el enemigo está atacando a mario
-        if (mario.getX() >= bowser.getX()-32 && mario.getX()<= bowser.getX()+32
-                && mario.getY()>=bowser.getY()+32 && mario.getY() <= bowser.getY()-32){
-            vida--;
+        for(Enemigo bowser: enemigosList){
+            if (mario.getX()==bowser.getX() && mario.getY()==bowser.getY()){
+                vida--;
+            }
         }
+
 
         // Aquí es donde el personaje pierde
         if(vida == 0){
@@ -632,7 +494,6 @@ public class PantallaMapa implements Screen
         } else if (posY <ALTO_MAPA-ALTO_CAMARA/2) {
             // La cámara se detiene cuando llega a la parte baja del mapa.
             camara.position.set(ANCHO_CAMARA/2+32, PantallaMapa.ALTO_CAMARA/2,0);
-            // DUDDA DEL GLITCH. EN PARTE BAJA DEL MAPA.
         }
 
         camara.update();
