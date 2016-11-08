@@ -144,23 +144,22 @@ public class Personaje
                 break;
         }
 
-        recolectarMonedas(mapa);
+        recolectarVida(mapa);
 
     }
 
 
-    private void recolectarMonedas(TiledMap mapa) {
+    private void recolectarVida(TiledMap mapa) {
         // Revisar si está sobre una moneda (pies)
-        TiledMapTileLayer capa = (TiledMapTileLayer)mapa.getLayers().get(0);
+        TiledMapTileLayer capa = (TiledMapTileLayer)mapa.getLayers().get(1);
         int x = (int)(sprite.getX()/32);
         int y = (int)(sprite.getY()/32);
         TiledMapTileLayer.Cell celda = capa.getCell(x,y);
         if (celda!=null ) {
-            Object tipo = (String)celda.getTile().getProperties().get("tipo");
-            if ( "moneda".equals(tipo) ) {
-                capa.setCell(x,y,capa.getCell(0,3));    // Cuadro azul en lugar de la moneda
-                //sonidoMoneda.play();
-            }
+            Object tipo = (String) celda.getTile().getProperties().get("tipo");
+            if ("vida".equals(tipo)) {
+                capa.setCell(x, y, capa.getCell(0, 3));
+             }
         }
     }
 
@@ -316,9 +315,6 @@ public class Personaje
     public EstadoMovimiento getEstadoMovimiento() {
         return estadoMovimiento;
     }
-
-    // Accesor de estadoAccion
-    //public EstadoAccion getEstadoAccion(){return estadoAccion;}
 
     // Modificador de estadoMovimiento
     public void setEstadoMovimiento(EstadoMovimiento estadoMovimiento) {

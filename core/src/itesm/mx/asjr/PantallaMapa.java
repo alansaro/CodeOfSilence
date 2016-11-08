@@ -101,18 +101,18 @@ public class PantallaMapa implements Screen
 
     // Para una barra de vida
     private Texture healthBar, healthContainer;
-    int vida = 32;
+    public int vida = 32;
 
     // Para ganar
-    int muertes = 0;
-
-
+    public int muertes = 0;
 
 
     // Construtor por default.
     public PantallaMapa(Juego juego) {  // Constructor
         this.juego = juego;
     }
+
+
 
 
     @Override
@@ -378,11 +378,12 @@ public class PantallaMapa implements Screen
         batch.begin();
         mario.render(batch);    // Dibuja el personaje
 
+
+        // Dibuja a bowser si está vivo.
         for(Enemigo bowser: enemigosList){
             if(bowser.getVida()==true)
                 bowser.render(batch);
         }
-
 
 
         batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
@@ -438,8 +439,9 @@ public class PantallaMapa implements Screen
         }
 
 
+
         // Aquí es donde el personaje pierde
-        if(vida == 0){
+        if(vida <= 0){
             // Gdx.app.log("PantallaMapa", "Has perdido maldito bastardo");
             juego.setScreen(new PantallaPerder(juego));
         }
