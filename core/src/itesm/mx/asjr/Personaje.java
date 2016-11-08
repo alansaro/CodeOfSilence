@@ -33,7 +33,7 @@ public class Personaje
     private Animation caminandoAbajo;
     private float timerAnimacion;   // tiempo para calcular el frame
 
-    private EstadoMovimiento estadoMovimiento=EstadoMovimiento.INICIANDO;
+    private EstadoMovimiento estadoMovimiento=EstadoMovimiento.QUIETO;
     //private EstadoAccion estadoAccion = EstadoAccion.QUIETO;
     //private EstadoSalto estadoSalto=EstadoSalto.CAIDA_LIBRE;
     private float tiempoSalto;  // Tiempo total en el aire
@@ -83,7 +83,7 @@ public class Personaje
 
         // Crea el sprite con el personaje quieto (idle)
         sprite = new Sprite(texturaPersonaje[2][3]);    // QUIETO
-        sprite.setPosition(300, 800);    // Posición inicial
+        sprite.setPosition(200, 500);    // Posición inicial
     }
 
     // Dibuja el personaje__________________________________________________________________________
@@ -132,10 +132,6 @@ public class Personaje
             case MOV_DERECHA:
             case MOV_IZQUIERDA:
                 moverHorizontal(mapa);
-                break;
-
-            case INICIANDO:
-                caer(mapa, VELOCIDAD_Y);
                 break;
 
             case MOV_ARRIBA:
@@ -263,18 +259,6 @@ public class Personaje
         }
     }
 
-    // Avanza en su caída
-    public void caer(TiledMap mapa, float desplazamiento) {
-        // Recupera la celda inferior (regresa null si no hay)
-        boolean hayCeldaAbajo = leerCeldaAbajo(mapa);
-
-        if (!hayCeldaAbajo) { // Se puede mover
-            sprite.setY(sprite.getY() + desplazamiento);
-        } else {
-            estadoMovimiento = EstadoMovimiento.QUIETO;
-            //estadoSalto = EstadoSalto.EN_PISO;
-        }
-    }
 
 
     // Regresa true si hay alguna celda debajo del personaje

@@ -201,8 +201,7 @@ public class PantallaMapa implements Screen
             public void changed(ChangeEvent event, Actor actor) {
                 if (mario.getEstadoMovimiento()!= Personaje.EstadoMovimiento.INICIANDO) {
                     Touchpad p = (Touchpad) actor;
-                    System.out.print(mario.getX());
-                    System.out.print(mario.getY());
+
 
                     if (p.getKnobPercentX() > 0 && p.getKnobPercentY()<.25 && p.getKnobPercentY()>-.25) {    //Derecha
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.MOV_DERECHA);
