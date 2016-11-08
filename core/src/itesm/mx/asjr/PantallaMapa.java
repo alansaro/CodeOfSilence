@@ -103,11 +103,17 @@ public class PantallaMapa implements Screen
     private Texture healthBar, healthContainer;
     int vida = 32;
 
+    // Para ganar
+    int muertes = 0;
+
+
+
 
     // Construtor por default.
     public PantallaMapa(Juego juego) {  // Constructor
         this.juego = juego;
     }
+
 
     @Override
     // Aquí es donde se obtienen las propiedades iniciales de nuestra pantalla.
@@ -348,6 +354,8 @@ public class PantallaMapa implements Screen
 
         // actualizar cámara (para recorrer el mundo completo)
         actualizarCamara();
+
+
         // Actualización del personaje en el mapa
         mario.actualizar(mapa);
 
@@ -388,8 +396,8 @@ public class PantallaMapa implements Screen
             if (bill.isDead()) this.bulletUseless.add(bill);
             for(Enemigo bowser: enemigosList){
                 if(( (bill.getHitbox().getX() - bowser.getX()) >= 32 ) && ( (bill.getHitbox().getY() - bowser.getY()) <= 32 )) {
-                    Gdx.app.log("bowser", "gets hit");
                     bowser.setVida(false);
+                    muertes++;
                 }
             }
         }
@@ -433,14 +441,10 @@ public class PantallaMapa implements Screen
             juego.setScreen(new PantallaPerder(juego));
         }
 
-
-
-        /****
         //Aqui es donde el personaje gana
-        //if(){
-          // juego.setScreen(new PantallaGanar(juego));
-        //}
-         ****/
+        if(muertes == 2){
+            juego.setScreen(new PantallaPrincipal(juego));
+        }
 
 
 
