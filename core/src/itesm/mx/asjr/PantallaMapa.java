@@ -42,7 +42,7 @@ public class PantallaMapa implements Screen
 {
 
     // Para el espacio en donde ocurre el juego
-    public static final int ANCHO_MAPA = 2112 ;
+    public static final int ANCHO_MAPA = 1280;
     public static final int ALTO_MAPA = 1216;
     public static final int ANCHO_CAMARA = 528;
     public static final int ALTO_CAMARA = 304;
