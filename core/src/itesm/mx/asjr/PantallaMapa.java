@@ -259,7 +259,7 @@ public class PantallaMapa implements Screen
         AssetManager manager = new AssetManager();
         manager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
         //manager.load("MarioCompleto.tmx", TiledMap.class);
-        manager.load("bar_codeofsilence5.tmx", TiledMap.class);
+        manager.load("code_mapa2.tmx", TiledMap.class);
         manager.load("sprite_completo.png", Texture.class);
         //manager.load("MonitoSprite.png", Texture.class);
         manager.load("sprite_completo_enemigo.png", Texture.class);
@@ -270,7 +270,7 @@ public class PantallaMapa implements Screen
         manager.load("Jailhouse.mp3", Music.class);
 
         manager.finishLoading();
-        mapa = manager.get("bar_codeofsilence5.tmx");
+        mapa = manager.get("code_mapa2.tmx");
         //texturaMario = manager.get("MonitoSprite.png");
         texturaPersonaje = manager.get("sprite_completo.png");
         texturaEnemigo = manager.get("sprite_completo_enemigo.png");
@@ -373,6 +373,7 @@ public class PantallaMapa implements Screen
         }
 
 
+
         batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
         batch.draw(healthBar, mario.getX(), mario.getY()+34 ,vida,4);
         for(Bullet bill : bulletList){
@@ -418,8 +419,10 @@ public class PantallaMapa implements Screen
 
         // Prueba si el enemigo está atacando a mario
         for(Enemigo bowser: enemigosList){
-            if (mario.getX()==bowser.getX() && mario.getY()==bowser.getY()){
-                vida--;
+            if(bowser.getVida()==true) {
+                if (mario.getX() == bowser.getX() && mario.getY() == bowser.getY()) {
+                    vida--;
+                }
             }
         }
 
