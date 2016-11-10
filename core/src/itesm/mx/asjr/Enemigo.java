@@ -282,24 +282,6 @@ public class Enemigo
         }
     }
 
-    //comprobara si existe colisión entre la bala y el enemigo
-    //se comprobara con el metodo contein si existe una colisión
-    //en el caso que exista una se pasara al siguiente metodo
-
-
-    //private boolean collision(){
-      //  return Bullet.getBounds().contains(Bullet.getBounds());
-
-    //}
-
-    //En el momento de la colisión se desaparecera el enemigo
-    //
-
-
-
-
-
-
     // Accesores para la posición
     public float getX() {
         return sprite.getX();

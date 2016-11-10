@@ -175,7 +175,7 @@ public class PantallaMapa implements Screen
         actionButton.addListener( new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Gdx.app.log("ActionButton", "Click sobre el botón de acción");
+                //Gdx.app.log("ActionButton", "Click sobre el botón de acción");
             }
         });
 
@@ -437,19 +437,17 @@ public class PantallaMapa implements Screen
             }
         }
 
+        // El personaje está agarrando vida.
 
-
-        // Aquí es donde el personaje pierde
+        // El personaje ha perdido.
         if(vida <= 0){
-            // Gdx.app.log("PantallaMapa", "Has perdido maldito bastardo");
             juego.setScreen(new PantallaPerder(juego));
         }
 
-        //Aqui es donde el personaje gana
+        // El personaje ha ganado.
         if(muertes == 2){
             juego.setScreen(new PantallaPrincipal(juego));
         }
-
 
 
         // Dependiendo de donde esté disparando el jugador, la bala se mueve en esa dirección
@@ -458,7 +456,6 @@ public class PantallaMapa implements Screen
             // Si el personaje se est moviendo a la derecha
             if(mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_DERECHA){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 0));
-                Gdx.app.log("render" , "Derecha");
             }
             //Si el personaje se está moviendo hacia la izquierda
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_IZQUIERDA) {
