@@ -33,7 +33,7 @@ public class Personaje
     private Animation caminandoAbajo;
     private float timerAnimacion;   // tiempo para calcular el frame
 
-    private EstadoMovimiento estadoMovimiento=EstadoMovimiento.INICIANDO;
+    private EstadoMovimiento estadoMovimiento=EstadoMovimiento.QUIETO;
     //private EstadoAccion estadoAccion = EstadoAccion.QUIETO;
     //private EstadoSalto estadoSalto=EstadoSalto.CAIDA_LIBRE;
     private float tiempoSalto;  // Tiempo total en el aire
@@ -135,7 +135,7 @@ public class Personaje
                 break;
 
             case INICIANDO:
-                caer(mapa, VELOCIDAD_Y);
+
                 break;
 
             case MOV_ARRIBA:
