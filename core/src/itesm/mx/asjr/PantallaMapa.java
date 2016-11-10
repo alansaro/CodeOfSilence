@@ -482,6 +482,7 @@ public class PantallaMapa implements Screen
         float posY = mario.getY();
 
 
+
         // Actualiza la posición en X
         if (posX>=ANCHO_CAMARA/2 && posX<=ANCHO_MAPA-ANCHO_CAMARA/2) {
             // El personaje define el centro de la cámara
