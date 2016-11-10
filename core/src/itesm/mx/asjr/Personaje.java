@@ -33,7 +33,7 @@ public class Personaje
     private Animation caminandoAbajo;
     private float timerAnimacion;   // tiempo para calcular el frame
 
-    private EstadoMovimiento estadoMovimiento=EstadoMovimiento.QUIETO;
+    private EstadoMovimiento estadoMovimiento=EstadoMovimiento.INICIANDO;
     //private EstadoAccion estadoAccion = EstadoAccion.QUIETO;
     //private EstadoSalto estadoSalto=EstadoSalto.CAIDA_LIBRE;
     private float tiempoSalto;  // Tiempo total en el aire
@@ -83,7 +83,7 @@ public class Personaje
 
         // Crea el sprite con el personaje quieto (idle)
         sprite = new Sprite(texturaPersonaje[2][3]);    // QUIETO
-        sprite.setPosition(200, 500);    // Posición inicial
+        sprite.setPosition(300, 800);    // Posición inicial
     }
 
     // Dibuja el personaje__________________________________________________________________________
@@ -134,29 +134,32 @@ public class Personaje
                 moverHorizontal(mapa);
                 break;
 
+            case INICIANDO:
+                caer(mapa, VELOCIDAD_Y);
+                break;
+
             case MOV_ARRIBA:
             case MOV_ABAJO:
                 moverVertical(mapa);
                 break;
         }
 
-        recolectarMonedas(mapa);
+        recolectarVida(mapa);
 
     }
 
 
-    private void recolectarMonedas(TiledMap mapa) {
+    private void recolectarVida(TiledMap mapa) {
         // Revisar si está sobre una moneda (pies)
-        TiledMapTileLayer capa = (TiledMapTileLayer)mapa.getLayers().get(0);
+        TiledMapTileLayer capa = (TiledMapTileLayer)mapa.getLayers().get(1);
         int x = (int)(sprite.getX()/32);
         int y = (int)(sprite.getY()/32);
         TiledMapTileLayer.Cell celda = capa.getCell(x,y);
         if (celda!=null ) {
-            Object tipo = (String)celda.getTile().getProperties().get("tipo");
-            if ( "moneda".equals(tipo) ) {
-                capa.setCell(x,y,capa.getCell(0,3));    // Cuadro azul en lugar de la moneda
-                //sonidoMoneda.play();
-            }
+            Object tipo = (String) celda.getTile().getProperties().get("tipo");
+            if ("vida".equals(tipo)) {
+                capa.setCell(x, y, capa.getCell(0, 3));
+             }
         }
     }
 
@@ -259,6 +262,18 @@ public class Personaje
         }
     }
 
+    // Avanza en su caída
+    public void caer(TiledMap mapa, float desplazamiento) {
+        // Recupera la celda inferior (regresa null si no hay)
+        boolean hayCeldaAbajo = leerCeldaAbajo(mapa);
+
+        if (!hayCeldaAbajo) { // Se puede mover
+            sprite.setY(sprite.getY() + desplazamiento);
+        } else {
+            estadoMovimiento = EstadoMovimiento.QUIETO;
+            //estadoSalto = EstadoSalto.EN_PISO;
+        }
+    }
 
 
     // Regresa true si hay alguna celda debajo del personaje
@@ -300,9 +315,6 @@ public class Personaje
     public EstadoMovimiento getEstadoMovimiento() {
         return estadoMovimiento;
     }
-
-    // Accesor de estadoAccion
-    //public EstadoAccion getEstadoAccion(){return estadoAccion;}
 
     // Modificador de estadoMovimiento
     public void setEstadoMovimiento(EstadoMovimiento estadoMovimiento) {
