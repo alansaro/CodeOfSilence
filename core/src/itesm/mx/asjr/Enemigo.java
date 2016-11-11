@@ -29,7 +29,7 @@ public class Enemigo
     private Animation caminandoAbajo;
     private float timerAnimacion;   // tiempo para calcular el frame
 
-    private EstadoMovimiento estadoMovimiento=EstadoMovimiento.INICIANDO;
+    private EstadoMovimiento estadoMovimiento=EstadoMovimiento.QUIETO;
     //private EstadoSalto estadoSalto=EstadoSalto.CAIDA_LIBRE;
     private float tiempoSalto;  // Tiempo total en el aire
     private float yInicial; // Donde inicia el salto
@@ -77,9 +77,7 @@ public class Enemigo
         }
 
 
-        // Dibuja el enemigo_____________________________________________________________________________________________________________
-
-
+    // Dibuja el enemigo
     public void render(SpriteBatch batch) {
 
         /**
@@ -131,7 +129,7 @@ public class Enemigo
                 break;
 
             case INICIANDO:
-                caer(mapa, VELOCIDAD_Y);
+                //caer(mapa, VELOCIDAD_Y);
                 break;
 
             case MOV_ARRIBA:
@@ -173,8 +171,8 @@ public class Enemigo
         }
         if (estadoMovimiento == EstadoMovimiento.MOV_ABAJO){
             //Obtener el bloque de ABAJO. Asigna null si puede pasar.
-            int x = (int) ((sprite.getX() -32)/ 32);
-            int y = (int) ((sprite.getY() -32) / 32);
+            int x = (int) ((sprite.getX())/ 32);
+            int y = (int) ((sprite.getY())/ 32);
             TiledMapTileLayer.Cell celdaAbajo = capa.getCell(x,y);
             if (celdaAbajo!=null) {
                 Object tipo = (String) celdaAbajo.getTile().getProperties().get("tipo");
@@ -245,6 +243,7 @@ public class Enemigo
     }
 
 
+    /***
     // Regresa true si hay alguna celda debajo del enemigo
     private boolean leerCeldaAbajo(TiledMap mapa) {
         // Revisar si no hay algo que lo detenga
@@ -268,8 +267,10 @@ public class Enemigo
         }
         return celdaAbajo!=null || celdaAbajoDerecha!=null;
     }
+     **/
 
 
+    /**
     public void caer(TiledMap mapa, float desplazamiento) {
         // Recupera la celda inferior (regresa null si no hay)
         boolean hayCeldaAbajo = leerCeldaAbajo(mapa);
@@ -281,6 +282,7 @@ public class Enemigo
             //estadoSalto = EstadoSalto.EN_PISO;
         }
     }
+     **/
 
     // Accesores para la posición
     public float getX() {
@@ -305,6 +307,9 @@ public class Enemigo
     public boolean getVida(){ return this.vida; }
     public void setVida(boolean vida){ this.vida = vida; }
 
+    public Sprite getSprite() {
+        return sprite;
+    }
 
 
     public enum EstadoMovimiento {

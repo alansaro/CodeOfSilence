@@ -83,7 +83,7 @@ public class Personaje
 
         // Crea el sprite con el personaje quieto (idle)
         sprite = new Sprite(texturaPersonaje[2][3]);    // QUIETO
-        sprite.setPosition(300, 800);    // Posición inicial
+        sprite.setPosition(312, 72);    // Posición inicial
     }
 
     // Dibuja el personaje__________________________________________________________________________
@@ -176,15 +176,10 @@ public class Personaje
             int y = (int) ((sprite.getY()+32)/ 32);
             int x = (int) (sprite.getX()/ 32);
 
-            Gdx.app.log("Posicion de mario en x: ", +this.getX()+".");
-            Gdx.app.log("Posicion de mario en y: ", +this.getY()+".");
-            Gdx.app.log("Posicion del bloque de arriba:", +y+".");
-
             TiledMapTileLayer.Cell celdaArriba = capa1.getCell(x,y);
             if (celdaArriba != null) {
                 Object tipo = (String) celdaArriba.getTile().getProperties().get("tipo");
                 if (!"ladrillo".equals(tipo)) {
-                    Gdx.app.log("Leer celda arriba","Tengo un bloque arriba.");
                     celdaArriba = null;  // Puede pasar
                 }
             }
@@ -230,15 +225,10 @@ public class Personaje
             int x = (int) ((sprite.getX() + 32) / 32);   // Convierte coordenadas del mundo en coordenadas del mapa
             int y = (int) (sprite.getY() / 32);
 
-            Gdx.app.log("Posicion de mario en x: ", +this.getX()+".");
-            Gdx.app.log("Posicion de mario en y: ", +this.getY()+".");
-            Gdx.app.log("Posicion del bloque de la derecha:", +x+".");
-
             TiledMapTileLayer.Cell celdaDerecha = capa1.getCell(x, y);
 
             if (celdaDerecha != null) {
                 Object tipo = (String) celdaDerecha.getTile().getProperties().get("tipo");
-                Gdx.app.log("Leer celda derecha","Estoy a la derecha de un objeto.");
                 if (!"ladrillo".equals(tipo)) {
                     celdaDerecha = null;  // Puede pasar
                 }
@@ -262,7 +252,6 @@ public class Personaje
             TiledMapTileLayer.Cell celdaIzquierda = capa1.getCell(xIzq, y);
             if (celdaIzquierda != null) {
                 Object tipo = (String) celdaIzquierda.getTile().getProperties().get("tipo");
-                Gdx.app.log("Leer celda izquierda","Estoy a la izquierda de un bloque.");
 
                 if (!"ladrillo".equals(tipo)) {
                     celdaIzquierda = null;  // Puede pasar

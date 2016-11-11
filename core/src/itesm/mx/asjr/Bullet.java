@@ -45,4 +45,8 @@ public class Bullet {
         batch.draw(texturaBala,hitbox.x, hitbox.y,32,32);
 
     }
+
+    public boolean estaPegando(Enemigo enemigo) {
+        return hitbox.overlaps(enemigo.getSprite().getBoundingRectangle());
+    }
 }

@@ -300,25 +300,26 @@ public class PantallaMapa implements Screen
         mario = new Personaje(texturaPersonaje);
 
         bowser = new Enemigo(texturaEnemigo);
-        bowser.setPosition((int)mario.getX()+128,(int)mario.getY());
+        bowser.setPosition(520,156);
         bowser1 = new Enemigo(texturaEnemigo);
-        bowser1.setPosition(800,800);
+        bowser1.setPosition(640,156);
         bowser2 = new Enemigo(texturaEnemigo);
-        bowser2.setPosition(1000,800);
+        bowser2.setPosition(520,440);
         bowser3 = new Enemigo(texturaEnemigo);
-        bowser3.setPosition(1200,800);
+        bowser3.setPosition(388,576);
         bowser4 = new Enemigo(texturaEnemigo);
-        bowser4.setPosition(1400,800);
+        bowser4.setPosition(620,996);
         bowser5 = new Enemigo(texturaEnemigo);
-        bowser5.setPosition(1600,800);
+        bowser5.setPosition(672,1084);
         bowser6 = new Enemigo(texturaEnemigo);
-        bowser6.setPosition(1800,800);
+        bowser6.setPosition(896, 604);
         bowser7 = new Enemigo(texturaEnemigo);
-        bowser7.setPosition(2000,800);
+        bowser7.setPosition(1152,864);
         bowser8 = new Enemigo(texturaEnemigo);
-        bowser8.setPosition(2200,800);
+        bowser8.setPosition(768,864);
         bowser9 = new Enemigo(texturaEnemigo);
-        bowser9.setPosition(2400,800);
+        bowser9.setPosition(1152,604);
+
 
         enemigosList.add(bowser);
         enemigosList.add(bowser1);
@@ -379,10 +380,15 @@ public class PantallaMapa implements Screen
 
 
         // Dibuja a bowser si está vivo.
-        for(Enemigo bowser: enemigosList){
-            if(bowser.getVida()==true)
-                bowser.render(batch);
+        for(Enemigo enemigo: enemigosList){
+            if(enemigo.getVida()==true)
+                enemigo.render(batch);
         }
+
+
+        // Prueba de fuego
+        //Gdx.app.log("Render:","Posicion en x"+mario.getX());
+        //Gdx.app.log("Render:","Posicion en y"+mario.getY());
 
 
         batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
@@ -397,10 +403,16 @@ public class PantallaMapa implements Screen
         for(Bullet bill: bulletList){
             bill.update(Gdx.graphics.getDeltaTime());
             if (bill.isDead()) this.bulletUseless.add(bill);
-            for(Enemigo bowser: enemigosList){
-                if(( (bill.getHitbox().getX() - bowser.getX()) >= 32 ) && ( (bill.getHitbox().getY() - bowser.getY()) <= 32 )) {
-                    bowser.setVida(false);
-                    muertes++;
+            for(Enemigo enemigo: enemigosList){
+                if(enemigo.getVida()==true) {
+                    //if (((bill.getHitbox().getX() - enemigo.getX()) >= 32) && ((bill.getHitbox().getY() - enemigo.getY()) <= 32)) {
+                    if(bill.estaPegando(enemigo)){
+                        Gdx.app.log("Colisión con bauser", "le pegaste a "+enemigo);
+                        enemigo.setVida(false);
+                        //enemigosList.remove(enemigo);
+                        muertes++;
+                        Gdx.app.log("colisión con bauser",+muertes+".");
+                    }
                 }
             }
         }
@@ -429,9 +441,9 @@ public class PantallaMapa implements Screen
         escena.draw();
 
         // Prueba si el enemigo está atacando a mario
-        for(Enemigo bowser: enemigosList){
-            if(bowser.getVida()==true) {
-                if (mario.getX() == bowser.getX() && mario.getY() == bowser.getY()) {
+        for(Enemigo enemigo: enemigosList){
+            if(enemigo.getVida()==true) {
+                if (mario.getX() == enemigo.getX() && mario.getY() == enemigo.getY()) {
                     vida--;
                 }
             }
@@ -445,7 +457,8 @@ public class PantallaMapa implements Screen
         }
 
         // El personaje ha ganado.
-        if(muertes == 2){
+        if(muertes == 50){
+            Gdx.app.log("Render","Has ganado!");
             juego.setScreen(new PantallaPrincipal(juego));
         }
 
