@@ -1,15 +1,12 @@
 package itesm.mx.asjr;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 
 /**
@@ -214,8 +211,8 @@ public class Personaje
 
     // Mueve el personaje a la derecha/izquierda, prueba choques con paredes
     private void moverHorizontal(TiledMap mapa) {
-        // Obtiene la primer capa del mapa (en este caso es la única)
-        TiledMapTileLayer capa = (TiledMapTileLayer) mapa.getLayers().get(0);
+
+        // Obtiene las capas del mapa:
         TiledMapTileLayer capa1 = (TiledMapTileLayer) mapa.getLayers().get(1);
         // Ejecutar movimiento horizontal
         float nuevaX = sprite.getX();
@@ -238,7 +235,7 @@ public class Personaje
                 // Ejecutar movimiento horizontal
                 nuevaX += VELOCIDAD_X;
                 // Prueba que no salga del mundo por la derecha
-                if (nuevaX <= PantallaMapa.ANCHO_MAPA - sprite.getWidth()) {
+                if (nuevaX <= PantallaNivelUno.ANCHO_MAPA - sprite.getWidth()) {
                     sprite.setX(nuevaX);
                     //probarCaida(mapa);
                 }
@@ -266,52 +263,6 @@ public class Personaje
             }
         }
     }
-
-    /**
-
-    // Avanza en su caída
-    public void caer(TiledMap mapa, float desplazamiento) {
-        // Recupera la celda inferior (regresa null si no hay)
-        boolean hayCeldaAbajo = leerCeldaAbajo(mapa);
-
-        if (!hayCeldaAbajo) { // Se puede mover
-            sprite.setY(sprite.getY() + desplazamiento);
-        } else {
-            estadoMovimiento = EstadoMovimiento.QUIETO;
-            //estadoSalto = EstadoSalto.EN_PISO;
-        }
-    }
-     **/
-
-
-    /**
-    // Regresa true si hay alguna celda debajo del personaje
-    private boolean leerCeldaAbajo(TiledMap mapa) {
-        // Revisar si no hay algo que lo detenga
-        TiledMapTileLayer capa = (TiledMapTileLayer)mapa.getLayers().get(0);
-        TiledMapTileLayer capa1 = (TiledMapTileLayer)mapa.getLayers().get(1);
-        int x = (int)((sprite.getX())/32);
-        int y = (int)(sprite.getY()-32)/32;
-
-        TiledMapTileLayer.Cell celdaAbajo = capa1.getCell(x,y);
-        if (celdaAbajo!=null ) {
-            Object tipo = (String)celdaAbajo.getTile().getProperties().get("tipo");
-            if ( !"ladrillo".equals(tipo) ) {
-                celdaAbajo = null;
-            }
-        }
-
-        TiledMapTileLayer.Cell celdaAbajoDerecha = capa.getCell(x+1,y);
-        if (celdaAbajoDerecha!=null ) {
-            Object tipo = (String)celdaAbajoDerecha.getTile().getProperties().get("tipo");
-            if ( !"ladrillo".equals(tipo) ) {
-                celdaAbajoDerecha = null;
-            }
-        }
-        return celdaAbajo!=null || celdaAbajoDerecha!=null;
-    }
-
-     **/
 
 
     // Accesores para la posición

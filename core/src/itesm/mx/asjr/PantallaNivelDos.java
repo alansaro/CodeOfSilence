@@ -6,29 +6,23 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -38,7 +32,7 @@ import java.util.ArrayList;
 /**
  * Created by dc on 10/13/16.
  */
-public class PantallaMapa implements Screen
+public class PantallaNivelDos implements Screen
 {
 
     // Para el espacio en donde ocurre el juego
@@ -108,7 +102,7 @@ public class PantallaMapa implements Screen
 
 
     // Construtor por default.
-    public PantallaMapa(Juego juego) {  // Constructor
+    public PantallaNivelDos(Juego juego) {  // Constructor
         this.juego = juego;
     }
 
@@ -256,7 +250,7 @@ public class PantallaMapa implements Screen
             enemy.setEstadoMovimiento(Enemigo.EstadoMovimiento.MOV_ARRIBA);
         }
 
-     }
+    }
 
 
 
@@ -267,7 +261,7 @@ public class PantallaMapa implements Screen
         AssetManager manager = new AssetManager();
         manager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
         //manager.load("MarioCompleto.tmx", TiledMap.class);
-        manager.load("code_mapa2.tmx", TiledMap.class);
+        manager.load("codeofsilence_nivel2.tmx", TiledMap.class);
         manager.load("sprite_completo.png", Texture.class);
         //manager.load("MonitoSprite.png", Texture.class);
         manager.load("sprite_completo_enemigo.png", Texture.class);
@@ -278,7 +272,7 @@ public class PantallaMapa implements Screen
         manager.load("Jailhouse.mp3", Music.class);
 
         manager.finishLoading();
-        mapa = manager.get("code_mapa2.tmx");
+        mapa = manager.get("codeofsilence_nivel2.tmx");
         //texturaMario = manager.get("MonitoSprite.png");
         texturaPersonaje = manager.get("sprite_completo.png");
         texturaEnemigo = manager.get("sprite_completo_enemigo.png");
@@ -300,25 +294,25 @@ public class PantallaMapa implements Screen
         mario = new Personaje(texturaPersonaje);
 
         bowser = new Enemigo(texturaEnemigo);
-        bowser.setPosition(520,156);
+        bowser.setPosition(304,380);
         bowser1 = new Enemigo(texturaEnemigo);
-        bowser1.setPosition(640,156);
+        bowser1.setPosition(496,360);
         bowser2 = new Enemigo(texturaEnemigo);
-        bowser2.setPosition(520,440);
+        bowser2.setPosition(672, 360);
         bowser3 = new Enemigo(texturaEnemigo);
-        bowser3.setPosition(388,576);
+        bowser3.setPosition(860,460);
         bowser4 = new Enemigo(texturaEnemigo);
-        bowser4.setPosition(620,996);
+        bowser4.setPosition(1052, 228);
         bowser5 = new Enemigo(texturaEnemigo);
-        bowser5.setPosition(672,1084);
+        bowser5.setPosition(960,192);
         bowser6 = new Enemigo(texturaEnemigo);
-        bowser6.setPosition(896, 604);
+        bowser6.setPosition(900,672);
         bowser7 = new Enemigo(texturaEnemigo);
-        bowser7.setPosition(1152,864);
+        bowser7.setPosition(800,1112);
         bowser8 = new Enemigo(texturaEnemigo);
-        bowser8.setPosition(768,864);
+        bowser8.setPosition(252,940);
         bowser9 = new Enemigo(texturaEnemigo);
-        bowser9.setPosition(1152,604);
+        bowser9.setPosition(1180,972);
 
 
         enemigosList.add(bowser);
@@ -340,14 +334,14 @@ public class PantallaMapa implements Screen
         camara = new OrthographicCamera(ANCHO_CAMARA, ALTO_CAMARA);
         camara.position.set(ANCHO_CAMARA/2, ALTO_CAMARA /2,0);
         camara.update();
-        vista = new StretchViewport(ANCHO_CAMARA, PantallaMapa.ALTO_CAMARA,camara);
+        vista = new StretchViewport(ANCHO_CAMARA, PantallaNivelUno.ALTO_CAMARA,camara);
 
         //Cámara para HUD
 
-        camaraHUD = new OrthographicCamera(ANCHO_CAMARA, PantallaMapa.ALTO_CAMARA);
-        camaraHUD.position.set(ANCHO_CAMARA/2, PantallaMapa.ALTO_CAMARA /2, 0);
+        camaraHUD = new OrthographicCamera(ANCHO_CAMARA, PantallaNivelUno.ALTO_CAMARA);
+        camaraHUD.position.set(ANCHO_CAMARA/2, PantallaNivelUno.ALTO_CAMARA /2, 0);
         camaraHUD.update();
-        vistaHUD = new StretchViewport(ANCHO_CAMARA, PantallaMapa.ALTO_CAMARA,camaraHUD);
+        vistaHUD = new StretchViewport(ANCHO_CAMARA, PantallaNivelUno.ALTO_CAMARA,camaraHUD);
 
     }
 
@@ -357,6 +351,9 @@ public class PantallaMapa implements Screen
 
         // actualizar cámara (para recorrer el mundo completo)
         actualizarCamara();
+
+        // prueba looool:
+        // Gdx.app.log("render","x= "+mario.getX()+"y= "+mario.getY());
 
 
         // Actualización del personaje en el mapa
@@ -379,16 +376,12 @@ public class PantallaMapa implements Screen
         mario.render(batch);    // Dibuja el personaje
 
 
+
         // Dibuja a bowser si está vivo.
         for(Enemigo enemigo: enemigosList){
             if(enemigo.getVida()==true)
                 enemigo.render(batch);
         }
-
-
-        // Prueba de fuego
-        //Gdx.app.log("Render:","Posicion en x"+mario.getX());
-        //Gdx.app.log("Render:","Posicion en y"+mario.getY());
 
 
         batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
@@ -503,7 +496,7 @@ public class PantallaMapa implements Screen
             // La cámara se queda a media pantalla antes del fin del mundo  :)
             camara.position.set(ANCHO_MAPA-ANCHO_CAMARA/2, camara.position.y, 0);
         } else if ( posX<ANCHO_CAMARA/2 ) { // La primera mitad
-            camara.position.set(ANCHO_CAMARA/2, PantallaMapa.ALTO_CAMARA /2,0);
+            camara.position.set(ANCHO_CAMARA/2, PantallaNivelUno.ALTO_CAMARA /2,0);
         }
 
         // Actualiza la posición en Y
@@ -515,7 +508,7 @@ public class PantallaMapa implements Screen
             camara.position.set(camara.position.x ,ALTO_MAPA-ALTO_CAMARA/2, 0);
         } else if (posY <ALTO_MAPA-ALTO_CAMARA/2) {
             // La cámara se detiene cuando llega a la parte baja del mapa.
-            camara.position.set(ANCHO_CAMARA/2+32, PantallaMapa.ALTO_CAMARA/2,0);
+            camara.position.set(ANCHO_CAMARA/2+32, PantallaNivelUno.ALTO_CAMARA/2,0);
         }
 
         camara.update();

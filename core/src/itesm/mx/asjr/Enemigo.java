@@ -1,6 +1,5 @@
 package itesm.mx.asjr;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -16,8 +15,8 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 public class Enemigo
 {
 
-    public static final float VELOCIDAD_X = 4;      // Velocidad horizontal
-    public static final float VELOCIDAD_Y = -4;
+    public static final float VELOCIDAD_X = 2;      // Velocidad horizontal
+    //public static final float VELOCIDAD_Y = -2;
     private static final float V0 = 60.0f;          // Velocidad inicial al saltar
 
     // Sprite cuando no se mueve (QUIETO)
@@ -147,8 +146,6 @@ public class Enemigo
     {
         // Obtiene la primer capa del mapa (en este caso es la única)
         TiledMapTileLayer capa = (TiledMapTileLayer) mapa.getLayers().get(0);
-        //TiledMapTileLayer capa1 = (TiledMapTileLayer) mapa.getLayers().get(1);
-        //Ejecutar el movimiento vertical
         float nuevaY = sprite.getY();
         // ¿Quiere ir hacia arriba?
         if (estadoMovimiento == EstadoMovimiento.MOV_ARRIBA){
@@ -164,7 +161,7 @@ public class Enemigo
             }
             if (celdaArriba == null){
                 //Ejecutar movimiento horizontal
-                nuevaY+=4;
+                nuevaY+=2;
                 sprite.setY(nuevaY);
 
             }
@@ -194,7 +191,7 @@ public class Enemigo
 
     private void moverHorizontal(TiledMap mapa) {
         // Obtiene la primer capa del mapa (en este caso es la única)
-        TiledMapTileLayer capa = (TiledMapTileLayer) mapa.getLayers().get(0);
+        TiledMapTileLayer capa = (TiledMapTileLayer) mapa.getLayers().get(1);
         //TiledMapTileLayer capa1 = (TiledMapTileLayer) mapa.getLayers().get(1);
         // Ejecutar movimiento horizontal
         float nuevaX = sprite.getX();
@@ -214,7 +211,7 @@ public class Enemigo
                 // Ejecutar movimiento horizontal
                 nuevaX += VELOCIDAD_X;
                 // Prueba que no salga del mundo por la derecha
-                if (nuevaX <= PantallaMapa.ANCHO_MAPA - sprite.getWidth()) {
+                if (nuevaX <= PantallaNivelUno.ANCHO_MAPA - sprite.getWidth()) {
                     sprite.setX(nuevaX);
                     //probarCaida(mapa);
                 }

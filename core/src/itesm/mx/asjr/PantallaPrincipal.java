@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.audio.Music;
 
 public class PantallaPrincipal implements Screen
 {
@@ -93,7 +92,7 @@ public class PantallaPrincipal implements Screen
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("cliked", "Tap Sobre el boton jugar");
-				juego.setScreen(new PantallaMapa(juego));
+				juego.setScreen(new PantallaNivelUno(juego));
 			}
 		});
 
