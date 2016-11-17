@@ -77,6 +77,11 @@ public class Personaje
         sprite.setPosition(312, 72);    // Posición inicial
     }
 
+    public void setPosition(int x, int y){
+        sprite.setPosition(x, y);
+    }
+
+
     // Dibuja el personaje__________________________________________________________________________
     public void render(SpriteBatch batch) {
         //El método render hace que se genere la imagen del personaje,

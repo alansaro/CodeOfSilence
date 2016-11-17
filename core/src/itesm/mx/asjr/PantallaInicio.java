@@ -28,6 +28,7 @@ public class PantallaInicio implements Screen{
     private final AssetManager assetManager = new AssetManager();
 
     private Texture texturaFondoO;
+    private Texture texturaBoton;
 
 
 
@@ -39,6 +40,7 @@ public class PantallaInicio implements Screen{
     private void cargarTexturas(){
 
         assetManager.load("pantallaInicioFondo.jpg", Texture.class);
+        assetManager.load("forward.png", Texture.class);
 
 
 
@@ -46,6 +48,7 @@ public class PantallaInicio implements Screen{
 
 
         texturaFondoO = assetManager.get("pantallaInicioFondo.jpg");
+        texturaBoton = assetManager.get("forward.png");
 
     }
 
@@ -70,8 +73,9 @@ public class PantallaInicio implements Screen{
         escena.addActor(imgFondoO);
 
 
-        TextureRegionDrawable trdFondo = new TextureRegionDrawable( new TextureRegion(texturaFondoO));
+        TextureRegionDrawable trdFondo = new TextureRegionDrawable( new TextureRegion(texturaBoton));
         ImageButton btnFondo = new ImageButton(trdFondo);
+        btnFondo.setPosition(1600, 0);
         escena.addActor(btnFondo);
 
 

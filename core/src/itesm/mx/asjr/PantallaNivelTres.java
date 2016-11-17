@@ -68,6 +68,19 @@ public class PantallaNivelTres implements Screen
 
     // Personajes animado
     //private Texture texturaMario;
+    // Personajes animado
+    //private Texture texturaMario;
+    private Enemigo bowser;
+    private Enemigo bowser1;
+    private Enemigo bowser2;
+    private Enemigo bowser3;
+    private Enemigo bowser4;
+    private Enemigo bowser5;
+    private Enemigo bowser6;
+    private Enemigo bowser7;
+    private Enemigo bowser8;
+    private Enemigo bowser9;
+    private Texture texturaEnemigo;
     private Personaje mario;
 
     private Texture texturaPersonaje;
@@ -312,6 +325,8 @@ public class PantallaNivelTres implements Screen
 
         mapa = manager.get("codeofsilence_nivel3.tmx");
         texturaPersonaje = manager.get("sprite_completo.png");
+        texturaEnemigo = manager.get("sprite_completo_enemigo.png");
+
 
 
 
@@ -331,6 +346,39 @@ public class PantallaNivelTres implements Screen
 
         // Personaje y Enemigo
         mario = new Personaje(texturaPersonaje);
+        mario.setPosition(632,185);
+        bowser = new Enemigo(texturaEnemigo);
+        bowser.setPosition(304,380);
+        bowser1 = new Enemigo(texturaEnemigo);
+        bowser1.setPosition(496,360);
+        bowser2 = new Enemigo(texturaEnemigo);
+        bowser2.setPosition(672, 360);
+        bowser3 = new Enemigo(texturaEnemigo);
+        bowser3.setPosition(1112,500);
+        bowser4 = new Enemigo(texturaEnemigo);
+        bowser4.setPosition(1052, 228);
+        bowser5 = new Enemigo(texturaEnemigo);
+        bowser5.setPosition(960,192);
+        bowser6 = new Enemigo(texturaEnemigo);
+        bowser6.setPosition(900,672);
+        bowser7 = new Enemigo(texturaEnemigo);
+        bowser7.setPosition(800,1112);
+        bowser8 = new Enemigo(texturaEnemigo);
+        bowser8.setPosition(252,940);
+        bowser9 = new Enemigo(texturaEnemigo);
+        bowser9.setPosition(1180,972);
+
+
+        enemigosList.add(bowser);
+        enemigosList.add(bowser1);
+        enemigosList.add(bowser2);
+        enemigosList.add(bowser3);
+        enemigosList.add(bowser4);
+        enemigosList.add(bowser5);
+        enemigosList.add(bowser6);
+        enemigosList.add(bowser7);
+        enemigosList.add(bowser8);
+        enemigosList.add(bowser9);
 
     }
 
@@ -370,6 +418,9 @@ public class PantallaNivelTres implements Screen
     private void draw(){
 
         //El método render va a dibujar en pantalla lo que le digamos. Recibe un tiempo delta.
+
+        // prueba looool:
+        Gdx.app.log("render","x= "+mario.getX()+"y= "+mario.getY());
 
         // actualizar cámara (para recorrer el mundo completo)
         actualizarCamara();
@@ -426,6 +477,18 @@ public class PantallaNivelTres implements Screen
             }
         }
 
+        // MUEVE AL ENEMIGO
+        moverEnemigo(bowser,mario);
+        moverEnemigo(bowser1,mario);
+        moverEnemigo(bowser2,mario);
+        moverEnemigo(bowser3,mario);
+        moverEnemigo(bowser4,mario);
+        moverEnemigo(bowser5,mario);
+        moverEnemigo(bowser6,mario);
+        moverEnemigo(bowser7,mario);
+        moverEnemigo(bowser8,mario);
+        moverEnemigo(bowser9,mario);
+
         // Limpia los dos ArrayList
         while(bulletUseless.size()!=0){
             bulletList.remove(bulletUseless.get(0));
@@ -464,11 +527,13 @@ public class PantallaNivelTres implements Screen
             juego.setScreen(new PantallaGanar(juego));
         }
 
+        /**
         // El personaje ha ganado.
         if(muertes ==10){
             //Gdx.app.log("Render","Has ganado!");
             juego.setScreen(new PantallaGanar(juego));
         }
+         **/
 
 
         // Dependiendo de donde esté disparando el jugador, la bala se mueve en esa dirección
