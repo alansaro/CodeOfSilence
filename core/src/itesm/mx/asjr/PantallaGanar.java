@@ -30,33 +30,33 @@ public class PantallaGanar implements Screen {
     private final AssetManager assetManager = new AssetManager();
 
     private Texture texturaFondoA;
-    private Texture texturaBtnBack;
-    private Texture texturaHazGanado;
+    private Texture texturaBtnMenu;
+    private Texture texturaHazPerdido;
 
 
+    public PantallaGanar(Juego juego) {
+        this.juego = juego;
+    }
 
-    public PantallaGanar(Juego juego) {this.juego = juego;}
+    private void cargarTexturas() {
 
-    private void cargarTexturas(){
-
-        assetManager.load("FondoHazGanado.png", Texture.class);
+        assetManager.load("FondoHazPerdido.png", Texture.class);
         assetManager.load("MenuPrincipal.png", Texture.class);
-        assetManager.load("HazGanadoLetrero.png", Texture.class);
+        assetManager.load("winletrero.png", Texture.class);
 
 
         assetManager.finishLoading();
 
 
-        texturaFondoA = assetManager.get("FondoHazGanado.png");
-        texturaBtnBack = assetManager.get("MenuPrincipal.png");
-        texturaHazGanado = assetManager.get("HazGanadoLetrero.png");
+        texturaFondoA = assetManager.get("FondoHazPerdido.png");
+        texturaBtnMenu = assetManager.get("MenuPrincipal.png");
+        texturaHazPerdido = assetManager.get("winletrero.png");
 
     }
 
 
     @Override
-    public void show()
-    {
+    public void show() {
         cargarTexturas();
         escena = new Stage();
 
@@ -68,42 +68,36 @@ public class PantallaGanar implements Screen {
 
         Image imgFondoA = new Image(texturaFondoA);
 
-        float escalaX = ancho  / imgFondoA.getWidth();
+        float escalaX = ancho / imgFondoA.getWidth();
         float escalaY = alto / imgFondoA.getHeight();
         imgFondoA.setScale(escalaX, escalaY);
         escena.addActor(imgFondoA);
 
 
-
-        TextureRegionDrawable trdBtnBack = new TextureRegionDrawable( new TextureRegion(texturaBtnBack));
+        TextureRegionDrawable trdBtnBack = new TextureRegionDrawable(new TextureRegion(texturaBtnMenu));
         ImageButton btnBack = new ImageButton(trdBtnBack);
-        btnBack.setPosition(ancho/2 - btnBack.getWidth()/2, 0.2f*alto);
+        btnBack.setPosition(ancho / 2 - btnBack.getWidth() / 2, 0.2f * alto);
         escena.addActor(btnBack);
 
 
-        Image botonMenuPrincipal = new Image(texturaHazGanado);
-        botonMenuPrincipal.setPosition(ancho/2-botonMenuPrincipal.getWidth()/2, 0.4f*alto);
+        Image botonMenuPrincipal = new Image(texturaHazPerdido);
+        botonMenuPrincipal.setPosition(ancho / 2 - botonMenuPrincipal.getWidth() / 2, 0.4f * alto);
         escena.addActor(botonMenuPrincipal);
 
 
-        btnBack.addListener( new ClickListener(){
+        btnBack.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 //Regresar al menu pricipal
-                juego.setScreen( new PantallaPrincipal(juego) );
+                juego.setScreen(new PantallaPrincipal(juego));
             }
         });
-
-
-
-
 
     }
 
     @Override
-    public void render(float delta)
-    {
-        Gdx.gl.glClearColor(0,1,0,1);
+    public void render(float delta) {
+        Gdx.gl.glClearColor(0, 1, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         escena.draw();
 
@@ -135,7 +129,7 @@ public class PantallaGanar implements Screen {
     public void dispose() {
         texturaFondoA.dispose();
         escena.dispose();
-        texturaBtnBack.dispose();
-
+        texturaBtnMenu.dispose();
+        texturaHazPerdido.dispose();
     }
 }

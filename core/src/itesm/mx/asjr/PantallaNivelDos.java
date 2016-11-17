@@ -36,6 +36,8 @@ import java.util.ArrayList;
 public class PantallaNivelDos implements Screen
 {
 
+    State state = State.Running;
+
     // Para el espacio en donde ocurre el juego
     public static final int ANCHO_MAPA = 1280;
     public static final int ALTO_MAPA = 1216;
@@ -87,6 +89,11 @@ public class PantallaNivelDos implements Screen
     private TextButton.TextButtonStyle textButtonStyle;
     public static TextButton actionButton;
     private BitmapFont font;
+
+    // Pause Button
+    private TextButton.TextButtonStyle textButtonStyleP;
+    public static TextButton paseButton;
+    private BitmapFont fontP;
 
     // Para las balas
     ArrayList<Bullet> bulletList = new ArrayList<Bullet>();
@@ -180,6 +187,37 @@ public class PantallaNivelDos implements Screen
 
     }
 
+
+    private void createPauseButtion(){
+
+        // Crea las texturas.
+        Skin skin = new Skin();
+        skin.add("PauseUp", new Texture ("PausaIcon.png"));
+        fontP = new BitmapFont();
+
+        // Características del botón.
+        textButtonStyle = new TextButton.TextButtonStyle();
+        textButtonStyle.up = skin.getDrawable("PauseUp");
+        textButtonStyle.font = fontP;
+
+        // Crea un botón de acción con las texturas y las características creadas.
+        paseButton = new TextButton("Pause", textButtonStyle);
+        paseButton.setBounds(ANCHO_CAMARA/2-32, 0, 75 ,75); // Posición y tamaño
+
+        // Agrega el objeto a la pantalla.
+        escena.addActor(paseButton);
+
+        paseButton.addListener( new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.log("PaseButton", "Click sobre el botón de pausa");
+            }
+        });
+
+    }
+
+
+
     private void crearPad() {
 
         // Para cargar las texturas y convertirlas en Drawable
@@ -232,6 +270,7 @@ public class PantallaNivelDos implements Screen
         escena.setViewport(vistaHUD);
         crearPad();
         createActionButtion();
+        createPauseButtion();
     }
 
 
@@ -362,6 +401,26 @@ public class PantallaNivelDos implements Screen
 
     @Override
     public void render(float delta) {
+
+        switch (state){
+            case Running:
+                update();
+                break;
+            case Paused:
+                break;
+        }
+        draw();
+    }
+
+    private void update() {
+        Gdx.graphics.setContinuousRendering(false);
+    }
+
+    private void draw() {
+
+
+
+
         //El método render va a dibujar en pantalla lo que le digamos. Recibe un tiempo delta.
 
         // actualizar cámara (para recorrer el mundo completo)
@@ -516,8 +575,21 @@ public class PantallaNivelDos implements Screen
             }
         }
 
+        if(paseButton.getClickListener().isPressed()){
+            state = State.Paused;
 
+        }
+        else {
+            state = State.Running;
+        }
+
+        if(state != State.Paused){
+            Gdx.graphics.requestRendering();
+        }
     }
+
+
+
 
     // Actualiza la posición de la cámara para que el personaje esté en el centro,
     // excepto cuando está en la primera y última parte del mundo
@@ -592,5 +664,11 @@ public class PantallaNivelDos implements Screen
 
 
     }
+
+    public enum State{
+        Running,
+        Paused
+    }
+
 
 }

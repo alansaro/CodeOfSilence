@@ -36,6 +36,7 @@ import java.util.ArrayList;
 public class PantallaNivelTres implements Screen
 {
 
+    State state = State.Running;
 
     // Para el espacio en donde ocurre el juego
     public static final int ANCHO_MAPA = 1280;
@@ -78,6 +79,11 @@ public class PantallaNivelTres implements Screen
     private TextButton.TextButtonStyle textButtonStyle;
     public static TextButton actionButton;
     private BitmapFont font;
+
+    // Pause Button
+    private TextButton.TextButtonStyle textButtonStyleP;
+    public static TextButton paseButton;
+    private BitmapFont fontP;
 
     // Para las balas
     ArrayList<Bullet> bulletList = new ArrayList<Bullet>();
@@ -171,6 +177,36 @@ public class PantallaNivelTres implements Screen
 
     }
 
+
+    private void createPauseButtion(){
+
+        // Crea las texturas.
+        Skin skin = new Skin();
+        skin.add("PauseUp", new Texture ("PausaIcon.png"));
+        fontP = new BitmapFont();
+
+        // Características del botón.
+        textButtonStyle = new TextButton.TextButtonStyle();
+        textButtonStyle.up = skin.getDrawable("PauseUp");
+        textButtonStyle.font = fontP;
+
+        // Crea un botón de acción con las texturas y las características creadas.
+        paseButton = new TextButton("Pause", textButtonStyle);
+        paseButton.setBounds(ANCHO_CAMARA/2-32, 0, 75 ,75); // Posición y tamaño
+
+        // Agrega el objeto a la pantalla.
+        escena.addActor(paseButton);
+
+        paseButton.addListener( new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.log("PaseButton", "Click sobre el botón de pausa");
+            }
+        });
+
+    }
+    
+
     private void crearPad() {
 
         // Para cargar las texturas y convertirlas en Drawable
@@ -223,6 +259,7 @@ public class PantallaNivelTres implements Screen
         escena.setViewport(vistaHUD);
         crearPad();
         createActionButtion();
+        createPauseButtion();
     }
 
 
@@ -314,6 +351,24 @@ public class PantallaNivelTres implements Screen
 
     @Override
     public void render(float delta) {
+
+
+        switch (state){
+            case Running:
+                update();
+                break;
+            case Paused:
+                break;
+        }
+        draw();
+    }
+
+    private void update() {
+        Gdx.graphics.setContinuousRendering(false);
+    }
+
+    private void draw(){
+
         //El método render va a dibujar en pantalla lo que le digamos. Recibe un tiempo delta.
 
         // actualizar cámara (para recorrer el mundo completo)
@@ -406,13 +461,13 @@ public class PantallaNivelTres implements Screen
         }
         if(GANAR == true){
             GANAR = false;
-            juego.setScreen(new PantallaPrincipal(juego));
+            juego.setScreen(new PantallaGanar(juego));
         }
 
         // El personaje ha ganado.
         if(muertes ==10){
             //Gdx.app.log("Render","Has ganado!");
-            juego.setScreen(new PantallaNivelDos(juego));
+            juego.setScreen(new PantallaGanar(juego));
         }
 
 
@@ -453,6 +508,17 @@ public class PantallaNivelTres implements Screen
             }
         }
 
+        if(paseButton.getClickListener().isPressed()){
+            state = State.Paused;
+
+        }
+        else {
+            state = State.Running;
+        }
+
+        if(state != State.Paused){
+            Gdx.graphics.requestRendering();
+        }
 
     }
 
@@ -525,7 +591,10 @@ public class PantallaNivelTres implements Screen
         texturaPersonaje.dispose();
     }
 
-
+    public enum State{
+        Running,
+        Paused
+    }
 
 
 

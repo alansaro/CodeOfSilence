@@ -5,7 +5,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -15,10 +14,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /**
- * Created by AlanJoseph, dc on 06/09/2016.
+ * Created by AlanJoseph on 17/11/2016.
  */
-public class PantallaPerder implements Screen
-{
+
+public class PantallaInicio implements Screen{
+
 
 
     private final Juego juego;
@@ -27,27 +27,25 @@ public class PantallaPerder implements Screen
 
     private final AssetManager assetManager = new AssetManager();
 
-    private Texture texturaFondoA;
-    private Texture texturaBtnBack;
-    private Texture texturaHazPerdido;
+    private Texture texturaFondoO;
 
 
 
-    public PantallaPerder(Juego juego) {this.juego = juego;}
+
+    public PantallaInicio(Juego juego) {
+        this.juego = juego;
+    }
 
     private void cargarTexturas(){
 
-        assetManager.load("FondoHazPerdido.png", Texture.class);
-        assetManager.load("MenuPrincipal.png", Texture.class);
-        assetManager.load("hazperdido.png", Texture.class);
+        assetManager.load("pantallaInicioFondo.jpg", Texture.class);
+
 
 
         assetManager.finishLoading();
 
 
-        texturaFondoA = assetManager.get("FondoHazPerdido.png");
-        texturaBtnBack = assetManager.get("MenuPrincipal.png");
-        texturaHazPerdido = assetManager.get("hazperdido.png");
+        texturaFondoO = assetManager.get("pantallaInicioFondo.jpg");
 
     }
 
@@ -64,33 +62,28 @@ public class PantallaPerder implements Screen
 
         Gdx.input.setInputProcessor(escena);
 
-        Image imgFondoA = new Image(texturaFondoA);
+        Image imgFondoO = new Image(texturaFondoO);
 
-        float escalaX = ancho  / imgFondoA.getWidth();
-        float escalaY = alto / imgFondoA.getHeight();
-        imgFondoA.setScale(escalaX, escalaY);
-        escena.addActor(imgFondoA);
-
-
-
-        TextureRegionDrawable trdBtnBack = new TextureRegionDrawable( new TextureRegion(texturaBtnBack));
-        ImageButton btnBack = new ImageButton(trdBtnBack);
-        btnBack.setPosition(ancho/2 - btnBack.getWidth()/2, 0.2f*alto);
-        escena.addActor(btnBack);
+        float escalaX = ancho /imgFondoO.getWidth();
+        float escalaY = alto / imgFondoO.getHeight();
+        imgFondoO.setScale(escalaX, escalaY);
+        escena.addActor(imgFondoO);
 
 
-        Image botonMenuPrincipal = new Image(texturaHazPerdido);
-        botonMenuPrincipal.setPosition(ancho/2-botonMenuPrincipal.getWidth()/2, 0.4f*alto);
-        escena.addActor(botonMenuPrincipal);
+        TextureRegionDrawable trdFondo = new TextureRegionDrawable( new TextureRegion(texturaFondoO));
+        ImageButton btnFondo = new ImageButton(trdFondo);
+        escena.addActor(btnFondo);
 
 
-        btnBack.addListener( new ClickListener(){
+
+        btnFondo.addListener( new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 //Regresar al menu pricipal
                 juego.setScreen( new PantallaPrincipal(juego) );
             }
         });
+
 
     }
 
@@ -120,16 +113,15 @@ public class PantallaPerder implements Screen
 
     @Override
     public void hide() {
-
         dispose();
-
     }
 
     @Override
     public void dispose() {
-        texturaFondoA.dispose();
+        texturaFondoO.dispose();
         escena.dispose();
-        texturaBtnBack.dispose();
-        texturaHazPerdido.dispose();
+
     }
+
+
 }
