@@ -188,6 +188,11 @@ public class PantallaNivelUno implements Screen
 
     }
 
+    public void onBackPressed() {
+        // Do Here what ever you want do on back press;
+        juego.setScreen(new PantallaPrincipal(juego));
+    }
+
 
     private void createPauseButtion(){
 
