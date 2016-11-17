@@ -2,6 +2,7 @@ package itesm.mx.asjr;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -38,8 +39,6 @@ public class Personaje
 
     //Constructor del personaje, recibe una imagen con varios frames, (ver imagen marioSprite.png 128x64, cada tile 32x64)
     public Personaje(Texture textura) {
-
-        //this.sonidoMoneda = sonidoMoneda;
 
         // Lee la textura como región ______________________________________________________________
         TextureRegion texturaCompleta = new TextureRegion(textura);

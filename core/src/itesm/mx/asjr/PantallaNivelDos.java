@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -93,6 +94,7 @@ public class PantallaNivelDos implements Screen
 
     // Musica
     private Music musicaFondo;
+    private Sound sonidoDisparo;
 
     // Para una barra de vida
     private Texture healthBar, healthContainer;
@@ -271,8 +273,13 @@ public class PantallaNivelDos implements Screen
 
         // Carga música
         manager.load("Jailhouse.mp3", Music.class);
+        manager.load("mp5.mp3",Sound.class);
 
         manager.finishLoading();
+
+        //Audio
+        sonidoDisparo = manager.get("mp5.mp3");
+
         mapa = manager.get("codeofsilence_nivel2.tmx");
         //texturaMario = manager.get("MonitoSprite.png");
         texturaPersonaje = manager.get("sprite_completo.png");
@@ -387,7 +394,9 @@ public class PantallaNivelDos implements Screen
         // Si el personaje está agarrando vida
         if(agarrandoVida == true){
             agarrandoVida = false;
-            vida+=5;
+            if(vida<=25)
+                vida+=5;
+
         }
 
 
@@ -469,18 +478,26 @@ public class PantallaNivelDos implements Screen
             // Si el personaje se est moviendo a la derecha
             if(mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_DERECHA){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 0));
+                sonidoDisparo.play();
+                sonidoDisparo.pause();
             }
             //Si el personaje se está moviendo hacia la izquierda
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_IZQUIERDA) {
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (float)Math.PI));
+                sonidoDisparo.play();
+                sonidoDisparo.pause();
             }
             // Si el personaje se está moviendo hacia arriba
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ARRIBA) {
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 90 * (float) Math.PI / 180));
+                sonidoDisparo.play();
+                sonidoDisparo.pause();
             }
             // Si el personaje se está moviendo hacia abajo
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ABAJO){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), -(90 * (float) Math.PI / 180)));
+                sonidoDisparo.play();
+                sonidoDisparo.pause();
             }
         }
 
