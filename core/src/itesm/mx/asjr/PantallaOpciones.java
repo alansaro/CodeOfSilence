@@ -27,6 +27,7 @@ public class PantallaOpciones implements Screen
 
     private Texture texturaFondoO;
     private Texture texturaBtnBack;
+    private Texture texturaBtnMusicOff;
 
 
 
@@ -38,6 +39,7 @@ public class PantallaOpciones implements Screen
 
         assetManager.load("fondoOpciones.png", Texture.class);
         assetManager.load("back.png", Texture.class);
+        assetManager.load("nota_boton.png", Texture.class);
 
 
         assetManager.finishLoading();
@@ -45,6 +47,7 @@ public class PantallaOpciones implements Screen
 
         texturaFondoO = assetManager.get("fondoOpciones.png");
         texturaBtnBack = assetManager.get("back.png");
+        texturaBtnMusicOff = assetManager.get("nota_boton.png");
 
     }
 
@@ -72,6 +75,26 @@ public class PantallaOpciones implements Screen
         TextureRegionDrawable trdBtnBack = new TextureRegionDrawable( new TextureRegion(texturaBtnBack));
         ImageButton btnBack = new ImageButton(trdBtnBack);
         escena.addActor(btnBack);
+
+
+        // Para poder apagar la música del juego:
+        TextureRegionDrawable trdBtnMusicOff = new TextureRegionDrawable( new TextureRegion(texturaBtnMusicOff));
+        ImageButton btnMusicOff = new ImageButton(trdBtnMusicOff);
+        btnMusicOff.setBounds(915,58, 129,129);
+        escena.addActor(btnMusicOff);
+
+
+        // Para apagar la música durante el juego.
+        btnMusicOff.addListener( new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.log("Configuración", "no quiere musica");
+                // Apagar la música del juego.
+                    PantallaNivelUno.quiereMusica = false;
+                    PantallaNivelDos.quiereMusica = false;
+                    PantallaNivelTres.quiereMusica = false;
+            }
+        });
 
 
         btnBack.addListener( new ClickListener(){

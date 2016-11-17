@@ -44,6 +44,7 @@ public class PantallaNivelTres implements Screen
     public static final int ALTO_CAMARA = 304;
     public static boolean GANAR = false;
     public static boolean agarrandoVida = false;
+    public static boolean quiereMusica = true;
 
     // Cámara
     private OrthographicCamera camara;
@@ -284,8 +285,11 @@ public class PantallaNivelTres implements Screen
         // Audio
 
         musicaFondo = manager.get("Jailhouse.mp3");
-        musicaFondo.setLooping(true);
-        musicaFondo.play();
+
+        if(quiereMusica==true) {
+            musicaFondo.setLooping(true);
+            musicaFondo.play();
+        }
 
 
         // Personaje y Enemigo
@@ -358,7 +362,9 @@ public class PantallaNivelTres implements Screen
                 if(enemigo.getVida()==true) {
                     if(bill.estaPegando(enemigo)){
                         enemigo.setVida(false);
-                        sonidoMuriendo.play();
+                        if(quiereMusica==true) {
+                            sonidoMuriendo.play();
+                        }
                         muertes++;
                     }
                 }
@@ -416,26 +422,34 @@ public class PantallaNivelTres implements Screen
             // Si el personaje se est moviendo a la derecha
             if(mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_DERECHA){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 0));
-                sonidoDisparo.play();
-                sonidoDisparo.pause();
+                if(quiereMusica==true) {
+                    sonidoDisparo.play();
+                    sonidoDisparo.pause();
+                }
             }
             //Si el personaje se está moviendo hacia la izquierda
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_IZQUIERDA) {
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (float)Math.PI));
-                sonidoDisparo.play();
-                sonidoDisparo.pause();
+                if(quiereMusica==true) {
+                    sonidoDisparo.play();
+                    sonidoDisparo.pause();
+                }
             }
             // Si el personaje se está moviendo hacia arriba
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ARRIBA) {
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 90 * (float) Math.PI / 180));
-                sonidoDisparo.play();
-                sonidoDisparo.pause();
+                if(quiereMusica==true) {
+                    sonidoDisparo.play();
+                    sonidoDisparo.pause();
+                }
             }
             // Si el personaje se está moviendo hacia abajo
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ABAJO){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), -(90 * (float) Math.PI / 180)));
-                sonidoDisparo.play();
-                sonidoDisparo.pause();
+                if(quiereMusica==true) {
+                    sonidoDisparo.play();
+                    sonidoDisparo.pause();
+                }
             }
         }
 
