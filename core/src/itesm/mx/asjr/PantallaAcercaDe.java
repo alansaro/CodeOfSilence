@@ -37,14 +37,14 @@ public class PantallaAcercaDe implements Screen
 
     private void cargarTexturas(){
 
-        assetManager.load("fondoAcercade.jpeg", Texture.class);
+        assetManager.load("fondoAcercade.png", Texture.class);
         assetManager.load("back.png", Texture.class);
 
 
         assetManager.finishLoading();
 
 
-        texturaFondoA = assetManager.get("fondoAcercade.jpeg");
+        texturaFondoA = assetManager.get("fondoAcercade.png");
         texturaBtnBack = assetManager.get("back.png");
 
     }
