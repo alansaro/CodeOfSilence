@@ -269,7 +269,7 @@ public class PantallaNivelUno implements Screen
 
 
         // Carga música
-        manager.load("Jailhouse.mp3", Music.class);
+        manager.load("MusicaNivel.mp3", Music.class);
 
         manager.finishLoading();
         mapa = manager.get("code_mapa2.tmx");
@@ -285,7 +285,7 @@ public class PantallaNivelUno implements Screen
 
         // Audio
 
-        musicaFondo = manager.get("Jailhouse.mp3");
+        musicaFondo = manager.get("MusicaNivel.mp3");
         musicaFondo.setLooping(true);
         musicaFondo.play();
 

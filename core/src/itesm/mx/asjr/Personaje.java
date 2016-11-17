@@ -1,6 +1,7 @@
 package itesm.mx.asjr;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -142,6 +143,7 @@ public class Personaje
         }
 
         recolectarVida(mapa);
+        recolectarMorra(mapa);
 
     }
 
@@ -157,6 +159,21 @@ public class Personaje
             if ("vida".equals(tipo)) {
                 capa.setCell(x, y, capa.getCell(0, 3));
              }
+        }
+    }
+
+    private void recolectarMorra(TiledMap mapa) {
+        // Revisar si está sobre una moneda (pies)
+        TiledMapTileLayer capa = (TiledMapTileLayer)mapa.getLayers().get(1);
+        int x = (int)(sprite.getX()/32);
+        int y = (int)(sprite.getY()/32);
+        TiledMapTileLayer.Cell celda = capa.getCell(x,y);
+        if (celda!=null ) {
+            Object tipo = (String) celda.getTile().getProperties().get("tipo");
+            if ("morra".equals(tipo)) {
+                capa.setCell(x, y, capa.getCell(0, 3));
+                PantallaNivelTres.GANAR = true;
+            }
         }
     }
 

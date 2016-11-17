@@ -450,9 +450,9 @@ public class PantallaNivelDos implements Screen
         }
 
         // El personaje ha ganado.
-        if(muertes == 50){
+        if(muertes == 10){
             Gdx.app.log("Render","Has ganado!");
-            juego.setScreen(new PantallaPrincipal(juego));
+            juego.setScreen(new PantallaNivelTres(juego));
         }
 
 
@@ -506,9 +506,6 @@ public class PantallaNivelDos implements Screen
         } else if (posY >ALTO_MAPA-ALTO_CAMARA/2) {
             // La cámara se queda quieta antes del fin por arriba
             camara.position.set(camara.position.x ,ALTO_MAPA-ALTO_CAMARA/2, 0);
-        } else if (posY <ALTO_MAPA-ALTO_CAMARA/2) {
-            // La cámara se detiene cuando llega a la parte baja del mapa.
-            camara.position.set(ANCHO_CAMARA/2+32, PantallaNivelUno.ALTO_CAMARA/2,0);
         }
 
         camara.update();
