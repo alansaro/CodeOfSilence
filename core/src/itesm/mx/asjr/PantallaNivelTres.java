@@ -363,7 +363,7 @@ public class PantallaNivelTres implements Screen
         // Si el personaje está agarrando vida
         if(agarrandoVida == true){
             agarrandoVida = false;
-            vida++;
+            vida+=5;
         }
 
         // Dibuja el HUD

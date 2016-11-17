@@ -152,6 +152,9 @@ public class Personaje
             Object tipo = (String) celda.getTile().getProperties().get("tipo");
             if ("vida".equals(tipo)) {
                 capa.setCell(x, y, capa.getCell(0, 3));
+                PantallaNivelUno.agarrandoVida=true;
+                PantallaNivelDos.agarrandoVida=true;
+                PantallaNivelTres.agarrandoVida=true;
              }
         }
     }
