@@ -86,6 +86,7 @@ public class PantallaNivelTres implements Screen
     // Musica
     private Music musicaFondo;
     private Sound sonidoDisparo;
+    private Sound sonidoMuriendo;
 
     // Para una barra de vida
     private Texture healthBar, healthContainer;
@@ -263,11 +264,13 @@ public class PantallaNivelTres implements Screen
         // Carga música
         manager.load("Jailhouse.mp3", Music.class);
         manager.load("mp5.mp3", Sound.class);
+        manager.load("Dying.mp3", Sound.class);
 
         manager.finishLoading();
 
         // Audio
         sonidoDisparo = manager.get("mp5.mp3");
+        sonidoMuriendo = manager.get("Dying.mp3");
 
         mapa = manager.get("codeofsilence_nivel3.tmx");
         texturaPersonaje = manager.get("sprite_completo.png");
@@ -355,6 +358,7 @@ public class PantallaNivelTres implements Screen
                 if(enemigo.getVida()==true) {
                     if(bill.estaPegando(enemigo)){
                         enemigo.setVida(false);
+                        sonidoMuriendo.play();
                         muertes++;
                     }
                 }

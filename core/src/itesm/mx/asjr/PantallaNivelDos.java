@@ -95,6 +95,7 @@ public class PantallaNivelDos implements Screen
     // Musica
     private Music musicaFondo;
     private Sound sonidoDisparo;
+    private Sound sonidoMuriendo;
 
     // Para una barra de vida
     private Texture healthBar, healthContainer;
@@ -274,11 +275,14 @@ public class PantallaNivelDos implements Screen
         // Carga música
         manager.load("Jailhouse.mp3", Music.class);
         manager.load("mp5.mp3",Sound.class);
+        manager.load("Dying.mp3",Sound.class);
 
         manager.finishLoading();
 
         //Audio
         sonidoDisparo = manager.get("mp5.mp3");
+        sonidoMuriendo = manager.get("Dying.mp3");
+
 
         mapa = manager.get("codeofsilence_nivel2.tmx");
         //texturaMario = manager.get("MonitoSprite.png");
@@ -416,11 +420,9 @@ public class PantallaNivelDos implements Screen
                 if(enemigo.getVida()==true) {
                     //if (((bill.getHitbox().getX() - enemigo.getX()) >= 32) && ((bill.getHitbox().getY() - enemigo.getY()) <= 32)) {
                     if(bill.estaPegando(enemigo)){
-                        Gdx.app.log("Colisión con bauser", "le pegaste a "+enemigo);
                         enemigo.setVida(false);
-                        //enemigosList.remove(enemigo);
+                        sonidoMuriendo.play();
                         muertes++;
-                        Gdx.app.log("colisión con bauser",+muertes+".");
                     }
                 }
             }
