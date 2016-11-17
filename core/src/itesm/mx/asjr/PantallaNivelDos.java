@@ -40,6 +40,7 @@ public class PantallaNivelDos implements Screen
     public static final int ALTO_MAPA = 1216;
     public static final int ANCHO_CAMARA = 528;
     public static final int ALTO_CAMARA = 304;
+    public static boolean agarrandoVida = false;
 
     // Cámara
     private OrthographicCamera camara;
@@ -381,6 +382,12 @@ public class PantallaNivelDos implements Screen
         for(Enemigo enemigo: enemigosList){
             if(enemigo.getVida()==true)
                 enemigo.render(batch);
+        }
+
+        // Si el personaje está agarrando vida
+        if(agarrandoVida == true){
+            agarrandoVida = false;
+            vida++;
         }
 
 

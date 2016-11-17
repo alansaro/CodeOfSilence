@@ -42,6 +42,7 @@ public class PantallaNivelTres implements Screen
     public static final int ANCHO_CAMARA = 528;
     public static final int ALTO_CAMARA = 304;
     public static boolean GANAR = false;
+    public static boolean agarrandoVida = false;
 
     // Cámara
     private OrthographicCamera camara;
@@ -65,19 +66,6 @@ public class PantallaNivelTres implements Screen
     // Personajes animado
     //private Texture texturaMario;
     private Personaje mario;
-    /**
-    private Enemigo bowser;
-    private Enemigo bowser1;
-    private Enemigo bowser2;
-    private Enemigo bowser3;
-    private Enemigo bowser4;
-    private Enemigo bowser5;
-    private Enemigo bowser6;
-    private Enemigo bowser7;
-    private Enemigo bowser8;
-    private Enemigo bowser9;
-    private Texture texturaEnemigo;
-    **/
 
     private Texture texturaPersonaje;
 
@@ -264,10 +252,8 @@ public class PantallaNivelTres implements Screen
 
         AssetManager manager = new AssetManager();
         manager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
-        //manager.load("MarioCompleto.tmx", TiledMap.class);
         manager.load("codeofsilence_nivel3.tmx", TiledMap.class);
         manager.load("sprite_completo.png", Texture.class);
-        //manager.load("MonitoSprite.png", Texture.class);
         manager.load("sprite_completo_enemigo.png", Texture.class);
 
 
@@ -277,9 +263,7 @@ public class PantallaNivelTres implements Screen
 
         manager.finishLoading();
         mapa = manager.get("codeofsilence_nivel3.tmx");
-        //texturaMario = manager.get("MonitoSprite.png");
         texturaPersonaje = manager.get("sprite_completo.png");
-        //texturaEnemigo = manager.get("sprite_completo_enemigo.png");
 
 
 
@@ -296,41 +280,6 @@ public class PantallaNivelTres implements Screen
 
         // Personaje y Enemigo
         mario = new Personaje(texturaPersonaje);
-/**
-        bowser = new Enemigo(texturaEnemigo);
-        bowser.setPosition(520,156);
-        bowser1 = new Enemigo(texturaEnemigo);
-        bowser1.setPosition(640,156);
-        bowser2 = new Enemigo(texturaEnemigo);
-        bowser2.setPosition(520,440);
-        bowser3 = new Enemigo(texturaEnemigo);
-        bowser3.setPosition(388,576);
-        bowser4 = new Enemigo(texturaEnemigo);
-        bowser4.setPosition(620,996);
-        bowser5 = new Enemigo(texturaEnemigo);
-        bowser5.setPosition(672,1084);
-        bowser6 = new Enemigo(texturaEnemigo);
-        bowser6.setPosition(896, 604);
-        bowser7 = new Enemigo(texturaEnemigo);
-        bowser7.setPosition(1152,864);
-        bowser8 = new Enemigo(texturaEnemigo);
-        bowser8.setPosition(768,864);
-        bowser9 = new Enemigo(texturaEnemigo);
-        bowser9.setPosition(1152,604);
- **/
-        /**
-        enemigosList.add(bowser);
-        enemigosList.add(bowser1);
-        enemigosList.add(bowser2);
-        enemigosList.add(bowser3);
-        enemigosList.add(bowser4);
-        enemigosList.add(bowser5);
-        enemigosList.add(bowser6);
-        enemigosList.add(bowser7);
-        enemigosList.add(bowser8);
-        enemigosList.add(bowser9);
-        **/
-
 
     }
 
@@ -383,12 +332,6 @@ public class PantallaNivelTres implements Screen
                 enemigo.render(batch);
         }
 
-
-        // Prueba de fuego
-        //Gdx.app.log("Render:","Posicion en x"+mario.getX());
-        //Gdx.app.log("Render:","Posicion en y"+mario.getY());
-
-
         batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
         batch.draw(healthBar, mario.getX(), mario.getY()+34 ,vida,4);
         for(Bullet bill : bulletList){
@@ -411,24 +354,16 @@ public class PantallaNivelTres implements Screen
             }
         }
 
-        /**
-        // MUEVE AL ENEMIGO
-        moverEnemigo(bowser,mario);
-        moverEnemigo(bowser1,mario);
-        moverEnemigo(bowser2,mario);
-        moverEnemigo(bowser3,mario);
-        moverEnemigo(bowser4,mario);
-        moverEnemigo(bowser5,mario);
-        moverEnemigo(bowser6,mario);
-        moverEnemigo(bowser7,mario);
-        moverEnemigo(bowser8,mario);
-        moverEnemigo(bowser9,mario);
-         **/
-
         // Limpia los dos ArrayList
         while(bulletUseless.size()!=0){
             bulletList.remove(bulletUseless.get(0));
             bulletUseless.remove(0);
+        }
+
+        // Si el personaje está agarrando vida
+        if(agarrandoVida == true){
+            agarrandoVida = false;
+            vida++;
         }
 
         // Dibuja el HUD
@@ -547,14 +482,11 @@ public class PantallaNivelTres implements Screen
 
     @Override
     public void dispose() {
-        // texturaMario.dispose();
         mapa.dispose();
         escena.dispose();
         musicaFondo.dispose();
         healthContainer.dispose();
         healthBar.dispose();
-        // texturaMario.dispose();
-        //texturaEnemigo.dispose();
         texturaPersonaje.dispose();
     }
 

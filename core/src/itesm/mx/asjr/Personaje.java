@@ -18,12 +18,8 @@ public class Personaje
 {
     public static final float VELOCIDAD_X = 4;      // Velocidad horizontal
     public static final float VELOCIDAD_Y = -4;
-    //private static final float V0 = 60.0f;          // Velocidad inicial al saltar
-    //private static final float G = 9.81f;           // Gravedad
-    //private static final float G_2 = G/2f;          // Mitad de la gravedad
 
     private Sprite sprite;  // Sprite cuando no se mueve (QUIETO)
-    //private Sound sonidoMoneda;     // Efecto cuando colecta una moneda
 
     // Animación
     private Animation caminando;    // Caminando
@@ -32,8 +28,6 @@ public class Personaje
     private float timerAnimacion;   // tiempo para calcular el frame
 
     private EstadoMovimiento estadoMovimiento=EstadoMovimiento.QUIETO;
-    //private EstadoAccion estadoAccion = EstadoAccion.QUIETO;
-    //private EstadoSalto estadoSalto=EstadoSalto.CAIDA_LIBRE;
     private float tiempoSalto;  // Tiempo total en el aire
     private float yInicial; // Donde inicia el salto
     private float tiempoVuelo;  // Tiempo que lleva en el aire

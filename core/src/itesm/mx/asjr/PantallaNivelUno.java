@@ -40,6 +40,7 @@ public class PantallaNivelUno implements Screen
     public static final int ALTO_MAPA = 1216;
     public static final int ANCHO_CAMARA = 528;
     public static final int ALTO_CAMARA = 304;
+    public static boolean agarrandoVida = false;
 
     // Cámara
     private OrthographicCamera camara;
@@ -379,10 +380,11 @@ public class PantallaNivelUno implements Screen
                 enemigo.render(batch);
         }
 
-
-        // Prueba de fuego
-        //Gdx.app.log("Render:","Posicion en x"+mario.getX());
-        //Gdx.app.log("Render:","Posicion en y"+mario.getY());
+        // Si el personaje está agarrando vida
+        if(agarrandoVida == true){
+            agarrandoVida = false;
+            vida++;
+        }
 
 
         batch.draw(healthContainer, mario.getX(), mario.getY()+33, 32, 5);//Dibuja la barra de vida.
