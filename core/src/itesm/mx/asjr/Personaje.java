@@ -29,6 +29,7 @@ public class Personaje
     private float timerAnimacion;   // tiempo para calcular el frame
 
     private EstadoMovimiento estadoMovimiento=EstadoMovimiento.QUIETO;
+    private EstadoMovimiento estadoAnterior = EstadoMovimiento.QUIETO;
     private float tiempoSalto;  // Tiempo total en el aire
     private float yInicial; // Donde inicia el salto
     private float tiempoVuelo;  // Tiempo que lleva en el aire
@@ -79,6 +80,15 @@ public class Personaje
 
     public void setPosition(int x, int y){
         sprite.setPosition(x, y);
+    }
+
+    // Guardar el estado anterior
+    public void setEstadoAnterior(EstadoMovimiento movimiento){
+        this.estadoAnterior = movimiento;
+    }
+
+    public EstadoMovimiento getEstadoAnterior(){
+        return this.estadoAnterior;
     }
 
 

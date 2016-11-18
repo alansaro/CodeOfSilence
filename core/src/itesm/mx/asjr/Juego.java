@@ -1,6 +1,7 @@
 package itesm.mx.asjr;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.utils.Timer;
 
 /**
  * ADMINISTRADOR DE PANTALLAS
@@ -17,5 +18,6 @@ public class Juego extends Game
 
 
     }
+
 
 }
