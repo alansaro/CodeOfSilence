@@ -541,7 +541,8 @@ public class PantallaNivelTres implements Screen
 
             // Si el personaje se est moviendo a la derecha
             if(mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_DERECHA){
-                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 0));
+                mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_DERECHA);
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 0, Personaje.EstadoMovimiento.MOV_DERECHA));
                 if(quiereMusica==true) {
                     sonidoDisparo.play();
                     sonidoDisparo.pause();
@@ -549,7 +550,8 @@ public class PantallaNivelTres implements Screen
             }
             //Si el personaje se está moviendo hacia la izquierda
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_IZQUIERDA) {
-                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (float)Math.PI));
+                mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_IZQUIERDA);
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (float)Math.PI,Personaje.EstadoMovimiento.MOV_IZQUIERDA));
                 if(quiereMusica==true) {
                     sonidoDisparo.play();
                     sonidoDisparo.pause();
@@ -557,20 +559,58 @@ public class PantallaNivelTres implements Screen
             }
             // Si el personaje se está moviendo hacia arriba
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ARRIBA) {
-                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 90 * (float) Math.PI / 180));
-                if(quiereMusica==true) {
+                mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_ARRIBA);
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (90 * (float) Math.PI / 180), Personaje.EstadoMovimiento.MOV_ARRIBA));
+                if(quiereMusica == true) {
                     sonidoDisparo.play();
                     sonidoDisparo.pause();
                 }
             }
             // Si el personaje se está moviendo hacia abajo
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ABAJO){
-                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), -(90 * (float) Math.PI / 180)));
+                mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_ABAJO);
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), -(90 * (float) Math.PI / 180), Personaje.EstadoMovimiento.MOV_ABAJO));
                 if(quiereMusica==true) {
                     sonidoDisparo.play();
                     sonidoDisparo.pause();
                 }
             }
+
+            // Con el estado anterior:
+            if(mario.getEstadoAnterior() == Personaje.EstadoMovimiento.MOV_DERECHA){
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 0, Personaje.EstadoMovimiento.MOV_DERECHA));
+                if(quiereMusica==true) {
+                    sonidoDisparo.play();
+                    sonidoDisparo.pause();
+                }
+            }
+
+            else if(mario.getEstadoAnterior() == Personaje.EstadoMovimiento.MOV_IZQUIERDA){
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (float)Math.PI,Personaje.EstadoMovimiento.MOV_IZQUIERDA));
+                if(quiereMusica==true) {
+                    sonidoDisparo.play();
+                    sonidoDisparo.pause();
+                }
+            }
+
+            else if(mario.getEstadoAnterior() == Personaje.EstadoMovimiento.MOV_ARRIBA){
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (90 * (float) Math.PI / 180), Personaje.EstadoMovimiento.MOV_ARRIBA));
+                if(quiereMusica == true) {
+                    sonidoDisparo.play();
+                    sonidoDisparo.pause();
+                }
+            }
+
+            else if(mario.getEstadoAnterior() == Personaje.EstadoMovimiento.MOV_ABAJO){
+                bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), -(90 * (float) Math.PI / 180), Personaje.EstadoMovimiento.MOV_ABAJO));
+                if(quiereMusica==true) {
+                    sonidoDisparo.play();
+                    sonidoDisparo.pause();
+                }
+            }
+
+
+
         }
 
         if(paseButton.getClickListener().isPressed()){

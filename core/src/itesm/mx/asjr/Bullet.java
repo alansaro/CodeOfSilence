@@ -15,6 +15,7 @@ public class Bullet {
     float a, time;
     int speed; //Frames per second.
     Texture texturaBala;
+    Texture texturaBalaArriba;
 
 
 
@@ -24,6 +25,14 @@ public class Bullet {
         hitbox = new Rectangle(x,y,10,10);
         texturaBala = new Texture("bala.png");
         a = angle;
+    }
+
+    public Bullet(int x, int y, float angle, Personaje.EstadoMovimiento estadoMovimiento){
+        time = 2;
+        speed = 2000;
+        hitbox = new Rectangle(x,y,10,10);
+        texturaBala =  new Texture("bala.png");
+
     }
 
     public Rectangle getHitbox(){
