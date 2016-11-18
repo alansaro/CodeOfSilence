@@ -92,7 +92,7 @@ public class PantallaPrincipal implements Screen
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				Gdx.app.log("cliked", "Tap Sobre el boton jugar");
-				juego.setScreen(new PantallaNivelUno(juego));
+				juego.setScreen(new PantallaTransicionUno(juego));
 			}
 		});
 

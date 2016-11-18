@@ -527,7 +527,7 @@ public class PantallaNivelUno implements Screen
         // El personaje ha ganado.
         if(muertes ==10){
             //Gdx.app.log("Render","Has ganado!");
-            juego.setScreen(new PantallaNivelDos(juego));
+            juego.setScreen(new PantallaTransicionDos(juego));
         }
 
 
