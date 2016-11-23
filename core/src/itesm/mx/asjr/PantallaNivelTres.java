@@ -176,7 +176,7 @@ public class PantallaNivelTres implements Screen
 
         // Crea un botón de acción con las texturas y las características creadas.
         actionButton = new TextButton("Disparar", textButtonStyle);
-        actionButton.setBounds(400, 0, 100 ,100); // Posición y tamaño
+        actionButton.setBounds(ANCHO_CAMARA-100, 0, 100 ,100); // Posición y tamaño
 
         // Agrega el objeto a la pantalla.
         escena.addActor(actionButton);
@@ -420,7 +420,7 @@ public class PantallaNivelTres implements Screen
         //El método render va a dibujar en pantalla lo que le digamos. Recibe un tiempo delta.
 
         // prueba looool:
-        Gdx.app.log("render","x= "+mario.getX()+"y= "+mario.getY());
+        //Gdx.app.log("render","x= "+mario.getX()+"y= "+mario.getY());
 
         // actualizar cámara (para recorrer el mundo completo)
         actualizarCamara();
