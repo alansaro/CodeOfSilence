@@ -173,7 +173,7 @@ public class PantallaNivelDos implements Screen
 
         // Crea un botón de acción con las texturas y las características creadas.
         actionButton = new TextButton("Disparar", textButtonStyle);
-        actionButton.setBounds(400, 0, 100 ,100); // Posición y tamaño
+        actionButton.setBounds(ANCHO_CAMARA-100, 0, 100 ,100); // Posición y tamaño
 
         // Agrega el objeto a la pantalla.
         escena.addActor(actionButton);
@@ -346,7 +346,7 @@ public class PantallaNivelDos implements Screen
 
         // Personaje y Enemigo
         mario = new Personaje(texturaPersonaje);
-
+        mario.setPosition(576,56);
         bowser = new Enemigo(texturaEnemigo);
         bowser.setPosition(304,380);
         bowser1 = new Enemigo(texturaEnemigo);
@@ -533,8 +533,7 @@ public class PantallaNivelDos implements Screen
 
         // El personaje ha ganado.
         if(muertes == 10){
-            Gdx.app.log("Render","Has ganado!");
-            juego.setScreen(new PantallaNivelTres(juego));
+            juego.setScreen(new PantallaTransicionTres(juego));
         }
 
 

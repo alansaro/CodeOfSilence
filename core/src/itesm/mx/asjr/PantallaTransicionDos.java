@@ -39,7 +39,7 @@ public class PantallaTransicionDos implements Screen
     private void cargarTexturas(){
 
         // Aquí se carga el fondo.
-        assetManager.load("FondoTransicionDos.jpg", Texture.class);
+        assetManager.load("FondoTransicionUno.jpg", Texture.class);
         //assetManager.load("MenuPrincipal.png", Texture.class);
         //assetManager.load("hazperdido.png", Texture.class);
 
@@ -59,7 +59,7 @@ public class PantallaTransicionDos implements Screen
         float escalaY = alto/imgFondo.getHeight();
         imgFondo.setScale(escalaX, escalaY);
         // Añadira la pantalla:
-        escena.addActor(imgFondo);
+        //escena.addActor(imgFondo);
 
 
     }

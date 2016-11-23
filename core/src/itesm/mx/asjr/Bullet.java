@@ -19,6 +19,7 @@ public class Bullet {
 
 
 
+    /***
     public Bullet(int x, int y, float angle){
         time = 2;
         speed = 2000;
@@ -26,12 +27,14 @@ public class Bullet {
         texturaBala = new Texture("bala.png");
         a = angle;
     }
+     **/
 
     public Bullet(int x, int y, float angle, Personaje.EstadoMovimiento estadoMovimiento){
         time = 2;
         speed = 2000;
         hitbox = new Rectangle(x,y,10,10);
         texturaBala =  new Texture("bala.png");
+        a = angle;
 
     }
 

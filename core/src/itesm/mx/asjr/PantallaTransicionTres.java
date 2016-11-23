@@ -18,7 +18,7 @@ import com.badlogic.gdx.utils.Timer;
 /**
  * Created by AlanJoseph, dc on 06/09/2016.
  */
-public class PantallaTransicionUno implements Screen
+public class PantallaTransicionTres implements Screen
 {
 
 
@@ -34,12 +34,12 @@ public class PantallaTransicionUno implements Screen
 
 
 
-    public PantallaTransicionUno(Juego juego) {this.juego = juego;}
+    public PantallaTransicionTres(Juego juego) {this.juego = juego;}
 
     private void cargarTexturas(){
 
         // Aquí se carga el fondo.
-        assetManager.load("FondoTransicionUno.jpg", Texture.class);
+        assetManager.load("FondoTransicionDos.jpg", Texture.class);
         //assetManager.load("MenuPrincipal.png", Texture.class);
         //assetManager.load("hazperdido.png", Texture.class);
 
@@ -51,7 +51,7 @@ public class PantallaTransicionUno implements Screen
         float alto = Gdx.graphics.getHeight();
 
         // Fondo:
-        texturaFondo = assetManager.get("FondoTransicionUno.jpg");
+        texturaFondo = assetManager.get("FondoTransicionDos.jpg");
         Image imgFondo = new Image(texturaFondo);
 
         // Escalar:
@@ -85,16 +85,16 @@ public class PantallaTransicionUno implements Screen
         escena.addActor(imgFondoA);
 
         /***
-        // Botones
-        TextureRegionDrawable trdBtnBack = new TextureRegionDrawable( new TextureRegion(texturaBtnBack));
-        ImageButton btnBack = new ImageButton(trdBtnBack);
-        btnBack.setPosition(ancho/2 - btnBack.getWidth()/2, 0.2f*alto);
-        escena.addActor(btnBack);
+         // Botones
+         TextureRegionDrawable trdBtnBack = new TextureRegionDrawable( new TextureRegion(texturaBtnBack));
+         ImageButton btnBack = new ImageButton(trdBtnBack);
+         btnBack.setPosition(ancho/2 - btnBack.getWidth()/2, 0.2f*alto);
+         escena.addActor(btnBack);
 
 
-        Image botonMenuPrincipal = new Image(texturaHazPerdido);
-        botonMenuPrincipal.setPosition(ancho/2-botonMenuPrincipal.getWidth()/2, 0.4f*alto);
-        escena.addActor(botonMenuPrincipal);
+         Image botonMenuPrincipal = new Image(texturaHazPerdido);
+         botonMenuPrincipal.setPosition(ancho/2-botonMenuPrincipal.getWidth()/2, 0.4f*alto);
+         escena.addActor(botonMenuPrincipal);
          **/
 
 
@@ -104,7 +104,7 @@ public class PantallaTransicionUno implements Screen
         Timer.schedule(new Timer.Task(){
             @Override
             public void run(){
-                juego.setScreen(new PantallaNivelUno(juego));
+                juego.setScreen(new PantallaNivelTres(juego));
             }
         }, delay);
 

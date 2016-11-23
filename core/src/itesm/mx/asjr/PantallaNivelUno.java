@@ -29,6 +29,11 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.util.ArrayList;
 
+import static itesm.mx.asjr.Personaje.EstadoMovimiento.MOV_ABAJO;
+import static itesm.mx.asjr.Personaje.EstadoMovimiento.MOV_ARRIBA;
+import static itesm.mx.asjr.Personaje.EstadoMovimiento.MOV_DERECHA;
+import static itesm.mx.asjr.Personaje.EstadoMovimiento.MOV_IZQUIERDA;
+
 
 /**
  * Created by dc on 10/13/16.
@@ -174,7 +179,7 @@ public class PantallaNivelUno implements Screen
 
         // Crea un botón de acción con las texturas y las características creadas.
         actionButton = new TextButton("Disparar", textButtonStyle);
-        actionButton.setBounds(400, 0, 100 ,100); // Posición y tamaño
+        actionButton.setBounds(ANCHO_CAMARA-100, 0, 100 ,100); // Posición y tamaño
 
         // Agrega el objeto a la pantalla.
         escena.addActor(actionButton);
@@ -245,13 +250,21 @@ public class PantallaNivelUno implements Screen
 
 
                     if (p.getKnobPercentX() > 0 && p.getKnobPercentY()<.25 && p.getKnobPercentY()>-.25) {    //Derecha
-                        mario.setEstadoMovimiento(Personaje.EstadoMovimiento.MOV_DERECHA);
+                        mario.setEstadoMovimiento(MOV_DERECHA);
+                        mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_DERECHA);
+
                     } else if (p.getKnobPercentX() < 0 && p.getKnobPercentY()<.25 && p.getKnobPercentY()>-.25) { // Izquierda
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.MOV_IZQUIERDA);
+                        mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_IZQUIERDA);
+
                     } else if (p.getKnobPercentY() > .25 ) { //Arriba
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.MOV_ARRIBA);
+                        mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_ARRIBA);
+
                     }else if (p.getKnobPercentY() < -.1) { //Abajo
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.MOV_ABAJO);
+                        mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_ABAJO);
+
                     } else if (p.getKnobPercentX() == 0){    // Nada
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.QUIETO);
                     }
@@ -536,7 +549,6 @@ public class PantallaNivelUno implements Screen
 
             // Si el personaje se est moviendo a la derecha
             if(mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_DERECHA){
-                mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_DERECHA);
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), 0, Personaje.EstadoMovimiento.MOV_DERECHA));
                 if(quiereMusica==true) {
                     sonidoDisparo.play();
@@ -545,7 +557,7 @@ public class PantallaNivelUno implements Screen
             }
             //Si el personaje se está moviendo hacia la izquierda
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_IZQUIERDA) {
-                mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_IZQUIERDA);
+                //mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_IZQUIERDA);
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (float)Math.PI,Personaje.EstadoMovimiento.MOV_IZQUIERDA));
                 if(quiereMusica==true) {
                     sonidoDisparo.play();
@@ -554,7 +566,7 @@ public class PantallaNivelUno implements Screen
             }
             // Si el personaje se está moviendo hacia arriba
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ARRIBA) {
-                mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_ARRIBA);
+                //mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_ARRIBA);
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (90 * (float) Math.PI / 180), Personaje.EstadoMovimiento.MOV_ARRIBA));
                 if(quiereMusica == true) {
                     sonidoDisparo.play();
@@ -563,7 +575,7 @@ public class PantallaNivelUno implements Screen
             }
             // Si el personaje se está moviendo hacia abajo
             else if (mario.getEstadoMovimiento() == Personaje.EstadoMovimiento.MOV_ABAJO){
-                mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_ABAJO);
+                //mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_ABAJO);
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), -(90 * (float) Math.PI / 180), Personaje.EstadoMovimiento.MOV_ABAJO));
                 if(quiereMusica==true) {
                     sonidoDisparo.play();
@@ -603,7 +615,6 @@ public class PantallaNivelUno implements Screen
                     sonidoDisparo.pause();
                 }
             }
-
 
 
         }
