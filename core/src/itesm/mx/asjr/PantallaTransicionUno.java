@@ -28,9 +28,9 @@ public class PantallaTransicionUno implements Screen
 
     private final AssetManager assetManager = new AssetManager();
 
-    private Texture texturaFondoA;
-    private Texture texturaBtnBack;
-    private Texture texturaHazPerdido;
+    private Texture texturaFondo;
+    //private Texture texturaBtnBack;
+    //private Texture texturaHazPerdido;
 
 
 
@@ -39,17 +39,28 @@ public class PantallaTransicionUno implements Screen
     private void cargarTexturas(){
 
         // Aquí se carga el fondo.
-        assetManager.load("FondoHazPerdido.png", Texture.class);
-        assetManager.load("MenuPrincipal.png", Texture.class);
-        assetManager.load("hazperdido.png", Texture.class);
+        assetManager.load("FondoTransicionUno.jpg", Texture.class);
+        //assetManager.load("MenuPrincipal.png", Texture.class);
+        //assetManager.load("hazperdido.png", Texture.class);
 
 
         assetManager.finishLoading();
 
+        //Calcular ancho y alto
+        float ancho = Gdx.graphics.getWidth();
+        float alto = Gdx.graphics.getHeight();
 
-        texturaFondoA = assetManager.get("FondoHazPerdido.png");
-        texturaBtnBack = assetManager.get("MenuPrincipal.png");
-        texturaHazPerdido = assetManager.get("hazperdido.png");
+        // Fondo:
+        texturaFondo = assetManager.get("FondoTransicionUno.jpg");
+        Image imgFondo = new Image(texturaFondo);
+
+        // Escalar:
+        float escalaX = ancho/imgFondo.getWidth();
+        float escalaY = alto/imgFondo.getHeight();
+        imgFondo.setScale(escalaX, escalaY);
+        // Añadira la pantalla:
+        //escena.addActor(imgFondo);
+
 
     }
 
@@ -66,15 +77,15 @@ public class PantallaTransicionUno implements Screen
 
         Gdx.input.setInputProcessor(escena);
 
-        Image imgFondoA = new Image(texturaFondoA);
+        Image imgFondoA = new Image(texturaFondo);
 
         float escalaX = ancho  / imgFondoA.getWidth();
         float escalaY = alto / imgFondoA.getHeight();
         imgFondoA.setScale(escalaX, escalaY);
         escena.addActor(imgFondoA);
 
-
-
+        /***
+        // Botones
         TextureRegionDrawable trdBtnBack = new TextureRegionDrawable( new TextureRegion(texturaBtnBack));
         ImageButton btnBack = new ImageButton(trdBtnBack);
         btnBack.setPosition(ancho/2 - btnBack.getWidth()/2, 0.2f*alto);
@@ -84,15 +95,16 @@ public class PantallaTransicionUno implements Screen
         Image botonMenuPrincipal = new Image(texturaHazPerdido);
         botonMenuPrincipal.setPosition(ancho/2-botonMenuPrincipal.getWidth()/2, 0.4f*alto);
         escena.addActor(botonMenuPrincipal);
+         **/
 
 
+        // Para retrasar la entrada al nivel dos:
         float delay = 3; // seconds
-        // Para retrasar el nivel dos:
         Timer timer = new Timer();
         Timer.schedule(new Timer.Task(){
             @Override
             public void run(){
-                juego.setScreen(new PantallaNivelDos(juego));
+                juego.setScreen(new PantallaNivelUno(juego));
             }
         }, delay);
 
@@ -132,9 +144,9 @@ public class PantallaTransicionUno implements Screen
 
     @Override
     public void dispose() {
-        texturaFondoA.dispose();
+        texturaFondo.dispose();
         escena.dispose();
-        texturaBtnBack.dispose();
-        texturaHazPerdido.dispose();
+        //texturaBtnBack.dispose();
+        //texturaHazPerdido.dispose();
     }
 }

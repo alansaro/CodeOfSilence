@@ -527,7 +527,7 @@ public class PantallaNivelUno implements Screen
         // El personaje ha ganado.
         if(muertes ==10){
             //Gdx.app.log("Render","Has ganado!");
-            juego.setScreen(new PantallaNivelDos(juego));
+            juego.setScreen(new PantallaTransicionDos(juego));
         }
 
 
@@ -580,7 +580,7 @@ public class PantallaNivelUno implements Screen
                 }
             }
 
-            else if(mario.getEstadoAnterior() == Personaje.EstadoMovimiento.MOV_IZQUIERDA){
+            if(mario.getEstadoAnterior() == Personaje.EstadoMovimiento.MOV_IZQUIERDA){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (float)Math.PI,Personaje.EstadoMovimiento.MOV_IZQUIERDA));
                 if(quiereMusica==true) {
                     sonidoDisparo.play();
@@ -588,7 +588,7 @@ public class PantallaNivelUno implements Screen
                 }
             }
 
-            else if(mario.getEstadoAnterior() == Personaje.EstadoMovimiento.MOV_ARRIBA){
+            if(mario.getEstadoAnterior() == Personaje.EstadoMovimiento.MOV_ARRIBA){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), (90 * (float) Math.PI / 180), Personaje.EstadoMovimiento.MOV_ARRIBA));
                 if(quiereMusica == true) {
                     sonidoDisparo.play();
@@ -596,7 +596,7 @@ public class PantallaNivelUno implements Screen
                 }
             }
 
-            else if(mario.getEstadoAnterior() == Personaje.EstadoMovimiento.MOV_ABAJO){
+            if(mario.getEstadoAnterior() == Personaje.EstadoMovimiento.MOV_ABAJO){
                 bulletList.add(new Bullet((int) mario.getX(), (int) mario.getY(), -(90 * (float) Math.PI / 180), Personaje.EstadoMovimiento.MOV_ABAJO));
                 if(quiereMusica==true) {
                     sonidoDisparo.play();
