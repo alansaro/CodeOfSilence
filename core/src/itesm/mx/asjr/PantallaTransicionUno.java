@@ -3,6 +3,7 @@ package itesm.mx.asjr;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -44,6 +45,7 @@ public class PantallaTransicionUno implements Screen
         //assetManager.load("hazperdido.png", Texture.class);
 
 
+
         assetManager.finishLoading();
 
         //Calcular ancho y alto
@@ -53,6 +55,9 @@ public class PantallaTransicionUno implements Screen
         // Fondo:
         texturaFondo = assetManager.get("FondoTransicionUno.jpg");
         Image imgFondo = new Image(texturaFondo);
+
+
+
 
         // Escalar:
         float escalaX = ancho/imgFondo.getWidth();

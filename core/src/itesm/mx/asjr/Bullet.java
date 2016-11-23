@@ -33,7 +33,7 @@ public class Bullet {
         time = 2;
         speed = 2000;
         hitbox = new Rectangle(x,y,10,10);
-        texturaBala =  new Texture("bala.png");
+        texturaBala =  new Texture("bala2.png");
         a = angle;
 
     }

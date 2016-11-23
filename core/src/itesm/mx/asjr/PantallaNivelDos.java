@@ -313,7 +313,7 @@ public class PantallaNivelDos implements Screen
 
 
         // Carga música
-        manager.load("Jailhouse.mp3", Music.class);
+        manager.load("MusicaNivel2.mp3", Music.class);
         manager.load("mp5.mp3",Sound.class);
         manager.load("Dying.mp3",Sound.class);
 
@@ -337,7 +337,7 @@ public class PantallaNivelDos implements Screen
 
         // Audio
 
-        musicaFondo = manager.get("Jailhouse.mp3");
+        musicaFondo = manager.get("MusicaNivel2.mp3");
 
         if(quiereMusica==true) {
             musicaFondo.setLooping(true);

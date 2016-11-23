@@ -37,7 +37,7 @@ public class PantallaOpciones implements Screen
 
     private void cargarTexturas(){
 
-        assetManager.load("fondoOpciones.png", Texture.class);
+        assetManager.load("FondoOpciones2.jpg", Texture.class);
         assetManager.load("back.png", Texture.class);
         assetManager.load("nota_boton.png", Texture.class);
 
@@ -45,7 +45,7 @@ public class PantallaOpciones implements Screen
         assetManager.finishLoading();
 
 
-        texturaFondoO = assetManager.get("fondoOpciones.png");
+        texturaFondoO = assetManager.get("FondoOpciones2.jpg");
         texturaBtnBack = assetManager.get("back.png");
         texturaBtnMusicOff = assetManager.get("nota_boton.png");
 

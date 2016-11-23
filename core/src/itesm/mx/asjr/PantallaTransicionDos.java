@@ -3,6 +3,7 @@ package itesm.mx.asjr;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -29,6 +30,8 @@ public class PantallaTransicionDos implements Screen
     private final AssetManager assetManager = new AssetManager();
 
     private Texture texturaFondo;
+    private Music YouWin;
+
     //private Texture texturaBtnBack;
     //private Texture texturaHazPerdido;
 
@@ -42,6 +45,8 @@ public class PantallaTransicionDos implements Screen
         assetManager.load("FondoTransicionUno.jpg", Texture.class);
         //assetManager.load("MenuPrincipal.png", Texture.class);
         //assetManager.load("hazperdido.png", Texture.class);
+        assetManager.load("YouWin.mp3", Music.class);
+
 
 
         assetManager.finishLoading();
@@ -53,6 +58,9 @@ public class PantallaTransicionDos implements Screen
         // Fondo:
         texturaFondo = assetManager.get("FondoTransicionUno.jpg");
         Image imgFondo = new Image(texturaFondo);
+
+        YouWin = assetManager.get("YouWin.mp3");
+        YouWin.play();
 
         // Escalar:
         float escalaX = ancho/imgFondo.getWidth();

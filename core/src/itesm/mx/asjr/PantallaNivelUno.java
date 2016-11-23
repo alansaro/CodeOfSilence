@@ -265,9 +265,12 @@ public class PantallaNivelUno implements Screen
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.MOV_ABAJO);
                         mario.setEstadoAnterior(Personaje.EstadoMovimiento.MOV_ABAJO);
 
-                    } else if (p.getKnobPercentX() == 0){    // Nada
+
+                    }
+                    else if (p.getKnobPercentX() == 0){    // Nada
                         mario.setEstadoMovimiento(Personaje.EstadoMovimiento.QUIETO);
                     }
+
 
                 }
 

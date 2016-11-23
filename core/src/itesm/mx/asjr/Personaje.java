@@ -74,7 +74,10 @@ public class Personaje
 
 
         // Crea el sprite con el personaje quieto (idle)
-        sprite = new Sprite(texturaPersonaje[2][3]);    // QUIETO
+        if(estadoMovimiento==EstadoMovimiento.QUIETO){
+            sprite = new Sprite(texturaPersonaje[2][3]);    // QUIETO
+        }
+
         sprite.setPosition(312, 72);    // Posición inicial
     }
 

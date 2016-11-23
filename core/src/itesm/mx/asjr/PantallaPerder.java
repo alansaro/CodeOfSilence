@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.audio.Music;
 
 /**
  * Created by AlanJoseph, dc on 06/09/2016.
@@ -30,6 +31,7 @@ public class PantallaPerder implements Screen
     private Texture texturaFondoA;
     private Texture texturaBtnBack;
     private Texture texturaHazPerdido;
+    private Music GameOverMusic;
 
 
 
@@ -40,14 +42,19 @@ public class PantallaPerder implements Screen
         assetManager.load("FondoHazPerdido.png", Texture.class);
         assetManager.load("MenuPrincipal.png", Texture.class);
         assetManager.load("hazperdido.png", Texture.class);
+        assetManager.load("GameOverSound.mp3", Music.class);
+
 
 
         assetManager.finishLoading();
 
 
+        GameOverMusic = assetManager.get("GameOverSound.mp3");
         texturaFondoA = assetManager.get("FondoHazPerdido.png");
         texturaBtnBack = assetManager.get("MenuPrincipal.png");
         texturaHazPerdido = assetManager.get("hazperdido.png");
+
+        GameOverMusic.play();
 
     }
 
